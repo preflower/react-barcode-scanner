@@ -1,0 +1,21 @@
+{
+  "packageRules": [
+    {
+      "matchPackagePatterns": ["^eslint", "^@typescript-eslint", "^react", "^types"],
+      "groupName": "eslint related"
+    },
+    {
+      "matchPackagePatterns": ["*"],
+      "rangeStrategy": "bump"
+    },
+    {
+      "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
+      "automerge": true
+    }
+  ],
+  "extends": ["config:base"],
+  "ignoreTests": true,
+  "schedule": [
+    "before 3am on Monday"
+  ]
+}
