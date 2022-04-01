@@ -1,0 +1,98 @@
+{
+  "name": "react-barcode-scanner",
+  "version": "0.0.0",
+  "description": "A barcode scanner base on Barcode Detector",
+  "main": "lib/index.js",
+  "module": "esm/index.js",
+  "types": "lib/index.d.ts",
+  "typings": "lib/index.d.ts",
+  "scripts": {
+    "dev": "dumi dev",
+    "docs:build": "dumi build",
+    "build:cjs": "tsc",
+    "build:es": "tsc -m esNext --outDir esm",
+    "build": "pnpm build:cjs && pnpm build:es",
+    "prepare": "husky install",
+    "release": "release-it"
+  },
+  "keywords": [
+    "react",
+    "barcode detector",
+    "barcode scanner",
+    "qrcode"
+  ],
+  "author": "Ted Lin <preflower.lin@gmail.com> (https://github.com/preflower)",
+  "license": "MIT",
+  "devDependencies": {
+    "@commitlint/cli": "^14.1.0",
+    "@commitlint/config-conventional": "^14.1.0",
+    "@preflower/eslint-config": "^1.0.2",
+    "@release-it/conventional-changelog": "^3.3.0",
+    "@types/react": "^17.0.35",
+    "@types/react-dom": "^17.0.11",
+    "dumi": "^1.1.40",
+    "eslint": "^8.2.0",
+    "husky": "^7.0.4",
+    "lint-staged": "^11.2.6",
+    "microbundle": "^0.14.2",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "release-it": "^14.11.7",
+    "rimraf": "^3.0.2",
+    "stylelint": "^14.1.0",
+    "stylelint-config-sass-guidelines": "^9.0.1",
+    "typescript": "^4.5.4"
+  },
+  "peerDependencies": {
+    "react": "*",
+    "react-dom": "*"
+  },
+  "release-it": {
+    "git": {
+      "commitMessage": "chore: release ${version}",
+      "tagName": "v${version}"
+    },
+    "npm": {
+      "publish": true
+    },
+    "plugins": {
+      "@release-it/conventional-changelog": {
+        "preset": "angular",
+        "infile": "CHANGELOG.md"
+      }
+    }
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "lint-staged": {
+    "*.{css,scss}": [
+      "stylelint --fix"
+    ],
+    "*.{js,ts,tsx}": [
+      "eslint --fix"
+    ]
+  },
+  "stylelint": {
+    "extends": "stylelint-config-sass-guidelines",
+    "rules": {
+      "selector-max-id": null
+    }
+  },
+  "repository": "https://github.com/preflower/react-barcode-scanner",
+  "bugs": {
+    "url": "https://github.com/preflower/react-barcode-scanner/issues"
+  },
+  "homepage": "https://preflower.github.com/react-barcode-scanner",
+  "dependencies": {
+    "barcode-detector-zbar": "^1.1.0",
+    "tslib": "^2.3.1",
+    "webrtc-adapter": "^8.1.1"
+  },
+  "files": [
+    "lib/",
+    "esm/"
+  ]
+}

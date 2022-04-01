@@ -1,0 +1,28 @@
+{
+  "compilerOptions": {
+    "target": "ES5",
+    "module": "CommonJS",
+    "outDir": "lib",
+    "rootDir": "src",
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "declaration": true,
+    "useDefineForClassFields": true,
+    "removeComments": true,
+    "allowJs": false,
+    "skipLibCheck": true,
+    "esModuleInterop": false,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "moduleResolution": "Node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "importHelpers": true,
+    "jsx": "react-jsx",
+    "baseUrl": ".",
+    "paths": {
+      "react-barcode-scanner/*": ["src/*"]
+    }
+  },
+  "include": ["src"]
+}
