@@ -8,13 +8,13 @@ hero:
     - text: 快速上手
       link: /doc/guide
 features:
-  - icon: /modern.png
+  - icon: /react-barcode-scanner/modern.png
     title: Modern
     desc: 基于 Barcode Detector API
-  - icon: /lightweight.png
+  - icon: /react-barcode-scanner/lightweight.png
     title: LightWeight
     desc:
-  - icon: /customize.png
+  - icon: /react-barcode-scanner/customize.png
     title: Customize
     desc: 可高度自定义
 ---
