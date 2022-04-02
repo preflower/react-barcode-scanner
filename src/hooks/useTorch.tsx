@@ -1,10 +1,10 @@
-import { useRef, useState, useContext, useMemo, useEffect } from 'react'
-import { StreamContext } from '../context'
+import { useState, useMemo, useEffect } from 'react'
+import { useStreamState } from './useStreamState'
 
-export function useTorch (open = false): [boolean, () => Promise<void>] {
-  const isOpen = useRef(open)
+export function useTorch (open = false): [boolean, boolean, () => Promise<void>] {
+  const [isOpen, setOpen] = useState(open)
   const [isSupportTorch, setSupport] = useState(false)
-  const [stream] = useContext(StreamContext)!
+  const [stream] = useStreamState()
   const track = useMemo(() => {
     return stream?.getVideoTracks()[0]
   }, [stream])
@@ -27,14 +27,14 @@ export function useTorch (open = false): [boolean, () => Promise<void>] {
       }
       await track!.applyConstraints({
         advanced: [{
-          torch: isOpen.current
+          torch: !isOpen
         }]
       })
-      isOpen.current = !isOpen.current
+      setOpen(!isOpen)
     } catch (e) {
       console.warn(e)
     }
   }
 
-  return [isSupportTorch, switchTorch]
+  return [isSupportTorch, isOpen, switchTorch]
 }

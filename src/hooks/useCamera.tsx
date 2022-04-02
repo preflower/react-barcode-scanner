@@ -1,6 +1,6 @@
-import { RefObject, useContext, useEffect, useMemo, useState } from 'react'
-import { StreamContext } from '../context'
+import { RefObject, useEffect, useMemo, useState } from 'react'
 import { eventListener, timeout } from '../helper/utils'
+import { useStreamState } from './useStreamState'
 
 const DEFAULT_CONSTRAINTS: MediaTrackConstraints = {
   width: { min: 640, ideal: 1280 },
@@ -22,13 +22,8 @@ export function useCamera (ref: RefObject<HTMLVideoElement>, trackConstraints?: 
       reference: https://sites.google.com/a/chromium.org/dev/Home/chromium-security/deprecating-powerful-features-on-insecure-origins
     `)
   }
-  const useStreamState = useContext(StreamContext)
-  if (useStreamState == null) {
-    throw new Error(`[react-barcode-scanner]: 
-      StreamProvider must be wrapperd
-    `)
-  }
-  const [, setStream] = useStreamState
+  const [, setStream] = useStreamState()
+
   const constraints = useMemo(() => {
     const videoConstraints = Object.assign({}, DEFAULT_CONSTRAINTS, trackConstraints)
     return {
@@ -38,11 +33,12 @@ export function useCamera (ref: RefObject<HTMLVideoElement>, trackConstraints?: 
   }, [trackConstraints])
 
   useEffect(() => {
+    let stream: MediaStream
     const _ = async (): Promise<void> => {
       const target = ref.current
       if (target == null) return
 
-      const stream = await navigator.mediaDevices.getUserMedia(constraints)
+      stream = await navigator.mediaDevices.getUserMedia(constraints)
 
       // Firefox need use `moz` prefix before v58
       // reference: https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/srcObject#browser_compatibility
@@ -63,6 +59,9 @@ export function useCamera (ref: RefObject<HTMLVideoElement>, trackConstraints?: 
       setStream(stream)
     }
     void _()
+    return () => {
+      stream?.getTracks().forEach(track => track.stop())
+    }
   }, [ref, constraints, setStream])
 
   return [isCameraSupported]

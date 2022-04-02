@@ -3,7 +3,5 @@ import BarcodeDetectorPolyfill from 'barcode-detector-zbar/BarcodeDetectorPolyfi
 
 BarcodeDetectorPolyfill.setupPolyfill()
 
-export { StreamProvider } from './context'
-
 export * from './hooks'
 export * from './components'
