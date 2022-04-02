@@ -1,5 +1,5 @@
 import { FunctionComponent, useEffect, useRef } from 'react'
-import { useCamera, useScanning, ScanOptions } from '../../hooks'
+import { useCamera, useScanning, ScanOptions } from '../hooks'
 
 interface ScannerProps extends React.DetailedHTMLProps<React.VideoHTMLAttributes<HTMLVideoElement>, HTMLVideoElement> {
   options?: ScanOptions
