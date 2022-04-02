@@ -3,7 +3,7 @@ import { defineConfig } from "dumi";
 const repo = "react-barcode-scanner";
 
 export default defineConfig({
-  title: repo,
+  title: "React Barcode Scanner",
   favicon:
     "https://user-images.githubusercontent.com/9554297/83762004-a0761b00-a6a9-11ea-83b4-9c8ff721d4b8.png",
   logo: "https://user-images.githubusercontent.com/9554297/83762004-a0761b00-a6a9-11ea-83b4-9c8ff721d4b8.png",
@@ -19,5 +19,8 @@ export default defineConfig({
       title: "GitHub",
       path: "https://github.com/preflower/react-barcode-scanner",
     }
-  ]
+  ],
+  devServer: {
+    https: true
+  }
 })

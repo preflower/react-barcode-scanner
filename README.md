@@ -13,17 +13,16 @@
   </a>
 </div>
 
-## Introduce
-A lightweight Qrcode scanner base on `Qrcode Detection API`, and polyfill use `zbar.wasm`
+## Introduction
+A lightweight barcode scanner base on `Qrcode Detection API`, and polyfill use `zbar.wasm`
 
 ## Usage
-```js
-import { StreamProvider, BarcodeScanner } from 'react-barcode-scanner'
+```tsx
+import { BarcodeScanner } from 'react-barcode-scanner'
 
-// output provider for torch
-<StreamProvider>
-  <BarcodeScanner />
-</StreamProvider>
+export default () => {
+  return <BarcodeScanner />
+}
 ```
 
 ## Detail
