@@ -10,13 +10,13 @@ hero:
 features:
   - icon: /react-barcode-scanner/modern.png
     title: Modern
-    desc: 基于 Barcode Detector API
+    desc: Base on Barcode Detector API
   - icon: /react-barcode-scanner/lightweight.png
     title: LightWeight
-    desc:
+    desc: Polyfill use zbar wasm library, size only ~230kb
   - icon: /react-barcode-scanner/customize.png
     title: Customize
-    desc: 可高度自定义
+    desc: High customization
 ---
 
 ## Demo

@@ -13,7 +13,7 @@ features:
     desc: 基于 Barcode Detector API
   - icon: /react-barcode-scanner/lightweight.png
     title: LightWeight
-    desc:
+    desc: Polyfill使用zbar的wasm包，体积只有~230kb
   - icon: /react-barcode-scanner/customize.png
     title: Customize
     desc: 可高度自定义
