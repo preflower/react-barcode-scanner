@@ -14,7 +14,7 @@
 </div>
 
 ## Introduction
-A lightweight barcode scanner base on `Qrcode Detection API`, and polyfill use `zbar.wasm`
+A lightweight barcode scanner base on `Barcode Detection API`, and polyfill use `zbar.wasm`
 
 ## Usage
 ```tsx
