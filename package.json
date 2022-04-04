@@ -29,7 +29,7 @@
     "@preflower/eslint-config": "^1.0.2",
     "@release-it/conventional-changelog": "^3.3.0",
     "@types/react": "^17.0.43",
-    "@types/react-dom": "^17.0.11",
+    "@types/react-dom": "^17.0.14",
     "dumi": "^1.1.40",
     "eslint": "^8.2.0",
     "husky": "^7.0.4",
