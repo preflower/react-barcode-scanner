@@ -24,3 +24,7 @@ dist-docs
 *.njsproj
 *.sln
 *.sw?
+
+# changeset release
+.pnpm-store
+.npmrc
