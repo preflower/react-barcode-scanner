@@ -1,5 +1,11 @@
 # react-barcode-scanner
 
+## 0.0.2
+
+### Patch Changes
+
+- 49f5c9e: fix pkg 404 error
+
 ## 0.0.1
 
 ### Patch Changes
