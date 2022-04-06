@@ -48,21 +48,6 @@
     "react": "*",
     "react-dom": "*"
   },
-  "release-it": {
-    "git": {
-      "commitMessage": "chore: release ${version}",
-      "tagName": "v${version}"
-    },
-    "npm": {
-      "publish": true
-    },
-    "plugins": {
-      "@release-it/conventional-changelog": {
-        "preset": "angular",
-        "infile": "CHANGELOG.md"
-      }
-    }
-  },
   "commitlint": {
     "extends": [
       "@commitlint/config-conventional"
@@ -95,5 +80,8 @@
   "files": [
     "lib/",
     "esm/"
-  ]
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
 }
