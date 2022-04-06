@@ -12,7 +12,7 @@ features:
     title: Modern
     desc: Base on Barcode Detector API
   - icon: /react-barcode-scanner/lightweight.png
-    title: LightWeight
+    title: Lightweight
     desc: Polyfill use zbar wasm library, size only ~230kb
   - icon: /react-barcode-scanner/customize.png
     title: Customize

@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="assets/logo.png" alt="logo" width="100" height="100">
+  <img src="./public/logo.png" alt="logo" width="100" height="100">
   <h3><code>React Barcode Scanner</code></h3>
 
   <a href="https://www.npmjs.com/package/react-barcode-detector">
