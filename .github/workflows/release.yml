@@ -4,8 +4,7 @@ on:
     branches:
       - master
     paths:
-      - '!docs/**'
-      - '!README.md'
+      - '.changeset/**'
 env:
   CI: true
   PNPM_CACHE_FOLDER: .pnpm-store
