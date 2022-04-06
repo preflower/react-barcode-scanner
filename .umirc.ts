@@ -4,8 +4,8 @@ const repo = "react-barcode-scanner";
 
 export default defineConfig({
   title: "React Barcode Scanner",
-  favicon: "/logo.png",
-  logo: "/logo.png",
+  favicon: "/react-barcode-scanner/logo.png",
+  logo: "/react-barcode-scanner/logo.png",
   outputPath: "dist-docs",
   mode: "site",
   hash: true,
