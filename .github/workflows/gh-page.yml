@@ -5,6 +5,8 @@ on:
       - master
     paths:
       - 'docs/**'
+      - '.umirc.ts'
+      - 'public/**'
 env:
   CI: true
   PNPM_CACHE_FOLDER: .pnpm-store
