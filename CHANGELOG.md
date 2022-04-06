@@ -1,5 +1,11 @@
 # react-barcode-scanner
 
+## 0.0.3
+
+### Patch Changes
+
+- 9ba5267: fix README
+
 ## 0.0.2
 
 ### Patch Changes
