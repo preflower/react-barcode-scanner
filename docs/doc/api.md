@@ -52,6 +52,13 @@ toc: menu
 |------	|---------	|---------------	|--------------------	|
 | open 	| Boolean 	| false         	| Enabled by default 	|
 
+## useStreamState
+manage `stream` obtained from `useCamera`
+
+```ts | pure
+function useStreamState (): [MediaStream | undefined, (newState: MediaStream) => void]
+```
+
 ## Types
 
 ### ScanOptions

@@ -52,6 +52,13 @@ toc: menu
 |------	|---------	|---------------	|--------------------	|
 | open 	| Boolean 	| false         	| 是否默认启用闪光灯   	|
 
+## useStreamState
+管理通过`useCamera`获取到的`stream`
+
+```ts | pure
+function useStreamState (): [MediaStream | undefined, (newState: MediaStream) => void]
+```
+
 ## Types
 
 ### ScanOptions
