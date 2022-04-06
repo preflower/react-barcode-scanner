@@ -1,0 +1,56 @@
+{
+  "name": "@commitlint/load",
+  "version": "14.1.0",
+  "description": "Load shared commitlint configuration",
+  "main": "lib/load.js",
+  "types": "lib/load.d.ts",
+  "files": [
+    "lib/"
+  ],
+  "scripts": {
+    "deps": "dep-check",
+    "pkg": "pkg-check --skip-import"
+  },
+  "engines": {
+    "node": ">=v12"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/conventional-changelog/commitlint.git",
+    "directory": "@commitlint/load"
+  },
+  "bugs": {
+    "url": "https://github.com/conventional-changelog/commitlint/issues"
+  },
+  "homepage": "https://commitlint.js.org/",
+  "keywords": [
+    "conventional-changelog",
+    "commitlint",
+    "library",
+    "core"
+  ],
+  "author": {
+    "name": "Mario Nebl",
+    "email": "hello@herebecode.com"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@commitlint/test": "^14.0.0",
+    "@commitlint/utils": "^14.0.0",
+    "@types/lodash": "4.14.176",
+    "conventional-changelog-atom": "^2.0.8",
+    "execa": "^5.0.0"
+  },
+  "dependencies": {
+    "@commitlint/execute-rule": "^14.0.0",
+    "@commitlint/resolve-extends": "^14.1.0",
+    "@commitlint/types": "^14.0.0",
+    "@endemolshinegroup/cosmiconfig-typescript-loader": "^3.0.2",
+    "chalk": "^4.0.0",
+    "cosmiconfig": "^7.0.0",
+    "lodash": "^4.17.19",
+    "resolve-from": "^5.0.0",
+    "typescript": "^4.4.3"
+  },
+  "gitHead": "3882bd1680197f0ec4c40e4c9955911e20647488"
+}

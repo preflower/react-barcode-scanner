@@ -1,0 +1,29 @@
+{
+  "name": "barcode-detector-zbar",
+  "version": "1.1.0",
+  "description": "Barcode detector polyfill using zbar.wasm",
+  "main": "BarcodeDetectorPolyfill",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "esbuild --bundle --minify --external:path --external:fs --format=esm --loader:.bin=file --loader:.wasm=binary --sourcemap BarcodeDetectorPolyfill.js --outfile=BarcodeDetectorPolyfill.min.js",
+    "start": "npm run build -- --servedir=.",
+    "watch": "npm run build -- --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lekoala/barcode-detector-zbar"
+  },
+  "keywords": [
+    "barcode",
+    "detector",
+    "polyfill",
+    "zbar",
+    "wasm",
+    "es6"
+  ],
+  "author": "LeKoala",
+  "license": "MIT",
+  "dependencies": {
+    "zbar.wasm": "^2.1.1"
+  }
+}

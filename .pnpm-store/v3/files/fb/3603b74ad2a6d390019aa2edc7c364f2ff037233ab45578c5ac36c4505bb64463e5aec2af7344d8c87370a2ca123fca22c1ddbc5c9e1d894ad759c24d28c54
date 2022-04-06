@@ -1,0 +1,6 @@
+import type { RouteProcessor } from '.';
+declare const _default: RouteProcessor;
+/**
+ * read frontmatters from route component content
+ */
+export default _default;

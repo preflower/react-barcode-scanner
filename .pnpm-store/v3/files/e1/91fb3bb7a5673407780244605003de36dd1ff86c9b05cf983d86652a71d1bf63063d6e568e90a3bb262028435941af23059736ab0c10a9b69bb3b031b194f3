@@ -1,0 +1,28 @@
+{
+  "name": "@preflower/eslint-config-basic",
+  "version": "1.0.1",
+  "description": "",
+  "license": "MIT",
+  "author": "Ted Lin <preflower.lin@gmail.com> (https://github.com/preflower)",
+  "main": "index.js",
+  "peerDependencies": {
+    "eslint": "*"
+  },
+  "dependencies": {
+    "eslint-config-standard": "^16.0.3",
+    "eslint-plugin-import": "^2.25.3",
+    "eslint-plugin-jsonc": "^2.0.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^6.0.0",
+    "jsonc-eslint-parser": "^2.0.4"
+  },
+  "devDependencies": {
+    "eslint": "^8.5.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "lint": "eslint . --config=index.js"
+  }
+}

@@ -1,0 +1,6 @@
+import type { RouteProcessor } from '.';
+declare const _default: RouteProcessor;
+/**
+ * generate route group & update route path by group path
+ */
+export default _default;

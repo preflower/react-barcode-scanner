@@ -1,0 +1,58 @@
+{
+  "name": "@release-it/conventional-changelog",
+  "version": "3.3.0",
+  "description": "Conventional changelog plugin for release-it",
+  "main": "index.js",
+  "scripts": {
+    "test": "bron test.js --serial",
+    "release": "release-it"
+  },
+  "keywords": [
+    "release",
+    "release-it",
+    "release-it-plugin",
+    "plugin",
+    "conventional",
+    "changelog",
+    "recommended",
+    "bump"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/release-it/conventional-changelog.git"
+  },
+  "homepage": "https://github.com/release-it/conventional-changelog#readme",
+  "bugs": "https://github.com/release-it/conventional-changelog/issues",
+  "author": {
+    "name": "Lars Kappert",
+    "email": "lars@webpro.nl",
+    "url": "https://webpro.nl"
+  },
+  "dependencies": {
+    "concat-stream": "^2.0.0",
+    "conventional-changelog": "^3.1.24",
+    "conventional-recommended-bump": "^6.1.0",
+    "prepend-file": "^2.0.0"
+  },
+  "devDependencies": {
+    "bron": "^1.1.1",
+    "proxyquire": "^2.1.0",
+    "release-it": "^14.11.5",
+    "sinon": "^11.1.1"
+  },
+  "peerDependencies": {
+    "release-it": "^14.11.5"
+  },
+  "engines": {
+    "node": ">=10"
+  },
+  "release-it": {
+    "hooks": {
+      "before:init": "npm test"
+    },
+    "github": {
+      "release": true
+    }
+  }
+}

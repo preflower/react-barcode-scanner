@@ -1,0 +1,6 @@
+import type { RouteProcessor } from '.';
+declare const _default: RouteProcessor;
+/**
+ * generate fallback routes for missing locales
+ */
+export default _default;

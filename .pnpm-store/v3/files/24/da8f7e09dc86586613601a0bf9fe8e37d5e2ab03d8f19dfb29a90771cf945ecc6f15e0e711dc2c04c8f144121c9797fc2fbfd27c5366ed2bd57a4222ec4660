@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+
+<head>
+  <title>Barcode detector polyfill</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mvp.css@1/mvp.css" />
+  <style type="text/css">
+    #video-holder {
+      position: relative;
+    }
+
+    #video-holder canvas {
+      position: absolute;
+      top: 0;
+      left: 0
+    }
+  </style>
+  <script type="module">
+    // We need the min file to load the bundled wasm bin file
+    import BarcodeDetectorPolyfill from "./BarcodeDetectorPolyfill.min.js";
+
+    console.log("Native api support", BarcodeDetectorPolyfill.checkBarcodeDetectorSupport());
+    BarcodeDetectorPolyfill.setupPolyfill();
+
+    window.onload = () => {
+      detect();
+    };
+
+    async function detect() {
+      const barcodeDetector = new BarcodeDetector();
+      const list = document.getElementById("barcode-list");
+      let itemsFound = [];
+      const mediaStream = await navigator.mediaDevices.getUserMedia({
+        video: { facingMode: "environment" }
+      });
+
+      const video = document.createElement("video");
+      video.srcObject = mediaStream;
+      video.autoplay = true;
+
+      // This is required
+      video.width = 640;
+      video.height = 480;
+
+      document.getElementById("video-holder").append(video);
+
+      // Use this to draw matches
+      let canvas = document.createElement("canvas");
+      canvas.width = video.width;
+      canvas.height = video.height;
+      video.before(canvas);
+
+      function render() {
+        barcodeDetector
+          .detect(video)
+          .then((barcodes) => {
+            barcodes.forEach((barcode) => {
+              let context = canvas.getContext("2d");
+              context.clearRect(0, 0, canvas.width, canvas.height);
+
+              context.beginPath();
+              context.strokeStyle = "red";
+              context.lineWidth = 2;
+              context.rect(barcode.boundingBox.x, barcode.boundingBox.y, barcode.boundingBox.width, barcode.boundingBox.height);
+              context.stroke();
+
+              // Append to list
+              if (!itemsFound.includes(barcode.rawValue)) {
+                itemsFound.push(barcode.rawValue);
+                const li = document.createElement("li");
+                li.innerHTML = barcode.rawValue + ' (' + barcode.format + ')';
+                list.appendChild(li);
+              }
+            });
+          })
+          .catch(console.error);
+      }
+
+      setInterval(() => {
+        render();
+      }, 100);
+    }
+  </script>
+</head>
+
+<body>
+  <div id="video-holder"></div>
+  <ul id="barcode-list"></ul>
+</body>
+
+</html>

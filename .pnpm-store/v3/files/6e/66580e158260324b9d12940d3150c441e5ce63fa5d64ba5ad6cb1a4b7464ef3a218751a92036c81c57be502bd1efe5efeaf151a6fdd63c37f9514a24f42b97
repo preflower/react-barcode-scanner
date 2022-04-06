@@ -1,0 +1,25 @@
+{
+  "name": "@preflower/eslint-config-vue",
+  "version": "1.0.2",
+  "description": "",
+  "license": "MIT",
+  "author": "Ted Lin <preflower.lin@gmail.com> (https://github.com/preflower)",
+  "main": "index.js",
+  "peerDependencies": {
+    "eslint": "*"
+  },
+  "dependencies": {
+    "@preflower/eslint-config-typescript": "^1.1.2",
+    "eslint-plugin-vue": "^8.2.0",
+    "vue-eslint-parser": "^8.0.1"
+  },
+  "devDependencies": {
+    "eslint": "^8.6.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "lint": "eslint . --config=index.js"
+  }
+}

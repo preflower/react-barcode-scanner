@@ -1,0 +1,25 @@
+{
+  "name": "@preflower/eslint-config-react",
+  "version": "1.3.0",
+  "description": "",
+  "license": "MIT",
+  "author": "Ted Lin <preflower.lin@gmail.com> (https://github.com/preflower)",
+  "main": "index.js",
+  "peerDependencies": {
+    "eslint": "*"
+  },
+  "dependencies": {
+    "@preflower/eslint-config-typescript": "^1.1.2",
+    "eslint-plugin-react": "^7.29.2",
+    "eslint-plugin-react-hooks": "^4.3.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.10.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "lint": "eslint . --config=index.js"
+  }
+}

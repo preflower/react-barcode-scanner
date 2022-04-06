@@ -1,0 +1,45 @@
+{
+  "name": "zbar.wasm",
+  "version": "2.1.1",
+  "description": "A wasm build of C/C++ Zbar barcode scanning library.",
+  "main": "dist/index.js",
+  "browser": {
+    "./dist/load.js": "./dist/load-browser.js"
+  },
+  "jest": {
+    "testMatch": [
+      "**/?(*.)+(spec|test).[j]s?(x)"
+    ],
+    "testEnvironment": "node"
+  },
+  "scripts": {
+    "build": "make",
+    "format": "git diff HEAD^ --name-only --diff-filter=ACMR \"*.ts\" \"*.js\" | sed 's| |\\ |g' | xargs prettier --write",
+    "test": "jest --coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/samsam2310/zbar.wasm.git"
+  },
+  "keywords": [
+    "zbar",
+    "qrcode",
+    "scanner"
+  ],
+  "author": "samsam2310@gmail.com",
+  "license": "LGPL-2.1",
+  "bugs": {
+    "url": "https://github.com/samsam2310/zbar.wasm/issues"
+  },
+  "homepage": "https://github.com/samsam2310/zbar.wasm#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "@types/jest": "^27.0.3",
+    "@types/node": "^16.11.11",
+    "canvas": "^2.8.0",
+    "jest": "^27.4.3",
+    "jest-environment-node": "^27.4.2",
+    "prettier": "^2.5.0",
+    "typescript": "^4.5.2"
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "name": "@commitlint/lint",
+  "version": "14.1.0",
+  "description": "Lint a string against commitlint rules",
+  "main": "lib/lint.js",
+  "types": "lib/lint.d.ts",
+  "files": [
+    "lib/"
+  ],
+  "scripts": {
+    "deps": "dep-check",
+    "pkg": "pkg-check --skip-import"
+  },
+  "engines": {
+    "node": ">=v12"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/conventional-changelog/commitlint.git",
+    "directory": "@commitlint/lint"
+  },
+  "bugs": {
+    "url": "https://github.com/conventional-changelog/commitlint/issues"
+  },
+  "homepage": "https://commitlint.js.org/",
+  "keywords": [
+    "conventional-changelog",
+    "commitlint",
+    "library",
+    "core"
+  ],
+  "author": {
+    "name": "Mario Nebl",
+    "email": "hello@herebecode.com"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@commitlint/test": "^14.0.0",
+    "@commitlint/utils": "^14.0.0"
+  },
+  "dependencies": {
+    "@commitlint/is-ignored": "^14.0.0",
+    "@commitlint/parse": "^14.0.0",
+    "@commitlint/rules": "^14.1.0",
+    "@commitlint/types": "^14.0.0"
+  },
+  "gitHead": "3882bd1680197f0ec4c40e4c9955911e20647488"
+}

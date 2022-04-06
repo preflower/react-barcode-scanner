@@ -1,0 +1,26 @@
+{
+  "name": "@preflower/eslint-config",
+  "version": "1.0.2",
+  "description": "",
+  "license": "MIT",
+  "author": "Ted Lin <preflower.lin@gmail.com> (https://github.com/preflower)",
+  "main": "index.js",
+  "peerDependencies": {
+    "eslint": "*"
+  },
+  "dependencies": {
+    "@preflower/eslint-config-react": "^1.1.2",
+    "@preflower/eslint-config-svelte": "^1.0.2",
+    "@preflower/eslint-config-vue": "^1.0.2"
+  },
+  "devDependencies": {
+    "eslint": "^8.6.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "lint": "eslint . --config=index.js"
+  },
+  "readme": "# @preflower/eslint-config\nA eslint plugin base on standard\n\n## Usage\n### Install\n```bash\n$ pnpm add -D @preflower/eslint-config\n```\n\n### Config `.eslintrc`\n```\n{\n  \"extends\": {\n    \"@preflower\"\n  }\n}\n```\n\n## License\nMIT\n\nInspired by [@antfu/eslint-config](https://github.com/antfu/eslint-config)\n"
+}

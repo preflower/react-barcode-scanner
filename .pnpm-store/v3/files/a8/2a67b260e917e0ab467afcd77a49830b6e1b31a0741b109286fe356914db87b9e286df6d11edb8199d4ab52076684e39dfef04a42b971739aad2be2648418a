@@ -1,0 +1,56 @@
+{
+  "name": "speech-rule-engine",
+  "version": "3.3.3",
+  "description": "A standalone speech rule engine for XML structures, based on the original engine from ChromeVox.",
+  "directories": {
+    "test": "tests"
+  },
+  "bin": {
+    "sre": "bin/sre"
+  },
+  "scripts": {
+    "test": "cd sre-tests; export SRE_JSON_PATH=../lib/mathmaps; npm run test",
+    "pretest": "make test_compile",
+    "actionTest": "cd sre-tests; export SRE_JSON_PATH=../lib/mathmaps; npx jest",
+    "prepublishOnly": "make clean; make publish",
+    "build": "make all"
+  },
+  "maintainers": [
+    "Volker Sorge <Volker.Sorge@gmail.com> (http://www.cs.bham.ac.uk/~vxs)"
+  ],
+  "bugs": {
+    "email": "volker.sorge@gmail.com",
+    "url": "https://github.com/zorkow/speech-rule-engine/issues"
+  },
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zorkow/speech-rule-engine"
+  },
+  "keywords": [
+    "screen-reader",
+    "xml",
+    "a11y"
+  ],
+  "homepage": "https://github.com/zorkow/speech-rule-engine",
+  "dependencies": {
+    "commander": ">=7.0.0",
+    "wicked-good-xpath": "^1.3.0",
+    "xmldom-sre": "^0.1.31"
+  },
+  "devDependencies": {
+    "closure-linter-wrapper": ">=1.1.0",
+    "google-closure-compiler": ">=20190618.0.0",
+    "google-closure-library": "^20200517.0.0",
+    "jsdoc": ">=3.6.2",
+    "json-minify": ">=1.0.0"
+  },
+  "files": [
+    "index.js",
+    "LICENSE",
+    "README.md",
+    "lib/",
+    "bin/"
+  ],
+  "main": "index.js"
+}
