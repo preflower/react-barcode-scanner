@@ -1,5 +1,11 @@
 # react-barcode-scanner
 
+## 0.0.4
+
+### Patch Changes
+
+- 64fd836: fix iOS black screen error
+
 ## 0.0.3
 
 ### Patch Changes
