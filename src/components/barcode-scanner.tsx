@@ -40,6 +40,10 @@ const BarcodeScanner: FunctionComponent<ScannerProps> = ({
       style={{ width: '100%', height: '100%', objectFit: 'cover' }}
       autoPlay
       muted
+      /**
+       * set video play in element to fix iOS black screen error
+       */
+      playsInline
       {...props}
     />
   )
