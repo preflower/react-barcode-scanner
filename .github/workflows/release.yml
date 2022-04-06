@@ -1,0 +1,40 @@
+name: Release Package
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - '!docs/**'
+      - '!README.md'
+env:
+  CI: true
+  PNPM_CACHE_FOLDER: .pnpm-store
+jobs:
+  release:
+    timeout-minutes: 15
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code repository
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Setup node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14
+      - name: Install pnpm
+        run: npm i pnpm@latest -g
+      - name: Setup pnpm config
+        run: pnpm config set store-dir $PNPM_CACHE_FOLDER
+      - name: Install dependencies
+        run: pnpm install
+      - name: Create and publish versions
+        uses: changesets/action@v1
+        with:
+          version: pnpm ci:version
+          commit: "chore: update versions"
+          title: "chore: update versions"
+          publish: pnpm ci:publish
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

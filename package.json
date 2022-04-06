@@ -13,7 +13,8 @@
     "build:es": "tsc -m esNext --outDir esm",
     "build": "pnpm build:cjs && pnpm build:es",
     "prepare": "husky install",
-    "release": "release-it"
+    "ci:version": "pnpm changeset version && pnpm install --lockfile-only",
+    "ci:publish": "pnpm build && pnpm changeset publish"
   },
   "keywords": [
     "react",
@@ -24,6 +25,7 @@
   "author": "Ted Lin <preflower.lin@gmail.com> (https://github.com/preflower)",
   "license": "MIT",
   "devDependencies": {
+    "@changesets/cli": "^2.22.0",
     "@commitlint/cli": "^14.1.0",
     "@commitlint/config-conventional": "^14.1.0",
     "@preflower/eslint-config": "^1.0.2",
@@ -37,7 +39,6 @@
     "microbundle": "^0.14.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "release-it": "^14.11.7",
     "rimraf": "^3.0.2",
     "stylelint": "^14.1.0",
     "stylelint-config-sass-guidelines": "^9.0.1",
