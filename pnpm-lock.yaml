@@ -6,7 +6,7 @@ specifiers:
   '@commitlint/config-conventional': ^14.1.0
   '@preflower/eslint-config': ^1.0.2
   '@types/react': ^17.0.45
-  '@types/react-dom': ^17.0.16
+  '@types/react-dom': ^17.0.17
   barcode-detector-zbar: ^1.1.0
   dumi: ^1.1.40
   eslint: ^8.15.0
@@ -31,7 +31,7 @@ devDependencies:
   '@commitlint/config-conventional': 14.1.0
   '@preflower/eslint-config': 1.0.2_eslint@8.15.0+typescript@4.6.4
   '@types/react': 17.0.45
-  '@types/react-dom': 17.0.16
+  '@types/react-dom': 17.0.17
   dumi: 1.1.40_700c29a26d85f66fa068a43b58a7a08b
   eslint: 8.15.0
   husky: 7.0.4
@@ -919,8 +919,8 @@ packages:
       '@types/react': 16.14.24
     dev: true
 
-  /@types/react-dom/17.0.16:
-    resolution: {integrity: sha512-DWcXf8EbMrO/gWnQU7Z88Ws/p16qxGpPyjTKTpmBSFKeE+HveVubqGO1CVK7FrwlWD5MuOcvh8gtd0/XO38NdQ==}
+  /@types/react-dom/17.0.17:
+    resolution: {integrity: sha512-VjnqEmqGnasQKV0CWLevqMTXBYG9GbwuE6x3VetERLh0cq2LTptFE73MrQi2S7GkKXCf2GgwItB/melLnxfnsg==}
     dependencies:
       '@types/react': 17.0.45
     dev: true
