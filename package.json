@@ -25,7 +25,7 @@
   "author": "Ted Lin <preflower.lin@gmail.com> (https://github.com/preflower)",
   "license": "MIT",
   "devDependencies": {
-    "@changesets/cli": "^2.23.1",
+    "@changesets/cli": "^2.23.2",
     "@commitlint/cli": "^14.1.0",
     "@commitlint/config-conventional": "^14.1.0",
     "@preflower/eslint-config": "^1.0.2",
