@@ -5,7 +5,7 @@ specifiers:
   '@commitlint/cli': ^14.1.0
   '@commitlint/config-conventional': ^14.1.0
   '@preflower/eslint-config': ^1.0.2
-  '@types/react': ^17.0.47
+  '@types/react': ^18.0.15
   '@types/react-dom': ^17.0.17
   barcode-detector-zbar: ^1.1.0
   dumi: ^1.1.46
@@ -30,7 +30,7 @@ devDependencies:
   '@commitlint/cli': 14.1.0
   '@commitlint/config-conventional': 14.1.0
   '@preflower/eslint-config': 1.0.2_eslint@8.20.0+typescript@4.7.4
-  '@types/react': 17.0.47
+  '@types/react': 18.0.15
   '@types/react-dom': 17.0.17
   dumi: 1.1.46_dccc44159aab2d15be0b73def9353315
   eslint: 8.20.0
@@ -947,7 +947,7 @@ packages:
     resolution: {integrity: sha512-WOSetDV3YPxbkVJAdv/bqExJjmcdCi/vpCJh3NfQOy1X15vHMSiMioXIcGekXDJJYhqGUMDo9e337mh508foAA==}
     dependencies:
       '@types/history': 5.0.0
-      '@types/react': 17.0.47
+      '@types/react': 18.0.15
       '@types/react-router': 5.1.18
     dev: true
 
@@ -955,7 +955,7 @@ packages:
     resolution: {integrity: sha512-D5mHD6TbdV/DNHYsnwBTv+y73ei+mMjrkGrla86HthE4/PVvL1J94Bu3qABU+COXzpL23T1EZapVVpwHuBXiUg==}
     dependencies:
       '@types/history': 5.0.0
-      '@types/react': 17.0.47
+      '@types/react': 18.0.15
       '@types/react-router': 5.1.18
     dev: true
 
@@ -963,14 +963,14 @@ packages:
     resolution: {integrity: sha512-0bhXQwHYfMeJlCh7mGhc0VJTRm0Gk+Z8T00aiP4702mDUuLs9SMhnd2DitpjWFjdOecx2UXtICK14H9iMnziGA==}
     dependencies:
       '@types/history': 5.0.0
-      '@types/react': 17.0.47
+      '@types/react': 18.0.15
     dev: true
 
   /@types/react-router/5.1.18:
     resolution: {integrity: sha512-YYknwy0D0iOwKQgz9v8nOzt2J6l4gouBmDnWqUUznltOTaon+r8US8ky8HvN0tXvc38U9m6z/t2RsVsnd1zM0g==}
     dependencies:
       '@types/history': 4.7.11
-      '@types/react': 17.0.47
+      '@types/react': 18.0.15
     dev: true
 
   /@types/react/16.14.24:
@@ -983,6 +983,14 @@ packages:
 
   /@types/react/17.0.47:
     resolution: {integrity: sha512-mk0BL8zBinf2ozNr3qPnlu1oyVTYq+4V7WA76RgxUAtf0Em/Wbid38KN6n4abEkvO4xMTBWmnP1FtQzgkEiJoA==}
+    dependencies:
+      '@types/prop-types': 15.7.4
+      '@types/scheduler': 0.16.2
+      csstype: 3.0.11
+    dev: true
+
+  /@types/react/18.0.15:
+    resolution: {integrity: sha512-iz3BtLuIYH1uWdsv6wXYdhozhqj20oD4/Hk2DNXIn1kFsmp9x8d9QB6FnPhfkbhd2PgEONt9Q1x/ebkwjfFLow==}
     dependencies:
       '@types/prop-types': 15.7.4
       '@types/scheduler': 0.16.2
