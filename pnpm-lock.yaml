@@ -8,7 +8,7 @@ specifiers:
   '@types/react': ^17.0.48
   '@types/react-dom': ^17.0.17
   barcode-detector-zbar: ^1.1.0
-  dumi: ^1.1.46
+  dumi: ^1.1.47
   eslint: ^8.20.0
   husky: ^7.0.4
   lint-staged: ^11.2.6
@@ -32,7 +32,7 @@ devDependencies:
   '@preflower/eslint-config': 1.0.2_eslint@8.20.0+typescript@4.7.4
   '@types/react': 17.0.48
   '@types/react-dom': 17.0.17
-  dumi: 1.1.46_dccc44159aab2d15be0b73def9353315
+  dumi: 1.1.47_dccc44159aab2d15be0b73def9353315
   eslint: 8.20.0
   husky: 7.0.4
   lint-staged: 11.2.6
@@ -1378,8 +1378,8 @@ packages:
       - react-dom
     dev: true
 
-  /@umijs/preset-dumi/1.1.46_3588a898d7db6d3eb7037b6e2b8cda1e:
-    resolution: {integrity: sha512-1jqT1oL0wajgPKLxZyscRpA6KEVyPaI8zuOgtcVmEcsEf96QhmUqGY6w7k4cN6vFYZwCQ6aKL7cF8vA4h1kt9w==}
+  /@umijs/preset-dumi/1.1.47_3588a898d7db6d3eb7037b6e2b8cda1e:
+    resolution: {integrity: sha512-yv3dzeMSCc5CjmRe8nkVtodNYcJefyRev3T+hhjx74hPtwxNOVlx7PsDov66xdnw9uWUNbfBL7c5g3xT1sCWJQ==}
     peerDependencies:
       umi: ^3.0.0
     dependencies:
@@ -1399,7 +1399,7 @@ packages:
       copy-text-to-clipboard: 2.2.0
       deepmerge: 4.2.2
       dumi-assets-types: 1.0.0
-      dumi-theme-default: 1.1.22_72262a60240a15cb66502d83c015edc0
+      dumi-theme-default: 1.1.23_405495d719c0ecfbdbe50c500602091d
       enhanced-resolve: 4.5.0
       github-slugger: 1.4.0
       hast-util-has-property: 1.0.4
@@ -2987,13 +2987,13 @@ packages:
     resolution: {integrity: sha512-7nhSeWM15vybbUAMPLZsdls2jKoHB2UU4P1RM6kLPucuS8eC/HSmufquFqTTYtX4oIDLHGtil/dVtMreNGwhdA==}
     dev: true
 
-  /dumi-theme-default/1.1.22_72262a60240a15cb66502d83c015edc0:
-    resolution: {integrity: sha512-9IZt+eSgsUUEewJhT1TY4FMRUpaRKPmpL/lPyoe0aP6D2NVlvNujbJOBmVgomKZwwCjMIV4f01CxizdNr8OY9w==}
+  /dumi-theme-default/1.1.23_405495d719c0ecfbdbe50c500602091d:
+    resolution: {integrity: sha512-XtxS0f9c0YToL2QBYjXtrvoZ9nmlWzA0zgLra7Joh8KNiK2c4UqYTh91dAThp0AbnFuG2eOxR7w/PxA8OyK4og==}
     peerDependencies:
       '@umijs/preset-dumi': 1.x
       react: ^16.13.1 || ^17.0.0
     dependencies:
-      '@umijs/preset-dumi': 1.1.46_3588a898d7db6d3eb7037b6e2b8cda1e
+      '@umijs/preset-dumi': 1.1.47_3588a898d7db6d3eb7037b6e2b8cda1e
       lodash.throttle: 4.1.1
       prism-react-renderer: 1.3.1_react@17.0.2
       prismjs: 1.27.0
@@ -3006,11 +3006,11 @@ packages:
       - react-dom
     dev: true
 
-  /dumi/1.1.46_dccc44159aab2d15be0b73def9353315:
-    resolution: {integrity: sha512-D60Osji6Hl4R2kJP2tUHVvQ70UR3mOVrrSvPqAtOCUZ98rn/SU7X19rElKoA3jY1w5dPMoaknSKFnsvhWb+q+Q==}
+  /dumi/1.1.47_dccc44159aab2d15be0b73def9353315:
+    resolution: {integrity: sha512-K3eix0oxnAVQwoZlNUShg2/lZxRU515U3QoOJBdPQfiOPbPv1+/N/p17PHz1L/MBaFReb7UrhUalyb6jPd36og==}
     hasBin: true
     dependencies:
-      '@umijs/preset-dumi': 1.1.46_3588a898d7db6d3eb7037b6e2b8cda1e
+      '@umijs/preset-dumi': 1.1.47_3588a898d7db6d3eb7037b6e2b8cda1e
       umi: 3.5.21
     transitivePeerDependencies:
       - bufferutil
