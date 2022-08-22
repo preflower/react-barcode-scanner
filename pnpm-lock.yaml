@@ -18,12 +18,12 @@ specifiers:
   stylelint-config-sass-guidelines: ^9.0.1
   tslib: ^2.4.0
   typescript: ^4.7.4
-  webrtc-adapter: ^8.1.1
+  webrtc-adapter: ^8.1.2
 
 dependencies:
   barcode-detector-zbar: 1.1.0
   tslib: 2.4.0
-  webrtc-adapter: 8.1.1
+  webrtc-adapter: 8.1.2
 
 devDependencies:
   '@changesets/cli': 2.24.3
@@ -8903,8 +8903,8 @@ packages:
       javascript-stringify: 2.1.0
     dev: true
 
-  /webrtc-adapter/8.1.1:
-    resolution: {integrity: sha512-1yXevP7TeZGmklEXkvQVrZp3fOSJlLeXNGCA7NovQokxgP3/e2T3EVGL0eKU87S9vKppWjvRWqnJeSANEspOBg==}
+  /webrtc-adapter/8.1.2:
+    resolution: {integrity: sha512-j1tsxKR/NmNgqrlLTL5jsNmFBrsIdTvBWZ2I1UAs/J37M1s1chLy1Fp7RfQHflHk3KoSNAxp/4y6ictHJ8prSw==}
     engines: {node: '>=6.0.0', npm: '>=3.10.0'}
     dependencies:
       sdp: 3.0.3
