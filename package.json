@@ -33,7 +33,7 @@
     "@types/react-dom": "^17.0.17",
     "dumi": "^1.1.47",
     "eslint": "^8.23.0",
-    "husky": "^7.0.4",
+    "husky": "^8.0.1",
     "lint-staged": "^11.2.6",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
