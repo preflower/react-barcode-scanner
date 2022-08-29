@@ -26,8 +26,8 @@
   "license": "MIT",
   "devDependencies": {
     "@changesets/cli": "^2.24.3",
-    "@commitlint/cli": "^14.1.0",
-    "@commitlint/config-conventional": "^14.1.0",
+    "@commitlint/cli": "^17.1.2",
+    "@commitlint/config-conventional": "^17.1.0",
     "@preflower/eslint-config": "^1.0.2",
     "@types/react": "^17.0.48",
     "@types/react-dom": "^17.0.17",
