@@ -10,7 +10,7 @@ specifiers:
   barcode-detector-zbar: ^1.1.0
   dumi: ^1.1.47
   eslint: ^8.23.0
-  husky: ^7.0.4
+  husky: ^8.0.1
   lint-staged: ^11.2.6
   react: ^17.0.2
   react-dom: ^17.0.2
@@ -34,7 +34,7 @@ devDependencies:
   '@types/react-dom': 17.0.17
   dumi: 1.1.47_8db7cb6234632b4a50e64616f386af01
   eslint: 8.23.0
-  husky: 7.0.4
+  husky: 8.0.1
   lint-staged: 11.2.6
   react: 17.0.2
   react-dom: 17.0.2_react@17.0.2
@@ -4448,9 +4448,9 @@ packages:
     resolution: {integrity: sha512-E0eIbrFWUhwfXJmsbdjRQFQPrl5pTEoKlz163j1mTqqUnU9PgR4AgB8AIITzuB3vLBdxZXyZ9TDIrwB2OASz4g==}
     dev: true
 
-  /husky/7.0.4:
-    resolution: {integrity: sha512-vbaCKN2QLtP/vD4yvs6iz6hBEo6wkSzs8HpRah1Z6aGmF2KW5PdYuAd7uX5a+OyBZHBhd+TFLqgjUgytQr4RvQ==}
-    engines: {node: '>=12'}
+  /husky/8.0.1:
+    resolution: {integrity: sha512-xs7/chUH/CKdOCs7Zy0Aev9e/dKOMZf3K1Az1nar3tzlv0jfqnYtu235bstsWTmXOR0EfINrPa97yy4Lz6RiKw==}
+    engines: {node: '>=14'}
     hasBin: true
     dev: true
 
