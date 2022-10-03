@@ -31,7 +31,7 @@
     "@preflower/eslint-config": "^1.0.2",
     "@types/react": "^18.0.21",
     "@types/react-dom": "^18.0.6",
-    "dumi": "^1.1.47",
+    "dumi": "^1.1.48",
     "eslint": "^8.23.1",
     "husky": "^8.0.1",
     "lint-staged": "^13.0.3",
