@@ -29,7 +29,7 @@
     "@commitlint/cli": "^17.1.2",
     "@commitlint/config-conventional": "^17.1.0",
     "@preflower/eslint-config": "^1.0.2",
-    "@types/react": "^18.0.20",
+    "@types/react": "^18.0.21",
     "@types/react-dom": "^18.0.6",
     "dumi": "^1.1.47",
     "eslint": "^8.23.1",
