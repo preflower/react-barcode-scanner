@@ -72,7 +72,7 @@
   "dependencies": {
     "barcode-detector-zbar": "^1.1.0",
     "tslib": "^2.4.0",
-    "webrtc-adapter": "^8.1.2"
+    "webrtc-adapter": "^8.2.0"
   },
   "files": [
     "lib/",
