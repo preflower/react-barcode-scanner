@@ -1,7 +1,7 @@
 lockfileVersion: 5.3
 
 specifiers:
-  '@changesets/cli': ^2.25.0
+  '@changesets/cli': ^2.25.1
   '@commitlint/cli': ^17.1.2
   '@commitlint/config-conventional': ^17.1.0
   '@preflower/eslint-config': ^1.0.2
@@ -26,7 +26,7 @@ dependencies:
   webrtc-adapter: 8.2.0
 
 devDependencies:
-  '@changesets/cli': 2.25.0
+  '@changesets/cli': 2.25.1
   '@commitlint/cli': 17.1.2
   '@commitlint/config-conventional': 17.1.0
   '@preflower/eslint-config': 1.0.2_eslint@8.26.0+typescript@4.8.4
@@ -320,8 +320,8 @@ packages:
       '@changesets/types': 5.2.0
     dev: true
 
-  /@changesets/cli/2.25.0:
-    resolution: {integrity: sha512-Svu5KD2enurVHGEEzCRlaojrHjVYgF9srmMP9VQSy9c1TspX6C9lDPpulsSNIjYY9BuU/oiWpjBgR7RI9eQiAA==}
+  /@changesets/cli/2.25.1:
+    resolution: {integrity: sha512-e65ZJ7QKq7aERV/vAeuG0DTkkuEnTZK8eVNYqnd6wBsc9YTK+5iuuzp8aG0E80AngxeOaI4u77OIfzE9fv2T5Q==}
     hasBin: true
     dependencies:
       '@babel/runtime': 7.17.8
