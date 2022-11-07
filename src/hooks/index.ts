@@ -1,7 +1,7 @@
-export * from './useCamera'
+export * from './use-camera'
 
-export * from './useScanning'
+export * from './use-scanning'
 
-export * from './useTorch'
+export * from './use-torch'
 
-export * from './useStreamState'
+export * from './use-stream-state'

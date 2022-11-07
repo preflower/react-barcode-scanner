@@ -1,6 +1,6 @@
 import { RefObject, useEffect, useMemo, useState } from 'react'
 import { eventListener, timeout } from '../helper/utils'
-import { useStreamState } from './useStreamState'
+import { useStreamState } from './use-stream-state'
 
 const DEFAULT_CONSTRAINTS: MediaTrackConstraints = {
   width: { min: 640, ideal: 1280 },

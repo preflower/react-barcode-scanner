@@ -37,7 +37,7 @@ export function useScanning (ref: RefObject<HTMLVideoElement>, provideOptions?: 
      * triggered but `scan` not fulfilled when call cancelAnimationFrame
      */
     let cancelled = false
-    let timer: NodeJS.Timeout
+    let timer: number
     const frame = async (): Promise<void> => {
       await scan()
       if (!cancelled) {

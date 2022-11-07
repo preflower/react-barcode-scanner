@@ -1,5 +1,5 @@
 import { useState, useMemo, useEffect } from 'react'
-import { useStreamState } from './useStreamState'
+import { useStreamState } from './use-stream-state'
 
 export function useTorch (open = false): [boolean, boolean, () => Promise<void>] {
   const [isOpen, setOpen] = useState(open)
