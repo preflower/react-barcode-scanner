@@ -33,7 +33,7 @@
     "dumi": "^1.1.49",
     "eslint": "^8.26.0",
     "eslint-config-ted": "^2.0.1",
-    "husky": "^8.0.1",
+    "husky": "^8.0.2",
     "lint-staged": "^13.0.3",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
