@@ -5,7 +5,7 @@ specifiers:
   '@commitlint/cli': ^17.2.0
   '@commitlint/config-conventional': ^17.2.0
   '@types/react': ^18.0.25
-  '@types/react-dom': ^18.0.8
+  '@types/react-dom': ^18.0.9
   barcode-detector-zbar: ^1.1.0
   dumi: ^1.1.49
   eslint: ^8.27.0
@@ -30,7 +30,7 @@ devDependencies:
   '@commitlint/cli': 17.2.0
   '@commitlint/config-conventional': 17.2.0
   '@types/react': 18.0.25
-  '@types/react-dom': 18.0.8
+  '@types/react-dom': 18.0.9
   dumi: 1.1.49_56jbash75ng5psbctf36wqywr4
   eslint: 8.27.0
   eslint-config-ted: 2.0.1_rmayb2veg2btbq6mbmnyivgasy
@@ -866,8 +866,8 @@ packages:
       '@types/react': 16.14.24
     dev: true
 
-  /@types/react-dom/18.0.8:
-    resolution: {integrity: sha512-C3GYO0HLaOkk9dDAz3Dl4sbe4AKUGTCfFIZsz3n/82dPNN8Du533HzKatDxeUYWu24wJgMP1xICqkWk1YOLOIw==}
+  /@types/react-dom/18.0.9:
+    resolution: {integrity: sha512-qnVvHxASt/H7i+XG1U1xMiY5t+IHcPGUK7TDMDzom08xa7e86eCeKOiLZezwCKVxJn6NEiiy2ekgX8aQssjIKg==}
     dependencies:
       '@types/react': 18.0.25
     dev: true
