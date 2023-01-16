@@ -10,7 +10,7 @@ specifiers:
   dumi: ^1.1.50
   eslint: ^8.31.0
   eslint-config-ted: ^2.0.1
-  husky: ^8.0.2
+  husky: ^8.0.3
   lint-staged: ^13.1.0
   react: ^17.0.2
   react-dom: ^17.0.2
@@ -34,7 +34,7 @@ devDependencies:
   dumi: 1.1.50_lhsnqlb35hvawm3f6bviuzo2eu
   eslint: 8.31.0
   eslint-config-ted: 2.0.1_iukboom6ndih5an6iafl45j2fe
-  husky: 8.0.2
+  husky: 8.0.3
   lint-staged: 13.1.0
   react: 17.0.2
   react-dom: 17.0.2_react@17.0.2
@@ -3237,7 +3237,7 @@ packages:
       eslint-plugin-react: 7.31.10_eslint@8.31.0
       eslint-plugin-react-hooks: 4.6.0_eslint@8.31.0
       eslint-plugin-vue: 9.7.0_eslint@8.31.0
-      husky: 8.0.2
+      husky: 8.0.3
       jsonc-eslint-parser: 2.1.0
       typescript: 4.9.4
       vue-eslint-parser: 9.1.0_eslint@8.31.0
@@ -4469,8 +4469,8 @@ packages:
     resolution: {integrity: sha512-E0eIbrFWUhwfXJmsbdjRQFQPrl5pTEoKlz163j1mTqqUnU9PgR4AgB8AIITzuB3vLBdxZXyZ9TDIrwB2OASz4g==}
     dev: true
 
-  /husky/8.0.2:
-    resolution: {integrity: sha512-Tkv80jtvbnkK3mYWxPZePGFpQ/tT3HNSs/sasF9P2YfkMezDl3ON37YN6jUUI4eTg5LcyVynlb6r4eyvOmspvg==}
+  /husky/8.0.3:
+    resolution: {integrity: sha512-+dQSyqPh4x1hlO1swXBiNb2HzTDN1I2IGLQx1GrBuiqFJfoMrnZWwVmatvSiO+Iz8fBUnf+lekwNo4c2LlXItg==}
     engines: {node: '>=14'}
     hasBin: true
     dev: true
