@@ -18,12 +18,12 @@ specifiers:
   stylelint-config-sass-guidelines: ^9.0.1
   tslib: ^2.5.0
   typescript: ^4.9.5
-  webrtc-adapter: ^8.2.0
+  webrtc-adapter: ^8.2.1
 
 dependencies:
   barcode-detector-zbar: 1.1.0
   tslib: 2.5.0
-  webrtc-adapter: 8.2.0
+  webrtc-adapter: 8.2.1
 
 devDependencies:
   '@changesets/cli': 2.26.0
@@ -7849,8 +7849,8 @@ packages:
       ajv-keywords: 3.5.2_ajv@6.12.6
     dev: true
 
-  /sdp/3.0.3:
-    resolution: {integrity: sha512-8EkfckS+XZQaPLyChu4ey7PghrdcraCVNpJe2Gfdi2ON1ylQ7OasuKX+b37R9slnRChwIAiQgt+oj8xXGD8x+A==}
+  /sdp/3.2.0:
+    resolution: {integrity: sha512-d7wDPgDV3DDiqulJjKiV2865wKsJ34YI+NDREbm+FySq6WuKOikwyNQcm+doLAZ1O6ltdO0SeKle2xMpN3Brgw==}
     dev: false
 
   /semver-diff/2.1.0:
@@ -9069,11 +9069,11 @@ packages:
       javascript-stringify: 2.1.0
     dev: true
 
-  /webrtc-adapter/8.2.0:
-    resolution: {integrity: sha512-umxCMgedPAVq4Pe/jl3xmelLXLn4XZWFEMR5Iipb5wJ+k1xMX0yC4ZY9CueZUU1MjapFxai1tFGE7R/kotH6Ww==}
+  /webrtc-adapter/8.2.1:
+    resolution: {integrity: sha512-uZGIyr9FgjNHwEy8dkSV6Dq7wASbaSeSpibhrzFiRf9eSmUsMd4a55ZIfCdaASeIbalGWEQIkcE59Y9VkgqDZw==}
     engines: {node: '>=6.0.0', npm: '>=3.10.0'}
     dependencies:
-      sdp: 3.0.3
+      sdp: 3.2.0
     dev: false
 
   /whatwg-encoding/1.0.5:
