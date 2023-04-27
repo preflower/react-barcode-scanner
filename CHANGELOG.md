@@ -1,5 +1,11 @@
 # react-barcode-scanner
 
+## 1.0.0
+
+### Major Changes
+
+- e9114e8: Product available version
+
 ## 0.0.4
 
 ### Patch Changes
