@@ -4,7 +4,6 @@
     "module": "CommonJS",
     "outDir": "lib",
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
-    "declaration": true,
     "useDefineForClassFields": true,
     "removeComments": true,
     "allowJs": false,
