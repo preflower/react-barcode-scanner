@@ -23,7 +23,7 @@ jobs:
       - name: Setup pnpm config
         run: pnpm config set store-dir $PNPM_CACHE_FOLDER
       - name: Install dependencies
-        run: pnpm install --no-frozen-lockfile
+        run: pnpm i --fix-lockfile
       - run: pnpm docs:build
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
