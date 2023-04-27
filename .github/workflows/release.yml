@@ -20,7 +20,7 @@ jobs:
       - name: Setup node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 14
+          node-version: 16
       - name: Install pnpm
         run: npm i pnpm@latest -g
       - name: Setup pnpm config
