@@ -1,5 +1,11 @@
 # react-barcode-scanner
 
+## 1.0.1
+
+### Patch Changes
+
+- 29a4d28: release v1.0.1
+
 ## 1.0.0
 
 ### Major Changes
