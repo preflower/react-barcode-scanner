@@ -1,4 +1,4 @@
-lockfileVersion: 5.4
+lockfileVersion: 6.0
 
 specifiers:
   '@changesets/cli': ^2.26.1
