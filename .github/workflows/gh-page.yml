@@ -12,7 +12,7 @@ env:
   PNPM_CACHE_FOLDER: .pnpm-store
 jobs:
   deploy:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout code repository
         uses: actions/checkout@v3
