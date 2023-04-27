@@ -3,8 +3,8 @@ title: Getting Start
 order: 1
 toc: menu
 nav:
-  title: Doc
-  order: 2
+  title: Document
+  order: 1
 ---
 
 ## Install
@@ -37,7 +37,7 @@ export default () => {
 }
 ```
 
-## Torch
+### Torch
 Please use mobile devices to experience Demo
 
 ```jsx | pure
@@ -57,3 +57,8 @@ export default () => {
   )
 }
 ```
+
+
+## Feedback
+
+Please visit [GitHub](https://github.com/preflower/react-barcode-scanner) to commit issue or PR

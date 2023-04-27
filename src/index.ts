@@ -1,7 +1,12 @@
-// @ts-expect-error
-import BarcodeDetectorPolyfill from 'barcode-detector-zbar/BarcodeDetectorPolyfill.min.js'
+import { BarcodeDetectorPolyfill } from '@preflower/barcode-detector-polyfill'
 
-BarcodeDetectorPolyfill.setupPolyfill()
+try {
+  // @ts-expect-error
+  window.BarcodeDetector.getSupportedFormats()
+} catch {
+  // @ts-expect-error
+  window.BarcodeDetector = BarcodeDetectorPolyfill
+}
 
 export * from './hooks'
 export * from './components'

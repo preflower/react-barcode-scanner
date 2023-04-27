@@ -2,6 +2,8 @@
 title: API
 order: 2
 toc: menu
+nav:
+  order: 2
 ---
 
 ## BarcodeScanner

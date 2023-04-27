@@ -3,20 +3,20 @@ title: React Barcode Scanner
 order: 10
 hero:
   title: React Barcode Scanner
-  desc: 📖 基于现代API的轻量级React扫码库
+  description: 📖 基于现代API的轻量级React扫码库
   actions:
     - text: 快速上手
-      link: /zh-CN/components/foo
+      link: /guide
 features:
   - icon: /react-barcode-scanner/modern.png
     title: Modern
-    desc: 基于 Barcode Detector API
+    description: 基于 Barcode Detector API
   - icon: /react-barcode-scanner/lightweight.png
     title: LightWeight
-    desc: Polyfill使用zbar的wasm包，体积只有~230kb
+    description: Polyfill使用zbar的wasm包，体积只有~230kb
   - icon: /react-barcode-scanner/customize.png
     title: Customize
-    desc: 可高度自定义
+    description: 可高度自定义
 ---
 
 ## Demo
@@ -38,7 +38,3 @@ export default () => {
   );
 };
 ```
-
-## 反馈与共建
-
-请访问 [GitHub](https://github.com/preflower/react-barcode-scanner/issues) 创建 issue 或 PR

@@ -11,7 +11,9 @@ node_modules
 lib
 esm
 dist-docs
-.umi
+.dumi/tmp
+.dumi/tmp-test
+.dumi/tmp-production
 *.local
 
 # Editor directories and files

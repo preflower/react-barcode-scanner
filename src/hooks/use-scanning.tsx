@@ -41,10 +41,10 @@ export function useScanning (ref: RefObject<HTMLVideoElement>, provideOptions?: 
     const frame = async (): Promise<void> => {
       await scan()
       if (!cancelled) {
-        timer = setTimeout(frame, options.delay)
+        timer = window.setTimeout(frame, options.delay)
       }
     }
-    timer = setTimeout(frame, options.delay)
+    timer = window.setTimeout(frame, options.delay)
     return () => {
       clearTimeout(timer)
       cancelled = true

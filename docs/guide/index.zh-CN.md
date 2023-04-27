@@ -1,10 +1,9 @@
 ---
-title: 快速入门
-order: 1
-toc: menu
 nav:
-  title: 文档
-  order: 2
+  title: 快速入门
+  order: 1
+title: 快速入门
+toc: menu
 ---
 
 ## 安装
@@ -37,7 +36,7 @@ export default () => {
 }
 ```
 
-## 闪光灯
+### 闪光灯
 请使用移动设备体验Demo
 
 ```jsx | pure
@@ -57,3 +56,7 @@ export default () => {
   )
 }
 ```
+
+## 反馈与共建
+
+请访问 [GitHub](https://github.com/preflower/react-barcode-scanner/issues) 创建 issue 或 PR
