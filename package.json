@@ -1,6 +1,6 @@
 {
   "name": "react-barcode-scanner",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A barcode scanner base on Barcode Detector",
   "main": "lib/index.js",
   "module": "esm/index.js",

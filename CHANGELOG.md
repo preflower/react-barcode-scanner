@@ -1,5 +1,11 @@
 # react-barcode-scanner
 
+## 1.0.2
+
+### Patch Changes
+
+- 98b03c5: fix production package export abnormal error
+
 ## 1.0.1
 
 ### Patch Changes
