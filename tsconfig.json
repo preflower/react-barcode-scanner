@@ -23,5 +23,5 @@
       "react-barcode-scanner/*": ["src/*"]
     }
   },
-  "include": ["src", ".dumirc.ts", ".dumi/**/*"]
+  "include": ["src"]
 }
