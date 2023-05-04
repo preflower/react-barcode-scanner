@@ -17,6 +17,12 @@ export default defineConfig({
   // Because of using GitHub Pages
   base: `/${repo}/`,
   publicPath: `/${repo}/`,
+  metas: [
+    {
+      'http-equiv': 'Permissions-Policy',
+      content: 'interest-cohort=()'
+    }
+  ],
   themeConfig: {
     name: "React Barcode Scanner",
     ...defineThemeConfig({
