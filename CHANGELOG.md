@@ -1,5 +1,11 @@
 # react-barcode-scanner
 
+## 1.0.3
+
+### Patch Changes
+
+- 934c972: fix type not export error
+
 ## 1.0.2
 
 ### Patch Changes
