@@ -74,7 +74,7 @@
   "homepage": "https://preflower.github.io/react-barcode-scanner",
   "dependencies": {
     "@preflower/barcode-detector-polyfill": "^0.9.16",
-    "tslib": "^2.5.0",
+    "tslib": "^2.5.2",
     "webrtc-adapter": "^8.2.0"
   },
   "files": [
