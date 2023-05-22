@@ -3,8 +3,13 @@
     "target": "ES5",
     "module": "CommonJS",
     "outDir": "lib",
-    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "lib": [
+      "DOM",
+      "DOM.Iterable",
+      "ESNext"
+    ],
     "useDefineForClassFields": true,
+    "declaration": true,
     "removeComments": true,
     "allowJs": false,
     "skipLibCheck": true,
@@ -19,9 +24,15 @@
     "jsx": "react-jsx",
     "baseUrl": ".",
     "paths": {
-      "@@/*": [".dumi/tmp/*"],
-      "react-barcode-scanner/*": ["src/*"]
+      "@@/*": [
+        ".dumi/tmp/*"
+      ],
+      "react-barcode-scanner/*": [
+        "src/*"
+      ]
     }
   },
-  "include": ["src"]
+  "include": [
+    "src"
+  ]
 }
