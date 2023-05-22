@@ -1,6 +1,5 @@
 name: Deploy docs
 on:
-  workflow_dispatch: true
   push:
     branches:
       - master
@@ -8,6 +7,7 @@ on:
       - 'docs/**'
       - '.dumirc.ts'
       - 'public/**'
+  workflow_dispatch:
 env:
   CI: true
   PNPM_CACHE_FOLDER: .pnpm-store
