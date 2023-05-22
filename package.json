@@ -32,17 +32,17 @@
     "@commitlint/config-conventional": "^17.6.3",
     "@types/react": "^18.2.6",
     "@types/react-dom": "^18.2.4",
-    "dumi": "^2.1.23",
+    "dumi": "^2.2.0",
     "dumi-theme-chakra": "^0.0.17",
-    "eslint": "^8.39.0",
+    "eslint": "^8.41.0",
     "eslint-config-ted": "^2.0.1",
     "husky": "^8.0.3",
     "lint-staged": "^13.2.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "stylelint": "^15.6.2",
-    "stylelint-config-sass-guidelines": "^9.0.1",
-    "typescript": "^4.9.5"
+    "stylelint-config-sass-guidelines": "^10.0.0",
+    "typescript": "^5.0.4"
   },
   "peerDependencies": {
     "react": "*",
@@ -75,7 +75,7 @@
   "dependencies": {
     "@preflower/barcode-detector-polyfill": "^0.9.16",
     "tslib": "^2.5.2",
-    "webrtc-adapter": "^8.2.0"
+    "webrtc-adapter": "^8.2.2"
   },
   "files": [
     "lib/",
