@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkreact_barcode_scanner=self.webpackChunkreact_barcode_scanner||[]).push([[252],{25172:function(c,a,t){t.r(a),t.d(a,{default:function(){return o}});var n=t(50959),e=t(78508),u=function(){var r=(0,e.pC)();return n.createElement(n.Fragment,null,r)},o=u}}]);
