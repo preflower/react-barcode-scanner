@@ -32,11 +32,11 @@ devDependencies:
     specifier: ^18.2.4
     version: 18.2.4
   dumi:
-    specifier: ^2.2.0
-    version: 2.2.0(@babel/core@7.21.8)(@types/node@20.2.3)(@types/react@18.2.11)(eslint@8.41.0)(postcss@8.4.23)(prettier@2.8.8)(react-dom@18.2.0)(react@18.2.0)(styled-components@5.3.10)(stylelint@15.6.2)(typescript@5.0.4)(webpack@5.83.1)
+    specifier: ^2.2.1
+    version: 2.2.1(@babel/core@7.21.8)(@types/node@20.2.3)(@types/react@18.2.11)(eslint@8.41.0)(postcss@8.4.23)(prettier@2.8.8)(react-dom@18.2.0)(react@18.2.0)(styled-components@5.3.10)(stylelint@15.6.2)(typescript@5.0.4)(webpack@5.83.1)
   dumi-theme-chakra:
     specifier: ^0.0.18
-    version: 0.0.18(@algolia/client-search@4.17.0)(@chakra-ui/styled-system@2.9.0)(@chakra-ui/system@2.5.7)(@types/react@18.2.11)(dumi@2.2.0)(react-dom@18.2.0)(react@18.2.0)
+    version: 0.0.18(@algolia/client-search@4.17.0)(@chakra-ui/styled-system@2.9.0)(@chakra-ui/system@2.5.7)(@types/react@18.2.11)(dumi@2.2.1)(react-dom@18.2.0)(react@18.2.0)
   eslint:
     specifier: ^8.41.0
     version: 8.41.0
@@ -3544,7 +3544,7 @@ packages:
       postcss: '>=7.0.0'
       postcss-syntax: '>=0.36.2'
     dependencies:
-      '@babel/core': 7.21.0
+      '@babel/core': 7.21.8
       postcss: 8.4.23
       postcss-syntax: 0.36.2(postcss@8.4.23)
     transitivePeerDependencies:
@@ -6740,7 +6740,7 @@ packages:
     resolution: {integrity: sha512-a/Y5lf0G6gwsEQ9hop/n03CcjmHsGBk384Cz/AEX6mRYrfSpUx/lQvP9HLoXkCzScl9PL1sSmLPnMkgaXDCZLA==}
     dev: true
 
-  /dumi-theme-chakra@0.0.18(@algolia/client-search@4.17.0)(@chakra-ui/styled-system@2.9.0)(@chakra-ui/system@2.5.7)(@types/react@18.2.11)(dumi@2.2.0)(react-dom@18.2.0)(react@18.2.0):
+  /dumi-theme-chakra@0.0.18(@algolia/client-search@4.17.0)(@chakra-ui/styled-system@2.9.0)(@chakra-ui/system@2.5.7)(@types/react@18.2.11)(dumi@2.2.1)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-Z2XMTZwg6Qjje+eGrDkNpb6cFJCwkfxhNnJ1sDiTwbWOgZM5ZJn1mlKfs6+NbCeuthATI0njj1jG5mBV3h2Rtg==}
     engines: {node: '>=14'}
     peerDependencies:
@@ -6760,7 +6760,7 @@ packages:
       animated-scroll-to: 2.3.0
       clsx: 1.2.1
       cmdk: 0.1.22(@types/react@18.2.11)(react-dom@18.2.0)(react@18.2.0)
-      dumi: 2.2.0(@babel/core@7.21.8)(@types/node@20.2.3)(@types/react@18.2.11)(eslint@8.41.0)(postcss@8.4.23)(prettier@2.8.8)(react-dom@18.2.0)(react@18.2.0)(styled-components@5.3.10)(stylelint@15.6.2)(typescript@5.0.4)(webpack@5.83.1)
+      dumi: 2.2.1(@babel/core@7.21.8)(@types/node@20.2.3)(@types/react@18.2.11)(eslint@8.41.0)(postcss@8.4.23)(prettier@2.8.8)(react-dom@18.2.0)(react@18.2.0)(styled-components@5.3.10)(stylelint@15.6.2)(typescript@5.0.4)(webpack@5.83.1)
       framer-motion: 7.10.3(react-dom@18.2.0)(react@18.2.0)
       heti: 0.9.4
       prism-react-renderer: 1.3.5(react@18.2.0)
@@ -6775,8 +6775,8 @@ packages:
       - '@types/react'
     dev: true
 
-  /dumi@2.2.0(@babel/core@7.21.8)(@types/node@20.2.3)(@types/react@18.2.11)(eslint@8.41.0)(postcss@8.4.23)(prettier@2.8.8)(react-dom@18.2.0)(react@18.2.0)(styled-components@5.3.10)(stylelint@15.6.2)(typescript@5.0.4)(webpack@5.83.1):
-    resolution: {integrity: sha512-bqtXpdQqMZYPYixXkomJ/8QT4Frk8PEd7MgbnLeqdcJJZq1pdRGDK7JO7AySd97Q7rJ0qJErJGw0sjE02alUzQ==}
+  /dumi@2.2.1(@babel/core@7.21.8)(@types/node@20.2.3)(@types/react@18.2.11)(eslint@8.41.0)(postcss@8.4.23)(prettier@2.8.8)(react-dom@18.2.0)(react@18.2.0)(styled-components@5.3.10)(stylelint@15.6.2)(typescript@5.0.4)(webpack@5.83.1):
+    resolution: {integrity: sha512-9AU79JbFQ+hhkL2Y0XYEuSuwiyz+U2KcqstzI68n9BKYODP9VGs0UlfrHfd8W+8bSbiHTNXNz0eRbBdZBMswgQ==}
     hasBin: true
     peerDependencies:
       react: '>=16.8'
@@ -6812,6 +6812,7 @@ packages:
       html2sketch: 1.0.1
       js-yaml: 4.1.0
       lodash.throttle: 4.1.1
+      mdast-util-find-and-replace: 2.2.2
       mdast-util-to-string: 3.2.0
       nprogress: 0.2.0
       pluralize: 8.0.0
@@ -6830,7 +6831,6 @@ packages:
       rehype-autolink-headings: 6.1.1
       rehype-remove-comments: 5.0.0
       rehype-stringify: 9.0.3
-      remark-breaks: 3.0.3
       remark-directive: 2.0.1
       remark-frontmatter: 4.0.1
       remark-gfm: 3.0.1
@@ -8769,7 +8769,7 @@ packages:
     dev: true
 
   /identity-obj-proxy@3.0.0:
-    resolution: {integrity: sha1-lNK9qWCERT7zb7xarsN+D3nx/BQ=}
+    resolution: {integrity: sha512-00n6YnVHKrinT9t0d9+5yZC6UBNJANpYEQvL2LlX6Ab9lnmxzIRcEmTPuyGScvl1+jKuCICX1Z0Ab1pPKKdikA==}
     engines: {node: '>=4'}
     dependencies:
       harmony-reflect: 1.6.2
@@ -10122,13 +10122,6 @@ packages:
       mdast-util-to-markdown: 1.5.0
     transitivePeerDependencies:
       - supports-color
-    dev: true
-
-  /mdast-util-newline-to-break@1.0.0:
-    resolution: {integrity: sha512-491LcYv3gbGhhCrLoeALncQmega2xPh+m3gbsIhVsOX4sw85+ShLFPvPyibxc1Swx/6GtzxgVodq+cGa/47ULg==}
-    dependencies:
-      '@types/mdast': 3.0.11
-      mdast-util-find-and-replace: 2.2.2
     dev: true
 
   /mdast-util-phrasing@3.0.1:
@@ -12071,7 +12064,7 @@ packages:
     dev: true
 
   /querystring@0.2.0:
-    resolution: {integrity: sha1-sgmEkgO7Jd+CDadW50cAWHhSFiA=}
+    resolution: {integrity: sha512-X/xY82scca2tau62i9mDyU9K+I+djTMUsvwf7xnUX5GLvVzgJybOJf4Y6o9Zx3oJK/LSXg5tTZBjwzqVPaPO2g==}
     engines: {node: '>=0.4.x'}
     deprecated: The querystring API is considered Legacy. new code should use the URLSearchParams API instead.
     dev: true
@@ -12750,14 +12743,6 @@ packages:
   /relateurl@0.2.7:
     resolution: {integrity: sha512-G08Dxvm4iDN3MLM0EsP62EDV9IuhXPR6blNz6Utcp7zyV3tr4HVNINt6MpaRWbxoOHT3Q7YN2P+jaHX8vUbgog==}
     engines: {node: '>= 0.10'}
-    dev: true
-
-  /remark-breaks@3.0.3:
-    resolution: {integrity: sha512-C7VkvcUp1TPUc2eAYzsPdaUh8Xj4FSbQnYA5A9f80diApLZscTDeG7efiWP65W8hV2sEy3JuGVU0i6qr5D8Hug==}
-    dependencies:
-      '@types/mdast': 3.0.11
-      mdast-util-newline-to-break: 1.0.0
-      unified: 10.1.2
     dev: true
 
   /remark-directive@2.0.1:
@@ -14159,7 +14144,7 @@ packages:
     dev: true
 
   /tty-browserify@0.0.0:
-    resolution: {integrity: sha1-oVe6QC2iTpv5V/mqadUk7tQpAaY=}
+    resolution: {integrity: sha512-JVa5ijo+j/sOoHGjw0sxw734b1LhBkQ3bvUGNdxnVXDCX81Yx7TFgnZygxrIIWn23hbfTaMYLwRmAxFyDuFmIw==}
     dev: true
 
   /tty-table@4.2.1:
