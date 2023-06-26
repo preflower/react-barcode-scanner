@@ -33,7 +33,7 @@
     "@types/react": "^18.2.12",
     "@types/react-dom": "^18.2.5",
     "dumi": "^2.2.1",
-    "dumi-theme-chakra": "^0.0.18",
+    "dumi-theme-chakra": "^0.0.20",
     "eslint": "^8.41.0",
     "eslint-config-ted": "^2.0.1",
     "husky": "^8.0.3",
