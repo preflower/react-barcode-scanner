@@ -35,8 +35,8 @@ devDependencies:
     specifier: ^2.2.1
     version: 2.2.1(@babel/core@7.21.8)(@types/node@20.2.3)(@types/react@18.2.12)(eslint@8.41.0)(postcss@8.4.23)(prettier@2.8.8)(react-dom@18.2.0)(react@18.2.0)(styled-components@5.3.10)(stylelint@15.6.2)(typescript@5.0.4)(webpack@5.83.1)
   dumi-theme-chakra:
-    specifier: ^0.0.20
-    version: 0.0.20(@algolia/client-search@4.17.0)(@chakra-ui/styled-system@2.9.1)(@chakra-ui/system@2.5.8)(@types/react@18.2.12)(dumi@2.2.1)(react-dom@18.2.0)(react@18.2.0)(search-insights@2.6.0)
+    specifier: ^0.0.21
+    version: 0.0.21(@algolia/client-search@4.17.0)(@chakra-ui/styled-system@2.9.1)(@chakra-ui/system@2.5.8)(@types/react@18.2.12)(dumi@2.2.1)(react-dom@18.2.0)(react@18.2.0)(search-insights@2.6.0)
   eslint:
     specifier: ^8.41.0
     version: 8.41.0
@@ -6750,8 +6750,8 @@ packages:
     resolution: {integrity: sha512-a/Y5lf0G6gwsEQ9hop/n03CcjmHsGBk384Cz/AEX6mRYrfSpUx/lQvP9HLoXkCzScl9PL1sSmLPnMkgaXDCZLA==}
     dev: true
 
-  /dumi-theme-chakra@0.0.20(@algolia/client-search@4.17.0)(@chakra-ui/styled-system@2.9.1)(@chakra-ui/system@2.5.8)(@types/react@18.2.12)(dumi@2.2.1)(react-dom@18.2.0)(react@18.2.0)(search-insights@2.6.0):
-    resolution: {integrity: sha512-rSbxMuW2eRpGiQafHcNAwHEO+tC7YxXiLhCWtjLfzB7rD2hrqX4kSu57FAefG2rL0QIwc+JlU1C8iPXOf2J1zQ==}
+  /dumi-theme-chakra@0.0.21(@algolia/client-search@4.17.0)(@chakra-ui/styled-system@2.9.1)(@chakra-ui/system@2.5.8)(@types/react@18.2.12)(dumi@2.2.1)(react-dom@18.2.0)(react@18.2.0)(search-insights@2.6.0):
+    resolution: {integrity: sha512-DPpM+JvXHR+LdiOFYZZ79Aiwh3l9nVa3Cd7J+3uBOYz7gdUitIcXhse6zugTnDpghVAeDQ1zUAO1213ANYbTfw==}
     engines: {node: '>=14'}
     peerDependencies:
       dumi: ^2.0.12
