@@ -12,8 +12,8 @@ dependencies:
     specifier: ^2.5.3
     version: 2.5.3
   webrtc-adapter:
-    specifier: ^8.2.2
-    version: 8.2.2
+    specifier: ^8.2.3
+    version: 8.2.3
 
 devDependencies:
   '@changesets/cli':
@@ -14728,8 +14728,8 @@ packages:
       - uglify-js
     dev: true
 
-  /webrtc-adapter@8.2.2:
-    resolution: {integrity: sha512-jQWwqiAEAFZamWliJo0Q+dIC6ZMJ8BgCFvW/oXWVFby1Nw14dOUfPwZ3lVe4nafDXdTyCUT7xfLt5xXiioXUCQ==}
+  /webrtc-adapter@8.2.3:
+    resolution: {integrity: sha512-gnmRz++suzmvxtp3ehQts6s2JtAGPuDPjA1F3a9ckNpG1kYdYuHWYpazoAnL9FS5/B21tKlhkorbdCXat0+4xQ==}
     engines: {node: '>=6.0.0', npm: '>=3.10.0'}
     dependencies:
       sdp: 3.2.0
