@@ -32,11 +32,11 @@ devDependencies:
     specifier: ^18.2.7
     version: 18.2.7
   dumi:
-    specifier: ^2.2.5
-    version: 2.2.5(@babel/core@7.21.8)(@types/node@20.2.3)(@types/react@18.2.20)(eslint@8.41.0)(postcss@8.4.23)(prettier@2.8.8)(react-dom@18.2.0)(react@18.2.0)(styled-components@5.3.10)(stylelint@15.6.2)(typescript@5.0.4)(webpack@5.83.1)
+    specifier: ^2.2.6
+    version: 2.2.6(@babel/core@7.21.8)(@types/node@20.2.3)(@types/react@18.2.20)(eslint@8.41.0)(postcss@8.4.23)(prettier@2.8.8)(react-dom@18.2.0)(react@18.2.0)(styled-components@5.3.10)(stylelint@15.6.2)(typescript@5.0.4)(webpack@5.83.1)
   dumi-theme-chakra:
     specifier: ^0.0.22
-    version: 0.0.22(@algolia/client-search@4.17.0)(@chakra-ui/styled-system@2.9.1)(@chakra-ui/system@2.6.0)(@types/react@18.2.20)(dumi@2.2.5)(react-dom@18.2.0)(react@18.2.0)(search-insights@2.6.0)
+    version: 0.0.22(@algolia/client-search@4.17.0)(@chakra-ui/styled-system@2.9.1)(@chakra-ui/system@2.6.0)(@types/react@18.2.20)(dumi@2.2.6)(react-dom@18.2.0)(react@18.2.0)(search-insights@2.6.0)
   eslint:
     specifier: ^8.41.0
     version: 8.41.0
@@ -6601,7 +6601,7 @@ packages:
     resolution: {integrity: sha512-a/Y5lf0G6gwsEQ9hop/n03CcjmHsGBk384Cz/AEX6mRYrfSpUx/lQvP9HLoXkCzScl9PL1sSmLPnMkgaXDCZLA==}
     dev: true
 
-  /dumi-theme-chakra@0.0.22(@algolia/client-search@4.17.0)(@chakra-ui/styled-system@2.9.1)(@chakra-ui/system@2.6.0)(@types/react@18.2.20)(dumi@2.2.5)(react-dom@18.2.0)(react@18.2.0)(search-insights@2.6.0):
+  /dumi-theme-chakra@0.0.22(@algolia/client-search@4.17.0)(@chakra-ui/styled-system@2.9.1)(@chakra-ui/system@2.6.0)(@types/react@18.2.20)(dumi@2.2.6)(react-dom@18.2.0)(react@18.2.0)(search-insights@2.6.0):
     resolution: {integrity: sha512-03Mp8hrtr3qCvoplfbTHjIQHQtkNQsF1+WEUz5iS+v4HKKbDzPKL8zKGfAM2HJONE/ol5PeGOltnY2bnRBeV+g==}
     engines: {node: '>=14'}
     peerDependencies:
@@ -6622,7 +6622,7 @@ packages:
       animated-scroll-to: 2.3.0
       clsx: 1.2.1
       cmdk: 0.1.22(@types/react@18.2.20)(react-dom@18.2.0)(react@18.2.0)
-      dumi: 2.2.5(@babel/core@7.21.8)(@types/node@20.2.3)(@types/react@18.2.20)(eslint@8.41.0)(postcss@8.4.23)(prettier@2.8.8)(react-dom@18.2.0)(react@18.2.0)(styled-components@5.3.10)(stylelint@15.6.2)(typescript@5.0.4)(webpack@5.83.1)
+      dumi: 2.2.6(@babel/core@7.21.8)(@types/node@20.2.3)(@types/react@18.2.20)(eslint@8.41.0)(postcss@8.4.23)(prettier@2.8.8)(react-dom@18.2.0)(react@18.2.0)(styled-components@5.3.10)(stylelint@15.6.2)(typescript@5.0.4)(webpack@5.83.1)
       framer-motion: 7.10.3(react-dom@18.2.0)(react@18.2.0)
       heti: 0.9.4
       prism-react-renderer: 1.3.5(react@18.2.0)
@@ -6638,8 +6638,8 @@ packages:
       - search-insights
     dev: true
 
-  /dumi@2.2.5(@babel/core@7.21.8)(@types/node@20.2.3)(@types/react@18.2.20)(eslint@8.41.0)(postcss@8.4.23)(prettier@2.8.8)(react-dom@18.2.0)(react@18.2.0)(styled-components@5.3.10)(stylelint@15.6.2)(typescript@5.0.4)(webpack@5.83.1):
-    resolution: {integrity: sha512-5Dgvz5airOqcTgBCsySr36gCdA2badkdrYCWls+Lx4lmbePyecwioW3CJ7NC34NcTcWDiA5wnHQAgDW2Afj9Ew==}
+  /dumi@2.2.6(@babel/core@7.21.8)(@types/node@20.2.3)(@types/react@18.2.20)(eslint@8.41.0)(postcss@8.4.23)(prettier@2.8.8)(react-dom@18.2.0)(react@18.2.0)(styled-components@5.3.10)(stylelint@15.6.2)(typescript@5.0.4)(webpack@5.83.1):
+    resolution: {integrity: sha512-1hzmn2KI4fwBT+WL8vNfUdH86qXzPZc4S87N41UUv+pngVkWeWFLzDaoAj69gjF7XsAw2V/dFV3qMipacXOMHw==}
     hasBin: true
     peerDependencies:
       react: '>=16.8'
@@ -6814,14 +6814,6 @@ packages:
     resolution: {integrity: sha512-+uw1inIHVPQoaVuHzRyXd21icM+cnt4CzD5rW+NC1wjOUSTOs+Te7FOv7AhN7vS9x/oIyhLP5PR1H+phQAHu5Q==}
     dependencies:
       once: 1.4.0
-    dev: true
-
-  /enhanced-resolve@5.14.0:
-    resolution: {integrity: sha512-+DCows0XNwLDcUhbFJPdlQEVnT2zXlCv7hPxemTz86/O+B/hCQ+mb7ydkPKiflpVraqLPCAfu7lDy+hBXueojw==}
-    engines: {node: '>=10.13.0'}
-    dependencies:
-      graceful-fs: 4.2.11
-      tapable: 2.2.1
     dev: true
 
   /enhanced-resolve@5.15.0:
@@ -12046,7 +12038,7 @@ packages:
     dependencies:
       '@babel/runtime': 7.22.6
       classnames: 2.3.2
-      rc-util: 5.30.0(react-dom@18.2.0)(react@18.2.0)
+      rc-util: 5.36.0(react-dom@18.2.0)(react@18.2.0)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
     dev: true
@@ -12107,22 +12099,10 @@ packages:
       '@babel/runtime': 7.22.6
       classnames: 2.3.2
       rc-motion: 2.7.3(react-dom@18.2.0)(react@18.2.0)
-      rc-util: 5.30.0(react-dom@18.2.0)(react@18.2.0)
+      rc-util: 5.36.0(react-dom@18.2.0)(react@18.2.0)
       rc-virtual-list: 3.5.2(react-dom@18.2.0)(react@18.2.0)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
-    dev: true
-
-  /rc-util@5.30.0(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-uaWpF/CZGyXuhQG71MWxkU+0bWkPEgqZUxEv251Cu7p3kpHDNm5+Ygu/U8ux0a/zbfGW8PsKcJL0XVBOMrlIZg==}
-    peerDependencies:
-      react: '>=16.9.0'
-      react-dom: '>=16.9.0'
-    dependencies:
-      '@babel/runtime': 7.22.6
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-      react-is: 16.13.1
     dev: true
 
   /rc-util@5.36.0(react-dom@18.2.0)(react@18.2.0):
@@ -12147,7 +12127,7 @@ packages:
       '@babel/runtime': 7.22.6
       classnames: 2.3.2
       rc-resize-observer: 1.3.1(react-dom@18.2.0)(react@18.2.0)
-      rc-util: 5.30.0(react-dom@18.2.0)(react@18.2.0)
+      rc-util: 5.36.0(react-dom@18.2.0)(react@18.2.0)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
     dev: true
@@ -14561,7 +14541,7 @@ packages:
       acorn-import-assertions: 1.9.0(acorn@8.8.2)
       browserslist: 4.21.5
       chrome-trace-event: 1.0.3
-      enhanced-resolve: 5.14.0
+      enhanced-resolve: 5.15.0
       es-module-lexer: 1.2.1
       eslint-scope: 5.1.1
       events: 3.3.0
