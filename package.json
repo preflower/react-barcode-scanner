@@ -30,7 +30,7 @@
     "@changesets/cli": "^2.26.2",
     "@commitlint/cli": "^17.7.1",
     "@commitlint/config-conventional": "^17.7.0",
-    "@types/react": "^18.2.20",
+    "@types/react": "^18.2.21",
     "@types/react-dom": "^18.2.7",
     "dumi": "^2.2.6",
     "dumi-theme-chakra": "^0.0.22",
