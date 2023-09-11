@@ -34,15 +34,15 @@
     "@types/react-dom": "^18.2.7",
     "dumi": "^2.2.7",
     "dumi-theme-chakra": "^0.0.22",
-    "eslint": "^8.41.0",
-    "eslint-config-ted": "^2.0.1",
+    "eslint": "^8.49.0",
+    "eslint-config-ted": "^2.0.2",
     "husky": "^8.0.3",
     "lint-staged": "^13.3.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "stylelint": "^15.10.3",
     "stylelint-config-sass-guidelines": "^10.0.0",
-    "typescript": "^5.0.4"
+    "typescript": "^5.2.2"
   },
   "peerDependencies": {
     "react": "*",
