@@ -28,8 +28,8 @@
   "license": "MIT",
   "devDependencies": {
     "@changesets/cli": "^2.26.2",
-    "@commitlint/cli": "^17.7.2",
-    "@commitlint/config-conventional": "^17.7.0",
+    "@commitlint/cli": "^17.8.1",
+    "@commitlint/config-conventional": "^17.8.1",
     "@types/react": "^18.2.31",
     "@types/react-dom": "^18.2.14",
     "dumi": "^2.2.13",
