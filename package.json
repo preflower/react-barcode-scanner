@@ -32,7 +32,7 @@
     "@commitlint/config-conventional": "^17.8.1",
     "@types/react": "^18.2.43",
     "@types/react-dom": "^18.2.17",
-    "dumi": "^2.2.14",
+    "dumi": "^2.2.16",
     "dumi-theme-chakra": "^0.0.22",
     "eslint": "^8.55.0",
     "eslint-config-ted": "^2.0.2",
