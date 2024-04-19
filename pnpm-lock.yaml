@@ -6,8 +6,8 @@ settings:
 
 dependencies:
   '@preflower/barcode-detector-polyfill':
-    specifier: ^0.9.16
-    version: 0.9.16
+    specifier: ^0.9.20
+    version: 0.9.20
   tslib:
     specifier: ^2.6.2
     version: 2.6.2
@@ -3165,10 +3165,10 @@ packages:
     resolution: {integrity: sha512-Cr4OjIkipTtcXKjAsm8agyleBuDHvxzeBoa1v543lbv1YaIwQjESsVcmjiWiPEbC1FIeHOG/Op9kdCmAmiS3Kw==}
     dev: true
 
-  /@preflower/barcode-detector-polyfill@0.9.16:
-    resolution: {integrity: sha512-B77jnOhRD8IiR7crlsy8FdqZswvJUJeU/p5mEAMZSQgsavgTRX1gkTLHlYHNUV0l1NYAFYrsIZPhxoN+FXin+g==}
+  /@preflower/barcode-detector-polyfill@0.9.20:
+    resolution: {integrity: sha512-05jorEJ/ld8bABmrPlw4O9awIRtjElR6nuIOg3pT0VD8WzlzlPyQeke0fh6LxAg1YFt2Luivb2wLDXKmrJLfNA==}
     dependencies:
-      '@undecaf/zbar-wasm': 0.9.13
+      '@undecaf/zbar-wasm': 0.10.1
     dev: false
 
   /@radix-ui/primitive@1.0.0:
@@ -4630,8 +4630,8 @@ packages:
     resolution: {integrity: sha512-/i3W+BcHKISLHBh8oNTJqGBHkiIZTQ7U4xyad55L8LJo5DezH/G1+aSirlWuAxpJ6xNq6P/5E+K9AaYdz+pu/A==}
     dev: true
 
-  /@undecaf/zbar-wasm@0.9.13:
-    resolution: {integrity: sha512-Xl4eyfU8nwtTHF4Wi0Qyklq8BC6BmW++GYlN0gCeIgrqeIDmV7xp3nNpIN4fQpIbdvq3lvgnvVcBKAiYn9FvzA==}
+  /@undecaf/zbar-wasm@0.10.1:
+    resolution: {integrity: sha512-nQGPCHO/4383oMurHp4smoxG3ZYgNX6K+MxdID8D5Rs5yzUzQKkClQeYEH7jST9OacGb18Ohmwl5IrHZfwdn+w==}
     dev: false
 
   /@ungap/structured-clone@1.2.0:
