@@ -1,5 +1,11 @@
 # react-barcode-scanner
 
+## 1.0.4
+
+### Patch Changes
+
+- d381b23: fix @undecaf/zbar-wasm@0.9.16 package error, update to latest package
+
 ## 1.0.3
 
 ### Patch Changes
