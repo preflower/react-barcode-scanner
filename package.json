@@ -34,7 +34,7 @@
     "@types/react-dom": "^18.2.25",
     "dumi": "^2.2.17",
     "dumi-theme-chakra": "^0.0.22",
-    "eslint": "^9.0.0",
+    "eslint": "^9.1.0",
     "eslint-config-ted": "^3.0.2",
     "husky": "^9.0.11",
     "lint-staged": "^15.2.2",
