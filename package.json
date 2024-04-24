@@ -1,9 +1,31 @@
 {
   "name": "react-barcode-scanner",
-  "version": "1.0.4",
+  "version": "2.0.0",
   "description": "A barcode scanner base on Barcode Detector",
   "main": "lib/index.js",
   "module": "esm/index.js",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./esm/index.d.ts",
+        "default": "./esm/index.js"
+      },
+      "require": {
+        "types": "./lib/index.d.ts",
+        "default": "./lib/index.js"
+      }
+    },
+    "./polyfill": {
+      "import": {
+        "types": "./esm/polyfill.d.ts",
+        "default": "./esm/polyfill.js"
+      },
+      "require": {
+        "types": "./lib/polyfill.d.ts",
+        "default": "./lib/polyfill.js"
+      }
+    }
+  },
   "types": "lib/index.d.ts",
   "typings": "lib/index.d.ts",
   "scripts": {
@@ -34,7 +56,7 @@
     "@types/react-dom": "^18.2.25",
     "dumi": "^2.2.17",
     "dumi-theme-chakra": "^0.0.22",
-    "eslint": "^9.1.0",
+    "eslint": "^8.57.0",
     "eslint-config-ted": "^3.0.2",
     "husky": "^9.0.11",
     "lint-staged": "^15.2.2",

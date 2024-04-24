@@ -9,6 +9,7 @@ toc: menu
 ```tsx
 import React, { useState } from "react";
 import { BarcodeScanner, useTorch } from "react-barcode-scanner";
+import "react-barcode-scanner/polyfill";
 
 export default () => {
   const [isSupportTorch, , onTorchSwitch] = useTorch();

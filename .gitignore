@@ -30,3 +30,6 @@ dist-docs
 # changeset release
 .pnpm-store
 .npmrc
+
+# umi
+.umi
