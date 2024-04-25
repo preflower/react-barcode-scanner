@@ -25,6 +25,13 @@ export default () => {
 }
 ```
 
+### Polyfill
+To support SSR, `v2.0.0` not auto import polyfill anymore, user need import it manually.
+
+```tsx
+import "react-barcode-scanner/polyfill"
+```
+
 ## Detail
 [Documentation](https://preflower.github.io/react-barcode-scanner)
 

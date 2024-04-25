@@ -29,6 +29,7 @@ npm install react-barcode-scanner
 ```jsx | pure
 import React from 'react'
 import { BarcodeScanner } from 'react-barcode-scanner'
+import "react-barcode-scanner/polyfill"
 
 export default () => {
   return (
@@ -57,7 +58,6 @@ export default () => {
   )
 }
 ```
-
 
 ## Feedback
 
