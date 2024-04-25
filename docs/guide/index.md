@@ -29,6 +29,7 @@ npm install react-barcode-scanner
 ```jsx | pure
 import React from 'react'
 import { BarcodeScanner } from 'react-barcode-scanner'
+import "react-barcode-scanner/polyfill"
 
 export default () => {
   return (
@@ -58,6 +59,17 @@ export default () => {
 }
 ```
 
+## Next.js
+`react-barcode-scanner` is only work in browser environment, pls use `next/dynamic` to import in `Nextjs` project
+
+```js
+import dynamic from 'next/dynamic'
+
+const BarcodeScanner = dynamic(() => {
+  import('react-barcode-scanner/polyfill')
+  return import('react-barcode-scanner').then(mod => mod.BarcodeScanner)
+}, { ssr: false })
+```
 
 ## Feedback
 

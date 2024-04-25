@@ -28,6 +28,7 @@ npm install react-barcode-scanner
 ```jsx | pure
 import React from 'react'
 import { BarcodeScanner } from 'react-barcode-scanner'
+import 'react-barcode-scanner/polyfill'
 
 export default () => {
   return (
@@ -56,6 +57,19 @@ export default () => {
   )
 }
 ```
+
+## Nextjs
+`react-barcode-scanner`只应用于浏览器环境, `Nextjs`若想使用此库请使用`next/dynamic`方式导入
+
+```js
+import dynamic from 'next/dynamic'
+
+const BarcodeScanner = dynamic(() => {
+  import('react-barcode-scanner/polyfill')
+  return import('react-barcode-scanner').then(mod => mod.BarcodeScanner)
+}, { ssr: false })
+```
+
 
 ## 反馈与共建
 

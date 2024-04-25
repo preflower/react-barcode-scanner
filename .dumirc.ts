@@ -9,9 +9,7 @@ export default defineConfig({
     { id: 'en-US', name: 'English' },
     { id: 'zh-CN', name: '中文' }
   ],
-  title: "React Barcode Scanner",
   favicons: ["/react-barcode-scanner/logo.png"],
-  logo: "/react-barcode-scanner/logo.png",
   outputPath: "dist-docs",
   hash: true,
   // Because of using GitHub Pages
@@ -25,6 +23,7 @@ export default defineConfig({
   ],
   themeConfig: {
     name: "React Barcode Scanner",
+    logo: "/react-barcode-scanner/logo.png",
     ...defineThemeConfig({
       social: {
         github: {

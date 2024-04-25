@@ -1,4 +1,4 @@
-import { RefObject, useEffect, useMemo, useState } from 'react'
+import { type RefObject, useEffect, useMemo, useState } from 'react'
 import { eventListener, timeout } from '../helper/utils'
 import { useStreamState } from './use-stream-state'
 
@@ -16,13 +16,15 @@ const DEFAULT_CONSTRAINTS: MediaTrackConstraints = {
 
 export function useCamera (ref: RefObject<HTMLVideoElement>, trackConstraints?: MediaTrackConstraints): [boolean] {
   const [isCameraSupported, setCameraSupported] = useState(false)
+
+  const [, setStream] = useStreamState()
+
   if (!window.isSecureContext) {
     throw new Error(`[react-barcode-scanner]: 
       Browser ask for secure origin (such as https) when use getUserMedia,
       reference: https://sites.google.com/a/chromium.org/dev/Home/chromium-security/deprecating-powerful-features-on-insecure-origins
     `)
   }
-  const [, setStream] = useStreamState()
 
   const constraints = useMemo(() => {
     const videoConstraints = Object.assign({}, DEFAULT_CONSTRAINTS, trackConstraints)
@@ -60,7 +62,7 @@ export function useCamera (ref: RefObject<HTMLVideoElement>, trackConstraints?: 
     }
     void _()
     return () => {
-      stream?.getTracks().forEach(track => track.stop())
+      stream?.getTracks().forEach(track => { track.stop() })
     }
   }, [ref, constraints, setStream])
 

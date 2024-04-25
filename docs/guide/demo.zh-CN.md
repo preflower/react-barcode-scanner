@@ -7,11 +7,12 @@ toc: menu
 ## Demo
 
 ```tsx
-import React, { useState } from "react";
-import { BarcodeScanner, useTorch } from "react-barcode-scanner";
+import React, { useState } from "react"
+import { BarcodeScanner, useTorch } from "react-barcode-scanner"
+import "react-barcode-scanner/polyfill"
 
 export default () => {
-  const [isSupportTorch, , onTorchSwitch] = useTorch();
+  const [isSupportTorch, , onTorchSwitch] = useTorch()
 
   const onCapture = (detected) => {
     if (detected) {
@@ -26,6 +27,6 @@ export default () => {
         <button onClick={onTorchSwitch}>Swtich Torch</button>
       ) : null}
     </div>
-  );
-};
+  )
+}
 ```
