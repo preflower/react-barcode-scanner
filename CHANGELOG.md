@@ -1,5 +1,11 @@
 # react-barcode-scanner
 
+## 3.0.0
+
+### Major Changes
+
+- 811a446: Breaking change: polyfill will not auto import anymore to support SSR, user need import it manually
+
 ## 1.0.4
 
 ### Patch Changes
