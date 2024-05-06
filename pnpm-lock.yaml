@@ -35,10 +35,10 @@ importers:
         version: 18.2.25
       dumi:
         specifier: ^2.2.17
-        version: 2.2.17(@babel/core@7.23.6)(@types/node@17.0.45)(@types/react@18.2.79)(eslint@8.57.0)(lightningcss@1.22.1)(prettier@2.8.8)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(rollup@3.29.4)(stylelint@16.4.0(typescript@5.4.5))(terser@5.30.4)(type-fest@0.20.2)(typescript@5.4.5)(webpack@5.91.0)
+        version: 2.2.17(@babel/core@7.23.6)(@types/node@17.0.45)(@types/react@18.2.79)(eslint@8.57.0)(lightningcss@1.22.1)(prettier@2.8.8)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(rollup@3.29.4)(stylelint@16.5.0(typescript@5.4.5))(terser@5.30.4)(type-fest@0.20.2)(typescript@5.4.5)(webpack@5.91.0)
       dumi-theme-chakra:
         specifier: ^0.0.22
-        version: 0.0.22(@algolia/client-search@4.23.3)(@chakra-ui/styled-system@2.9.2)(@chakra-ui/system@2.6.2(@emotion/react@11.11.4(@types/react@18.2.79)(react@18.2.0))(@emotion/styled@11.11.5(@emotion/react@11.11.4(@types/react@18.2.79)(react@18.2.0))(@types/react@18.2.79)(react@18.2.0))(react@18.2.0))(@types/react@18.2.79)(dumi@2.2.17(@babel/core@7.23.6)(@types/node@17.0.45)(@types/react@18.2.79)(eslint@8.57.0)(lightningcss@1.22.1)(prettier@2.8.8)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(rollup@3.29.4)(stylelint@16.4.0(typescript@5.4.5))(terser@5.30.4)(type-fest@0.20.2)(typescript@5.4.5)(webpack@5.91.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(search-insights@2.13.0)
+        version: 0.0.22(@algolia/client-search@4.23.3)(@chakra-ui/styled-system@2.9.2)(@chakra-ui/system@2.6.2(@emotion/react@11.11.4(@types/react@18.2.79)(react@18.2.0))(@emotion/styled@11.11.5(@emotion/react@11.11.4(@types/react@18.2.79)(react@18.2.0))(@types/react@18.2.79)(react@18.2.0))(react@18.2.0))(@types/react@18.2.79)(dumi@2.2.17(@babel/core@7.23.6)(@types/node@17.0.45)(@types/react@18.2.79)(eslint@8.57.0)(lightningcss@1.22.1)(prettier@2.8.8)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(rollup@3.29.4)(stylelint@16.5.0(typescript@5.4.5))(terser@5.30.4)(type-fest@0.20.2)(typescript@5.4.5)(webpack@5.91.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(search-insights@2.13.0)
       eslint:
         specifier: ^8.57.0
         version: 8.57.0
@@ -58,11 +58,11 @@ importers:
         specifier: ^18.2.0
         version: 18.2.0(react@18.2.0)
       stylelint:
-        specifier: ^16.4.0
-        version: 16.4.0(typescript@5.4.5)
+        specifier: ^16.5.0
+        version: 16.5.0(typescript@5.4.5)
       stylelint-config-sass-guidelines:
         specifier: ^11.1.0
-        version: 11.1.0(postcss@8.4.38)(stylelint@16.4.0(typescript@5.4.5))
+        version: 11.1.0(postcss@8.4.38)(stylelint@16.5.0(typescript@5.4.5))
       typescript:
         specifier: ^5.4.5
         version: 5.4.5
@@ -6944,8 +6944,8 @@ packages:
     peerDependencies:
       stylelint: ^16.0.2
 
-  stylelint@16.4.0:
-    resolution: {integrity: sha512-uSx7VMuXwLuYcNSIg+0/fFNv0WinsfLAqsVVy7h7p80clKOHiGE8pfY6UjqwylTHiJrRIahTl6a8FPxGezhWoA==}
+  stylelint@16.5.0:
+    resolution: {integrity: sha512-IlCBtVrG+qTy3v+tZTk50W8BIomjY/RUuzdrDqdnlCYwVuzXtPbiGfxYqtyYAyOMcb+195zRsuHn6tgfPmFfbw==}
     engines: {node: '>=18.12.0'}
     hasBin: true
 
@@ -10282,7 +10282,7 @@ snapshots:
       '@babel/runtime': 7.24.4
       query-string: 6.14.1
 
-  '@umijs/lint@4.1.10(eslint@8.57.0)(stylelint@16.4.0(typescript@5.4.5))(typescript@5.4.5)':
+  '@umijs/lint@4.1.10(eslint@8.57.0)(stylelint@16.5.0(typescript@5.4.5))(typescript@5.4.5)':
     dependencies:
       '@babel/core': 7.23.6
       '@babel/eslint-parser': 7.23.3(@babel/core@7.23.6)(eslint@8.57.0)
@@ -10295,7 +10295,7 @@ snapshots:
       eslint-plugin-react-hooks: 4.6.0(eslint@8.57.0)
       postcss: 8.4.38
       postcss-syntax: 0.36.2(postcss@8.4.38)
-      stylelint-config-standard: 25.0.0(stylelint@16.4.0(typescript@5.4.5))
+      stylelint-config-standard: 25.0.0(stylelint@16.5.0(typescript@5.4.5))
     transitivePeerDependencies:
       - eslint
       - jest
@@ -11731,7 +11731,7 @@ snapshots:
 
   dumi-assets-types@2.0.0-alpha.0: {}
 
-  dumi-theme-chakra@0.0.22(@algolia/client-search@4.23.3)(@chakra-ui/styled-system@2.9.2)(@chakra-ui/system@2.6.2(@emotion/react@11.11.4(@types/react@18.2.79)(react@18.2.0))(@emotion/styled@11.11.5(@emotion/react@11.11.4(@types/react@18.2.79)(react@18.2.0))(@types/react@18.2.79)(react@18.2.0))(react@18.2.0))(@types/react@18.2.79)(dumi@2.2.17(@babel/core@7.23.6)(@types/node@17.0.45)(@types/react@18.2.79)(eslint@8.57.0)(lightningcss@1.22.1)(prettier@2.8.8)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(rollup@3.29.4)(stylelint@16.4.0(typescript@5.4.5))(terser@5.30.4)(type-fest@0.20.2)(typescript@5.4.5)(webpack@5.91.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(search-insights@2.13.0):
+  dumi-theme-chakra@0.0.22(@algolia/client-search@4.23.3)(@chakra-ui/styled-system@2.9.2)(@chakra-ui/system@2.6.2(@emotion/react@11.11.4(@types/react@18.2.79)(react@18.2.0))(@emotion/styled@11.11.5(@emotion/react@11.11.4(@types/react@18.2.79)(react@18.2.0))(@types/react@18.2.79)(react@18.2.0))(react@18.2.0))(@types/react@18.2.79)(dumi@2.2.17(@babel/core@7.23.6)(@types/node@17.0.45)(@types/react@18.2.79)(eslint@8.57.0)(lightningcss@1.22.1)(prettier@2.8.8)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(rollup@3.29.4)(stylelint@16.5.0(typescript@5.4.5))(terser@5.30.4)(type-fest@0.20.2)(typescript@5.4.5)(webpack@5.91.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(search-insights@2.13.0):
     dependencies:
       '@babel/runtime': 7.24.4
       '@chakra-ui/icons': 2.1.1(@chakra-ui/system@2.6.2(@emotion/react@11.11.4(@types/react@18.2.79)(react@18.2.0))(@emotion/styled@11.11.5(@emotion/react@11.11.4(@types/react@18.2.79)(react@18.2.0))(@types/react@18.2.79)(react@18.2.0))(react@18.2.0))(react@18.2.0)
@@ -11746,7 +11746,7 @@ snapshots:
       animated-scroll-to: 2.3.0
       clsx: 1.2.1
       cmdk: 0.1.22(@types/react@18.2.79)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
-      dumi: 2.2.17(@babel/core@7.23.6)(@types/node@17.0.45)(@types/react@18.2.79)(eslint@8.57.0)(lightningcss@1.22.1)(prettier@2.8.8)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(rollup@3.29.4)(stylelint@16.4.0(typescript@5.4.5))(terser@5.30.4)(type-fest@0.20.2)(typescript@5.4.5)(webpack@5.91.0)
+      dumi: 2.2.17(@babel/core@7.23.6)(@types/node@17.0.45)(@types/react@18.2.79)(eslint@8.57.0)(lightningcss@1.22.1)(prettier@2.8.8)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(rollup@3.29.4)(stylelint@16.5.0(typescript@5.4.5))(terser@5.30.4)(type-fest@0.20.2)(typescript@5.4.5)(webpack@5.91.0)
       framer-motion: 7.10.3(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       heti: 0.9.4
       prism-react-renderer: 1.3.5(react@18.2.0)
@@ -11761,7 +11761,7 @@ snapshots:
       - '@types/react'
       - search-insights
 
-  dumi@2.2.17(@babel/core@7.23.6)(@types/node@17.0.45)(@types/react@18.2.79)(eslint@8.57.0)(lightningcss@1.22.1)(prettier@2.8.8)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(rollup@3.29.4)(stylelint@16.4.0(typescript@5.4.5))(terser@5.30.4)(type-fest@0.20.2)(typescript@5.4.5)(webpack@5.91.0):
+  dumi@2.2.17(@babel/core@7.23.6)(@types/node@17.0.45)(@types/react@18.2.79)(eslint@8.57.0)(lightningcss@1.22.1)(prettier@2.8.8)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(rollup@3.29.4)(stylelint@16.5.0(typescript@5.4.5))(terser@5.30.4)(type-fest@0.20.2)(typescript@5.4.5)(webpack@5.91.0):
     dependencies:
       '@ant-design/icons-svg': 4.4.2
       '@makotot/ghostui': 2.0.0(react@18.2.0)
@@ -11820,7 +11820,7 @@ snapshots:
       remark-rehype: 10.1.0
       sass: 1.75.0
       sitemap: 7.1.1
-      umi: 4.1.10(@babel/core@7.23.6)(@types/node@17.0.45)(@types/react@18.2.79)(eslint@8.57.0)(lightningcss@1.22.1)(prettier@2.8.8)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(rollup@3.29.4)(sass@1.75.0)(stylelint@16.4.0(typescript@5.4.5))(terser@5.30.4)(type-fest@0.20.2)(typescript@5.4.5)(webpack@5.91.0)
+      umi: 4.1.10(@babel/core@7.23.6)(@types/node@17.0.45)(@types/react@18.2.79)(eslint@8.57.0)(lightningcss@1.22.1)(prettier@2.8.8)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(rollup@3.29.4)(sass@1.75.0)(stylelint@16.5.0(typescript@5.4.5))(terser@5.30.4)(type-fest@0.20.2)(typescript@5.4.5)(webpack@5.91.0)
       unified: 10.1.2
       unist-util-visit: 4.1.2
       unist-util-visit-parents: 5.1.3
@@ -16220,32 +16220,32 @@ snapshots:
     dependencies:
       inline-style-parser: 0.1.1
 
-  stylelint-config-recommended@7.0.0(stylelint@16.4.0(typescript@5.4.5)):
+  stylelint-config-recommended@7.0.0(stylelint@16.5.0(typescript@5.4.5)):
     dependencies:
-      stylelint: 16.4.0(typescript@5.4.5)
+      stylelint: 16.5.0(typescript@5.4.5)
 
-  stylelint-config-sass-guidelines@11.1.0(postcss@8.4.38)(stylelint@16.4.0(typescript@5.4.5)):
+  stylelint-config-sass-guidelines@11.1.0(postcss@8.4.38)(stylelint@16.5.0(typescript@5.4.5)):
     dependencies:
       postcss: 8.4.38
       postcss-scss: 4.0.9(postcss@8.4.38)
-      stylelint: 16.4.0(typescript@5.4.5)
-      stylelint-scss: 6.2.1(stylelint@16.4.0(typescript@5.4.5))
+      stylelint: 16.5.0(typescript@5.4.5)
+      stylelint-scss: 6.2.1(stylelint@16.5.0(typescript@5.4.5))
 
-  stylelint-config-standard@25.0.0(stylelint@16.4.0(typescript@5.4.5)):
+  stylelint-config-standard@25.0.0(stylelint@16.5.0(typescript@5.4.5)):
     dependencies:
-      stylelint: 16.4.0(typescript@5.4.5)
-      stylelint-config-recommended: 7.0.0(stylelint@16.4.0(typescript@5.4.5))
+      stylelint: 16.5.0(typescript@5.4.5)
+      stylelint-config-recommended: 7.0.0(stylelint@16.5.0(typescript@5.4.5))
 
-  stylelint-scss@6.2.1(stylelint@16.4.0(typescript@5.4.5)):
+  stylelint-scss@6.2.1(stylelint@16.5.0(typescript@5.4.5)):
     dependencies:
       known-css-properties: 0.29.0
       postcss-media-query-parser: 0.2.3
       postcss-resolve-nested-selector: 0.1.1
       postcss-selector-parser: 6.0.16
       postcss-value-parser: 4.2.0
-      stylelint: 16.4.0(typescript@5.4.5)
+      stylelint: 16.5.0(typescript@5.4.5)
 
-  stylelint@16.4.0(typescript@5.4.5):
+  stylelint@16.5.0(typescript@5.4.5):
     dependencies:
       '@csstools/css-parser-algorithms': 2.6.1(@csstools/css-tokenizer@2.2.4)
       '@csstools/css-tokenizer': 2.2.4
@@ -16570,13 +16570,13 @@ snapshots:
 
   typescript@5.4.5: {}
 
-  umi@4.1.10(@babel/core@7.23.6)(@types/node@17.0.45)(@types/react@18.2.79)(eslint@8.57.0)(lightningcss@1.22.1)(prettier@2.8.8)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(rollup@3.29.4)(sass@1.75.0)(stylelint@16.4.0(typescript@5.4.5))(terser@5.30.4)(type-fest@0.20.2)(typescript@5.4.5)(webpack@5.91.0):
+  umi@4.1.10(@babel/core@7.23.6)(@types/node@17.0.45)(@types/react@18.2.79)(eslint@8.57.0)(lightningcss@1.22.1)(prettier@2.8.8)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(rollup@3.29.4)(sass@1.75.0)(stylelint@16.5.0(typescript@5.4.5))(terser@5.30.4)(type-fest@0.20.2)(typescript@5.4.5)(webpack@5.91.0):
     dependencies:
       '@babel/runtime': 7.23.6
       '@umijs/bundler-utils': 4.1.10
       '@umijs/bundler-webpack': 4.1.10(type-fest@0.20.2)(typescript@5.4.5)(webpack@5.91.0)
       '@umijs/core': 4.1.10
-      '@umijs/lint': 4.1.10(eslint@8.57.0)(stylelint@16.4.0(typescript@5.4.5))(typescript@5.4.5)
+      '@umijs/lint': 4.1.10(eslint@8.57.0)(stylelint@16.5.0(typescript@5.4.5))(typescript@5.4.5)
       '@umijs/preset-umi': 4.1.10(@types/node@17.0.45)(@types/react@18.2.79)(lightningcss@1.22.1)(rollup@3.29.4)(sass@1.75.0)(terser@5.30.4)(type-fest@0.20.2)(typescript@5.4.5)(webpack@5.91.0)
       '@umijs/renderer-react': 4.1.10(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       '@umijs/server': 4.1.10
