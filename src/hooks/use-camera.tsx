@@ -35,6 +35,7 @@ export function useCamera (ref: RefObject<HTMLVideoElement>, trackConstraints?: 
   }, [trackConstraints])
 
   useEffect(() => {
+    let cancelled = false
     let stream: MediaStream
     const _ = async (): Promise<void> => {
       const target = ref.current
@@ -60,9 +61,20 @@ export function useCamera (ref: RefObject<HTMLVideoElement>, trackConstraints?: 
 
       setStream(stream)
     }
-    void _()
-    return () => {
+
+    const close = () => {
       stream?.getTracks().forEach(track => { track.stop() })
+    }
+
+    void _().then(() => {
+      if (cancelled) {
+        close()
+      }
+    })
+
+    return () => {
+      cancelled = true
+      close()
     }
   }, [ref, constraints, setStream])
 
