@@ -1,5 +1,11 @@
 # react-barcode-scanner
 
+## 2.0.1
+
+### Patch Changes
+
+- a5fbfe8: Fix camera not be correct stopped error
+
 ## 2.0.0
 
 ### Major Changes
