@@ -49,7 +49,7 @@
   "author": "Ted Lin <preflower.lin@gmail.com> (https://github.com/preflower)",
   "license": "MIT",
   "devDependencies": {
-    "@changesets/cli": "^2.27.1",
+    "@changesets/cli": "^2.27.2",
     "@commitlint/cli": "^19.3.0",
     "@commitlint/config-conventional": "^19.2.2",
     "@types/react": "^18.3.2",
