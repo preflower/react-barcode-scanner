@@ -1,0 +1,74 @@
+{
+  "name": "react-barcode-scanner",
+  "version": "2.0.1",
+  "description": "A barcode scanner base on Barcode Detector",
+  "main": "lib/index.js",
+  "module": "esm/index.js",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./esm/index.d.ts",
+        "default": "./esm/index.js"
+      },
+      "require": {
+        "types": "./lib/index.d.ts",
+        "default": "./lib/index.js"
+      }
+    },
+    "./polyfill": {
+      "import": {
+        "types": "./esm/polyfill.d.ts",
+        "default": "./esm/polyfill.js"
+      },
+      "require": {
+        "types": "./lib/polyfill.d.ts",
+        "default": "./lib/polyfill.js"
+      }
+    }
+  },
+  "types": "lib/index.d.ts",
+  "typings": "lib/index.d.ts",
+  "scripts": {
+    "build:cjs": "tsc",
+    "build:es": "tsc -m esNext --outDir esm",
+    "build": "pnpm build:cjs && pnpm build:es"
+  },
+  "keywords": [
+    "react",
+    "barcode detector",
+    "barcode-detector",
+    "barcode scanner",
+    "barcode-scanner",
+    "qrcode"
+  ],
+  "author": "Ted Lin <preflower.lin@gmail.com> (https://github.com/preflower)",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/react": "^18.2.79",
+    "@types/react-dom": "^18.3.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "typescript": "^5.4.5"
+  },
+  "peerDependencies": {
+    "react": "*",
+    "react-dom": "*"
+  },
+  "repository": "https://github.com/preflower/react-barcode-scanner",
+  "bugs": {
+    "url": "https://github.com/preflower/react-barcode-scanner/issues"
+  },
+  "homepage": "https://preflower.github.io/react-barcode-scanner",
+  "dependencies": {
+    "@preflower/barcode-detector-polyfill": "^0.9.20",
+    "tslib": "^2.6.2",
+    "webrtc-adapter": "^9.0.1"
+  },
+  "files": [
+    "lib/",
+    "esm/"
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
+}

@@ -24,10 +24,6 @@
     "jsx": "react-jsx"
   },
   "include": [
-    "packages"
-  ],
-  "exclude": [
-    "**/lib",
-    "**/esm"
+    "src"
   ]
 }

@@ -7,13 +7,13 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+# node
 node_modules
+
+# prod packages
 lib
 esm
-dist-docs
-.dumi/tmp
-.dumi/tmp-test
-.dumi/tmp-production
+
 *.local
 
 # Editor directories and files
@@ -31,5 +31,5 @@ dist-docs
 .pnpm-store
 .npmrc
 
-# umi
-.umi
+# next
+.next

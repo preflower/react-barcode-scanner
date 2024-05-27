@@ -1,0 +1,35 @@
+---
+title: Install
+---
+
+## Install
+
+### pnpm
+```shell
+pnpm install react-barcode-scanner
+```
+
+### yarn
+```shell
+yarn install react-barcode-scanner
+```
+
+### npm
+```shell
+npm install react-barcode-scanner
+```
+
+## Scaffold
+
+### Vite
+Currently, vite have some [problem](https://github.com/vitejs/vite/issues/13530) in `wasm` support; Requires follow configuration to use
+
+```js
+export default defineConfig({
+  optimizeDeps: {
+    exclude: ['@preflower/barcode-detector-polyfill']
+  }
+})
+```
+
+> 🙏 Thank [@louispotok](https://github.com/preflower/react-barcode-scanner/issues/231) for help to this chapter

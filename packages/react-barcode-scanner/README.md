@@ -27,7 +27,7 @@ export default () => {
 ```
 
 ## Detail
-[Documentation](https://react-barcode-scanner.vercel.app/)
+[Documentation](https://react-barcode-scanner.vercel.app)
 
 ## License
 MIT
