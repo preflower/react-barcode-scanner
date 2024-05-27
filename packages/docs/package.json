@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "next",
-    "build": "next build",
+    "dev": "pnpm --filter react-barcode-scanner run build && next",
+    "build": "pnpm --filter react-barcode-scanner run build && next build",
     "start": "next start"
   },
   "keywords": [],
