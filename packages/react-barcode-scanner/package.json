@@ -58,7 +58,7 @@
   "bugs": {
     "url": "https://github.com/preflower/react-barcode-scanner/issues"
   },
-  "homepage": "https://preflower.github.io/react-barcode-scanner",
+  "homepage": "https://reactbarcodescanner.vercel.app/",
   "dependencies": {
     "@preflower/barcode-detector-polyfill": "^0.9.20",
     "tslib": "^2.6.2",
