@@ -52,7 +52,7 @@
     "@changesets/cli": "^2.27.3",
     "@commitlint/cli": "^19.3.0",
     "@commitlint/config-conventional": "^19.2.2",
-    "@types/react": "^18.3.2",
+    "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "dumi": "^2.3.4",
     "dumi-theme-chakra": "^0.0.22",
