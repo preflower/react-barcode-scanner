@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "pnpm --filter react-barcode-scanner run build && next",
+    "dev": "pnpm --filter react-barcode-scanner run build && next --experimental-https",
     "build": "pnpm --filter react-barcode-scanner run build && next build",
     "start": "next start"
   },

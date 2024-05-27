@@ -13,9 +13,11 @@ import "react-barcode-scanner/polyfill"
 export default () => {
   const [isSupportTorch, , onTorchSwitch] = useTorch()
 
+  const [text, setText] = useState()
+
   const onCapture = (detected) => {
     if (detected) {
-      window.alert(detected.rawValue)
+      setText(detected.rawValue)
     }
   }
 
@@ -25,6 +27,8 @@ export default () => {
       {isSupportTorch ? (
         <button onClick={onTorchSwitch}>Swtich Torch</button>
       ) : null}
+
+      Detected Text: {text}
     </div>
   )
 }
