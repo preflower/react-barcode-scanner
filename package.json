@@ -6,9 +6,8 @@
   "main": "index.js",
   "scripts": {
     "prepare": "husky install",
-    "docs:start": "pnpm build && pnpm --filter docs start",
     "docs:build": "pnpm build && pnpm --filter docs build",
-    "docs:dev": "pnpm --filter docs dev",
+    "docs:dev": "pnpm build && pnpm --filter docs dev",
     "build": "pnpm --filter react-barcode-scanner run build",
     "ci:version": "pnpm changeset version && pnpm install --lockfile-only",
     "ci:publish": "pnpm build && pnpm changeset publish"
