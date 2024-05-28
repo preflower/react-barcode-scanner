@@ -1,5 +1,11 @@
 # react-barcode-scanner
 
+## 2.0.2
+
+### Patch Changes
+
+- 318a31f: Export type and fix warning error in Next.js
+
 ## 2.0.1
 
 ### Patch Changes
