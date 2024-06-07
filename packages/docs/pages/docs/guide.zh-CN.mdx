@@ -1,6 +1,7 @@
 ---
 title: 快速入门
 ---
+import { Callout } from 'nextra/components'
 
 ## 快速开始
 
@@ -23,7 +24,9 @@ export default () => {
 <BarcodeScanner options={{ formats: ['code_128'] }} /> 
 ```
 
-> 支持的所有格式参考: [Barcode formats](https://developer.mozilla.org/en-US/docs/Web/API/Barcode_Detection_API#supported_barcode_formats)
+<Callout type="warning" emoji="⚠️">
+  项目基于`Barcode Detection API`, 支持除`aztec`, `data_matrix`和`pdf417`(zbar polyfill目前未支持)外的[Barcode Formats](https://developer.mozilla.org/en-US/docs/Web/API/Barcode_Detection_API#supported_barcode_formats)
+</Callout>
 
 ### 扫码感应延迟
 `BarcodeScanner`为了性能考虑, 默认设置成了`1000ms`识别一次, 若需要更灵敏的扫码感应, 需要配置`delay`字段:
