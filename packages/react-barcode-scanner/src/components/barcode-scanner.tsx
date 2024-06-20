@@ -5,15 +5,17 @@ import { type DetectedBarcode } from '../types'
 interface ScannerProps extends React.DetailedHTMLProps<React.VideoHTMLAttributes<HTMLVideoElement>, HTMLVideoElement> {
   options?: ScanOptions
   onCapture?: (barcode: DetectedBarcode) => any
+  trackConstraints: any
 }
 
 const BarcodeScanner: FunctionComponent<ScannerProps> = ({
   options,
   onCapture,
+  trackConstraints,
   ...props
 }) => {
   const instance = useRef<HTMLVideoElement>(null)
-  const [isCameraSupport] = useCamera(instance)
+  const [isCameraSupport] = useCamera(instance, trackConstraints)
   const [detected, open, close] = useScanning(instance, options)
 
   useEffect(() => {
