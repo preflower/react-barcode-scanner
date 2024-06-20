@@ -35,8 +35,5 @@
     "husky": "^9.0.11",
     "lint-staged": "^15.2.7",
     "typescript": "^5.4.5"
-  },
-  "dependencies": {
-    "react-barcode-scanner": "^2.0.2"
   }
 }
