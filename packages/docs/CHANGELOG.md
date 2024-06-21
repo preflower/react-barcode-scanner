@@ -1,5 +1,12 @@
 # docs
 
+## 1.0.2
+
+### Patch Changes
+
+- Updated dependencies [fc69f41]
+  - react-barcode-scanner@2.1.0
+
 ## 1.0.1
 
 ### Patch Changes
