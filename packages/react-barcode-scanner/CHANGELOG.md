@@ -1,5 +1,11 @@
 # react-barcode-scanner
 
+## 2.1.0
+
+### Minor Changes
+
+- fc69f41: BarcodeScanner support trackConstraints props
+
 ## 2.0.2
 
 ### Patch Changes
