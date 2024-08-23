@@ -1,27 +1,27 @@
 {
   "compilerOptions": {
     "target": "ES5",
-    "module": "CommonJS",
-    "outDir": "lib",
+    "jsx": "react-jsx",
     "lib": [
       "DOM",
       "DOM.Iterable",
       "ESNext"
     ],
     "useDefineForClassFields": true,
-    "declaration": true,
-    "removeComments": true,
-    "allowJs": false,
-    "skipLibCheck": true,
-    "esModuleInterop": false,
-    "allowSyntheticDefaultImports": true,
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
+    "module": "CommonJS",
     "moduleResolution": "Node",
     "resolveJsonModule": true,
-    "isolatedModules": true,
+    "allowJs": false,
+    "strict": true,
+    "declaration": true,
     "importHelpers": true,
-    "jsx": "react-jsx"
+    "outDir": "lib",
+    "removeComments": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": false,
+    "forceConsistentCasingInFileNames": true,
+    "isolatedModules": true,
+    "skipLibCheck": true
   },
   "include": [
     "src"

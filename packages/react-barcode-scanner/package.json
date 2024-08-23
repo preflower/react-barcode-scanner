@@ -2,37 +2,6 @@
   "name": "react-barcode-scanner",
   "version": "2.1.0",
   "description": "A barcode scanner base on Barcode Detector",
-  "main": "lib/index.js",
-  "module": "esm/index.js",
-  "exports": {
-    ".": {
-      "import": {
-        "types": "./esm/index.d.ts",
-        "default": "./esm/index.js"
-      },
-      "require": {
-        "types": "./lib/index.d.ts",
-        "default": "./lib/index.js"
-      }
-    },
-    "./polyfill": {
-      "import": {
-        "types": "./esm/polyfill.d.ts",
-        "default": "./esm/polyfill.js"
-      },
-      "require": {
-        "types": "./lib/polyfill.d.ts",
-        "default": "./lib/polyfill.js"
-      }
-    }
-  },
-  "types": "lib/index.d.ts",
-  "typings": "lib/index.d.ts",
-  "scripts": {
-    "build:cjs": "tsc",
-    "build:es": "tsc -m esNext --outDir esm",
-    "build": "pnpm build:cjs && pnpm build:es"
-  },
   "keywords": [
     "react",
     "barcode detector",
@@ -41,34 +10,65 @@
     "barcode-scanner",
     "qrcode"
   ],
-  "author": "Ted Lin <preflower.lin@gmail.com> (https://github.com/preflower)",
   "license": "MIT",
-  "devDependencies": {
-    "@types/react": "^18.3.3",
-    "@types/react-dom": "^18.3.0",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "typescript": "^5.5.4"
+  "homepage": "https://reactbarcodescanner.vercel.app/",
+  "bugs": {
+    "url": "https://github.com/preflower/react-barcode-scanner/issues"
+  },
+  "repository": "https://github.com/preflower/react-barcode-scanner",
+  "author": "Ted Lin <preflower.lin@gmail.com> (https://github.com/preflower)",
+  "files": [
+    "esm/",
+    "lib/"
+  ],
+  "main": "lib/index.js",
+  "module": "esm/index.js",
+  "types": "lib/index.d.ts",
+  "exports": {
+    ".": {
+      "require": {
+        "types": "./lib/index.d.ts",
+        "default": "./lib/index.js"
+      },
+      "import": {
+        "types": "./esm/index.d.ts",
+        "default": "./esm/index.js"
+      }
+    },
+    "./polyfill": {
+      "require": {
+        "types": "./lib/polyfill.d.ts",
+        "default": "./lib/polyfill.js"
+      },
+      "import": {
+        "types": "./esm/polyfill.d.ts",
+        "default": "./esm/polyfill.js"
+      }
+    }
+  },
+  "typings": "lib/index.d.ts",
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build:cjs": "tsc",
+    "build:es": "tsc -m esNext --outDir esm",
+    "build": "pnpm build:cjs && pnpm build:es"
   },
   "peerDependencies": {
     "react": "*",
     "react-dom": "*"
   },
-  "repository": "https://github.com/preflower/react-barcode-scanner",
-  "bugs": {
-    "url": "https://github.com/preflower/react-barcode-scanner/issues"
-  },
-  "homepage": "https://reactbarcodescanner.vercel.app/",
   "dependencies": {
     "@preflower/barcode-detector-polyfill": "^0.9.20",
     "tslib": "^2.6.3",
     "webrtc-adapter": "^9.0.1"
   },
-  "files": [
-    "lib/",
-    "esm/"
-  ],
-  "publishConfig": {
-    "access": "public"
+  "devDependencies": {
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "typescript": "^5.4.5"
   }
 }

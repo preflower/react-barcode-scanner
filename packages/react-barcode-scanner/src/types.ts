@@ -16,6 +16,7 @@ declare global {
     constructor (options?: {
       formats: string[]
     })
+
     static getSupportedFormats (): Promise<string[]>
     detect (target: ImageBitmapSource): Promise<DetectedBarcode[]>
   }

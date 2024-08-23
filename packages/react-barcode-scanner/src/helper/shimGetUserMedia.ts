@@ -4,9 +4,9 @@ import { shimGetUserMedia as firefoxShim } from 'webrtc-adapter/src/js/firefox/g
 import { shimGetUserMedia as safariShim } from 'webrtc-adapter/src/js/safari/safari_shim'
 import { detectBrowser } from 'webrtc-adapter/src/js/utils'
 
-import { indempotent } from './utils'
+import { idempotent } from '@preflower/utils'
 
-export default indempotent(() => {
+export default idempotent(() => {
   const { browser } = detectBrowser(window)
 
   switch (browser) {
