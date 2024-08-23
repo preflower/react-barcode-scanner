@@ -10,7 +10,7 @@
   "author": "Ted Lin <preflower.lin@gmail.com> (https://github.com/preflower)",
   "main": "index.js",
   "scripts": {
-    "prepare": "husky install",
+    "prepare": "husky",
     "docs:build": "pnpm --filter docs build",
     "docs:dev": "pnpm --filter docs dev",
     "build": "pnpm --filter react-barcode-scanner run build",
