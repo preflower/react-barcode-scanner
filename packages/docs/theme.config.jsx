@@ -33,15 +33,7 @@ export default {
       />
     </>
   ),
-  readMore: 'Read More →',
-  postFooter: null,
   darkMode: false,
-  navs: [
-    {
-      url: 'https://github.com/preflower/react-barcode-scanner',
-      name: 'React Barcode Scanner'
-    }
-  ],
   i18n: [
     { locale: 'en-US', text: 'English' },
     { locale: 'zh-CN', text: '简体中文' }

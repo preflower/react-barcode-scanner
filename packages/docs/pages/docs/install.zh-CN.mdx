@@ -22,7 +22,7 @@ npm install react-barcode-scanner
 ## 脚手架
 
 ### Vite
-目前 Vite 脚手架对于`WASM`的支持存在一定问题, 需要遵循以下配置才能正常使用
+我们建议使用最新的Vite版本; 如果开发人员使用低于5以下的Vite版本, 请遵循以下配置
 
 ```js
 export default defineConfig({
@@ -31,5 +31,7 @@ export default defineConfig({
   }
 })
 ```
+
+- [相关issue](https://github.com/vitejs/vite/issues/13530)
 
 > 🙏 感谢 [@louispotok](https://github.com/preflower/react-barcode-scanner/issues/231) 对本章节的帮助
