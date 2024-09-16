@@ -23,7 +23,7 @@
     ]
   },
   "dependencies": {
-    "@preflower/utils": "^1.1.0"
+    "@preflower/utils": "^1.1.1"
   },
   "devDependencies": {
     "@changesets/cli": "^2.27.8",
