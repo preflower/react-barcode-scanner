@@ -13,9 +13,9 @@ import "react-barcode-scanner/polyfill"
 export default () => {
   const [isSupportTorch, , onTorchSwitch] = useTorch()
 
-  const onCapture = (detected) => {
-    if (detected) {
-      window.alert(detected.rawValue)
+  const onCapture = (barcodes) => {
+    if (barcodes) {
+      window.alert(barcodes.map(barcode => barcode.rawValue).join('\n'))
     }
   }
 

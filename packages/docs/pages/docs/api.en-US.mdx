@@ -6,7 +6,7 @@ title: API
 | Name      	| Type                              	| Default Value                         	| Description                                               	|
 |-----------	|-----------------------------------	|---------------------------------------	|-----------------------------------------------------------	|
 | options   	| [ScanOptions](#scanoptions)         | [DEFAULT_OPTIONS](#default_options) 	  | / 	                                                        |
-| onCapture 	| (barcode: DetectedBarcode) => any 	| /                                     	| Triggered when the specified QR code is scanned           	|
+| onCapture 	| (barcodes: DetectedBarcode[]) => any 	| /                                     	| Triggered when the specified QR code is scanned           	|
 | trackConstraints   	| MediaTrackConstraints       	| [DEFAULT_CONSTRAINTS](#default_constraints) 	| Based on the [MediaTrackConstraints](https://developer.mozilla.org/en-US/docs/Web/API/MediaTrackConstraints) standard 	|
 
 ## useCamera
@@ -52,7 +52,7 @@ title: API
 | open 	| Boolean 	| false         	| Enabled by default 	|
 
 ## useStreamState
-manage `stream` obtained from `useCamera`
+Manage `stream` obtained from `useCamera`
 
 ```ts
 function useStreamState (): [MediaStream | undefined, (newState: MediaStream) => void]

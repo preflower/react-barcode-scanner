@@ -11,8 +11,8 @@ const DEFAULT_OPTIONS = {
   formats: ['qr_code']
 }
 
-export function useScanning (ref: RefObject<HTMLVideoElement>, provideOptions?: ScanOptions): [DetectedBarcode | undefined, () => void, () => void] {
-  const [detectedBarcode, setDetectBarcode] = useState<DetectedBarcode>()
+export function useScanning (ref: RefObject<HTMLVideoElement>, provideOptions?: ScanOptions): [DetectedBarcode[] | undefined, () => void, () => void] {
+  const [detectedBarcodes, setDetectBarcodes] = useState<DetectedBarcode[]>()
   const [start, setStart] = useState(false)
   const options = useMemo(() => {
     return Object.assign({}, DEFAULT_OPTIONS, provideOptions)
@@ -23,9 +23,9 @@ export function useScanning (ref: RefObject<HTMLVideoElement>, provideOptions?: 
     const detector = new BarcodeDetector({
       formats: options.formats
     })
-    const [detected] = await detector.detect(target!)
-    if (detected !== undefined) {
-      setDetectBarcode(detected)
+    const detected = await detector.detect(target!)
+    if (detected !== undefined && detected.length > 0) {
+      setDetectBarcodes(detected)
     }
   }, [ref, options.formats])
 
@@ -60,5 +60,5 @@ export function useScanning (ref: RefObject<HTMLVideoElement>, provideOptions?: 
     setStart(false)
   }, [])
 
-  return [detectedBarcode, open, close]
+  return [detectedBarcodes, open, close]
 }
