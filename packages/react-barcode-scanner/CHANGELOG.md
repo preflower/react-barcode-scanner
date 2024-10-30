@@ -1,5 +1,11 @@
 # react-barcode-scanner
 
+## 3.0.0
+
+### Major Changes
+
+- 10b4a95: Update onCapture function api to support detect multiple barcodes
+
 ## 2.1.0
 
 ### Minor Changes
