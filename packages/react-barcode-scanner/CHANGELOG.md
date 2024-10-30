@@ -1,5 +1,11 @@
 # react-barcode-scanner
 
+## 3.0.1
+
+### Patch Changes
+
+- f8ce96e: fix: version number be occupied error
+
 ## 3.0.0
 
 ### Major Changes
