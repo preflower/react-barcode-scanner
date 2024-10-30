@@ -1,6 +1,7 @@
 {
   "name": "docs",
   "version": "1.0.4",
+  "private": true,
   "description": "",
   "keywords": [],
   "license": "ISC",
