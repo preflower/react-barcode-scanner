@@ -68,8 +68,8 @@ importers:
   packages/react-barcode-scanner:
     dependencies:
       '@preflower/barcode-detector-polyfill':
-        specifier: ^0.9.20
-        version: 0.9.20
+        specifier: ^0.9.21
+        version: 0.9.21
       tslib:
         specifier: ^2.6.3
         version: 2.6.3
@@ -455,8 +455,8 @@ packages:
   '@popperjs/core@2.11.8':
     resolution: {integrity: sha512-P1st0aksCrn9sGZhp8GMYwBnQsbvAWsZAX44oXNNvLHGqAOcoVxmjZiohstwQ7SqKnbR47akdNi+uleWD8+g6A==}
 
-  '@preflower/barcode-detector-polyfill@0.9.20':
-    resolution: {integrity: sha512-05jorEJ/ld8bABmrPlw4O9awIRtjElR6nuIOg3pT0VD8WzlzlPyQeke0fh6LxAg1YFt2Luivb2wLDXKmrJLfNA==}
+  '@preflower/barcode-detector-polyfill@0.9.21':
+    resolution: {integrity: sha512-vjYTyQLGohm9McxWMLbRSb53LXs6IzcBh+ag5BdIaxs57P9hsy40ltuuCyWi2Sm/MUAC37sCloAzEvjrqt7YnA==}
 
   '@preflower/utils@1.1.1':
     resolution: {integrity: sha512-1RiiNnQwB8EANgM8auOrKq64ZoeTFYn2g84o43U+rPgpjfpqaM1/4brOJKxUi8A+cghNAQAFKBpd2IqmIg0AEg==}
@@ -616,8 +616,8 @@ packages:
     resolution: {integrity: sha512-sbgsPMW9yLvS7IhCi8IpuK1oBmtbWUNP+hBdwl/I9nzqVsszGnNGti5r9dUtF5RLivHUFFIdRvLiTsPhzSyJ3Q==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
-  '@undecaf/zbar-wasm@0.10.1':
-    resolution: {integrity: sha512-nQGPCHO/4383oMurHp4smoxG3ZYgNX6K+MxdID8D5Rs5yzUzQKkClQeYEH7jST9OacGb18Ohmwl5IrHZfwdn+w==}
+  '@undecaf/zbar-wasm@0.11.0':
+    resolution: {integrity: sha512-z2UZ+Uc50+qyE+HbU+Obdk/E5ecB7xYiu0i99bHQ9VlZVH0JMmE/5mJQa16Cutvwt80C9OZl8jEVayf5s5Azow==}
 
   '@ungap/structured-clone@1.2.0':
     resolution: {integrity: sha512-zuVdFrMJiuCDQUMCzQaD6KL28MjnqqN8XnAqiEq9PNm/hCPTSGfrXCOfwj1ow4LFb/tNymJPwsNbVePc1xFqrQ==}
@@ -3668,9 +3668,9 @@ snapshots:
 
   '@popperjs/core@2.11.8': {}
 
-  '@preflower/barcode-detector-polyfill@0.9.20':
+  '@preflower/barcode-detector-polyfill@0.9.21':
     dependencies:
-      '@undecaf/zbar-wasm': 0.10.1
+      '@undecaf/zbar-wasm': 0.11.0
 
   '@preflower/utils@1.1.1': {}
 
@@ -3856,7 +3856,7 @@ snapshots:
       '@typescript-eslint/types': 8.2.0
       eslint-visitor-keys: 3.4.3
 
-  '@undecaf/zbar-wasm@0.10.1': {}
+  '@undecaf/zbar-wasm@0.11.0': {}
 
   '@ungap/structured-clone@1.2.0': {}
 

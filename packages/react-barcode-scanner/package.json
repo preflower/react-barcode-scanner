@@ -60,7 +60,7 @@
     "react-dom": "*"
   },
   "dependencies": {
-    "@preflower/barcode-detector-polyfill": "^0.9.20",
+    "@preflower/barcode-detector-polyfill": "^0.9.21",
     "tslib": "^2.6.3",
     "webrtc-adapter": "^9.0.1"
   },
