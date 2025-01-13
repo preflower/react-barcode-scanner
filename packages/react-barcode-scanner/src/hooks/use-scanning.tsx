@@ -11,6 +11,34 @@ const DEFAULT_OPTIONS = {
   formats: ['qr_code']
 }
 
+/**
+ * Use barcode scanning based on Barcode Detection API.
+ * @param ref a RefObject of HTMLVideoElement
+ * @param provideOptions a ScanOptions object, provide delay and formats
+ * @returns a tuple of detected barcodes, open function and close function
+ * @example
+ * import { type RefObject } from 'react'
+ * import { useScanning } from 'react-barcode-scanner'
+ *
+ * function App () {
+ *   const ref = useRef<HTMLVideoElement>(null)
+ *   const [detected, open, close] = useScanning(ref)
+ *
+ *   useEffect(() => {
+ *     if (detected) {
+ *       console.log(detected)
+ *     }
+ *   }, [detected])
+ *
+ *   return (
+ *     <div>
+ *       <button onClick={open}>Open</button>
+ *       <button onClick={close}>Close</button>
+ *       <video ref={ref} />
+ *     </div>
+ *   )
+ * }
+ */
 export function useScanning (ref: RefObject<HTMLVideoElement>, provideOptions?: ScanOptions): [DetectedBarcode[] | undefined, () => void, () => void] {
   const [detectedBarcodes, setDetectBarcodes] = useState<DetectedBarcode[]>()
   const [start, setStart] = useState(false)
@@ -51,6 +79,12 @@ export function useScanning (ref: RefObject<HTMLVideoElement>, provideOptions?: 
       cancelled = true
     }
   }, [start, ref, options.delay, scan])
+
+  useEffect(() => {
+    if (options.formats.length === 0) {
+      setStart(false)
+    }
+  }, [options.formats])
 
   const open = useCallback(() => {
     setStart(true)

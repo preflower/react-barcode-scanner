@@ -6,25 +6,87 @@ title: Demo
 
 'use client'
 
-import React, { useState } from "react"
-import { BarcodeScanner, useTorch } from "react-barcode-scanner"
+import React, { useState, useEffect, useMemo, useCallback } from "react"
+import { BarcodeScanner, useTorch, useStreamState } from "react-barcode-scanner"
 import "react-barcode-scanner/polyfill"
 
-export default () => {
-  const [isSupportTorch, , onTorchSwitch] = useTorch()
+export const BarcodeFormatSelector = ({ selected, onSelectFormats }) => {
+  const formats = [
+    'code_128',
+    'code_39',
+    'code_93',
+    'codabar',
+    'ean_13',
+    'ean_8',
+    'itf',
+    'qr_code',
+    'upc_a',
+    'upc_e'
+  ]
+  const [selectedFormats, setSelectedFormats] = useState(selected)
 
-  const onCapture = (barcodes) => {
-    if (barcodes) {
-      window.alert(barcodes.map(barcode => barcode.rawValue).join('\n'))
-    }
+  const toggleFormat = (format) => {
+    setSelectedFormats(prevSelected => {
+      const newSelected = prevSelected.includes(format)
+        ? prevSelected.filter(f => f !== format)
+        : [...prevSelected, format]
+      onSelectFormats(newSelected)
+      return newSelected
+    })
   }
 
   return (
-    <div style={{ position: "relative", width: "100%", height: "440px" }}>
-      <BarcodeScanner onCapture={onCapture} />
-      {isSupportTorch ? (
-        <button onClick={onTorchSwitch}>Swtich Torch</button>
-      ) : null}
+    <div style={{ display: 'flex', gap: '4px 8px', flexWrap: 'wrap' }}>
+      {formats.map(format => (
+        <label style={{ display: 'flex', alignItems: 'center', gap: '6px' }} key={format}>
+          <input
+            type="checkbox"
+            checked={selected.includes(format)}
+            onChange={() => toggleFormat(format)}
+          />
+          {format}
+        </label>
+      ))}
     </div>
+  )
+}
+
+export default () => {
+  const [isSupportTorch, , onTorchSwitch] = useTorch()
+  const [formats, setFormats] = useState(['qr_code'])
+  const [delay, setDelay] = useState('500')
+
+  const options = useMemo(() => ({ delay: Number(delay), formats }), [delay, formats])
+
+  const onDelayChange = (e) => {
+    const value = e.target.value.replace(/[^\d]/g,'')
+    setDelay(value)
+  }
+
+  const onCapture = useCallback((barcodes) => {
+    if (barcodes) {
+      window.alert(barcodes.map(barcode => barcode.rawValue).join('\n'))
+    }
+  }, [])
+
+  return (
+    <>
+      <h2>Props</h2>
+      <div style={{ display: 'flex', gap: '12px', marginTop: '12px' }}>
+        <p>options.delay:</p>
+        <input style={{ border: '1px solid #f3f3f3' }} type="text" value={delay} onChange={onDelayChange} />
+      </div>
+      <div style={{ display: 'flex', gap: '12px', marginTop: '12px' }}>
+        <p>options.formats:</p>
+        <BarcodeFormatSelector selected={formats} onSelectFormats={setFormats} />
+      </div>
+      <h2>Result</h2>
+      <div style={{ position: "relative", width: "100%", height: "440px" }}>
+        <BarcodeScanner onCapture={onCapture} options={options} />
+        {isSupportTorch ? (
+          <button onClick={onTorchSwitch}>Swtich Torch</button>
+        ) : null}
+      </div>
+    </>
   )
 }

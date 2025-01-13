@@ -14,6 +14,32 @@ const DEFAULT_CONSTRAINTS: MediaTrackConstraints = {
   ]
 }
 
+/**
+ * Manage camera stream state.
+ * @param ref a RefObject of HTMLVideoElement
+ * @param trackConstraints a MediaTrackConstraints object, provide advanced options
+ * @returns a boolean that indicates whether the camera is supported
+ * @example
+ * import { type RefObject } from 'react'
+ * import { useCamera } from 'react-barcode-scanner'
+ *
+ * function App () {
+ *   const ref = useRef<HTMLVideoElement>(null)
+ *   const [isCameraSupported] = useCamera(ref)
+ *
+ *   useEffect(() => {
+ *     if (!isCameraSupported) {
+ *       console.log('[react-barcode-scanner]: Camera is not supported')
+ *     }
+ *   }, [isCameraSupported])
+ *
+ *   return (
+ *     <div>
+ *       <video ref={ref} />
+ *     </div>
+ *   )
+ * }
+ */
 export function useCamera (ref: RefObject<HTMLVideoElement>, trackConstraints?: MediaTrackConstraints): [boolean] {
   const [isCameraSupported, setCameraSupported] = useState(false)
 
