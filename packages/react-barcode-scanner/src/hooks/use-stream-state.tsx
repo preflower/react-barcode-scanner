@@ -1,24 +1,9 @@
-import { useEffect, useState } from 'react'
+import { createAtom, useAtom } from './use-atom'
 
-type SubscriberFunc = (newState: MediaStream) => void
-
-const subscriptions: SubscriberFunc[] = []
-
-function set (newValue: MediaStream): void {
-  setTimeout(() => {
-    subscriptions.forEach((c) => { c(newValue) })
-  })
-}
+const streamAtom = createAtom()
 
 export function useStreamState (): [MediaStream | undefined, (newState: MediaStream) => void] {
-  const [stream, setStream] = useState<MediaStream>()
+  const [stream, setStream] = useAtom<MediaStream>(streamAtom)
 
-  useEffect(() => {
-    const index = subscriptions.push(setStream)
-    return () => {
-      subscriptions.splice(index, 1)
-    }
-  }, [])
-
-  return [stream, set]
+  return [stream, setStream]
 }
