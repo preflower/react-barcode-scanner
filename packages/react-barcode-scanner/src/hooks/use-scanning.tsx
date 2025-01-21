@@ -1,9 +1,9 @@
 import { type RefObject, useCallback, useEffect, useMemo, useState } from 'react'
-import { type DetectedBarcode } from '../types'
+import { BarcodeFormat, type DetectedBarcode } from '../types'
 
 export interface ScanOptions {
   delay?: number
-  formats?: string[]
+  formats?: Array<BarcodeFormat | string>
 }
 
 const DEFAULT_OPTIONS = {
