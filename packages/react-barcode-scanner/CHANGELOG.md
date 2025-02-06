@@ -1,5 +1,11 @@
 # react-barcode-scanner
 
+## 3.1.0
+
+### Minor Changes
+
+- bb1a4a1: fix open status inconsist error, replace switchTorch with setOpen for DDV idea
+
 ## 3.0.1
 
 ### Patch Changes
