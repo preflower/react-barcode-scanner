@@ -6,12 +6,14 @@ interface ScannerProps extends React.DetailedHTMLProps<React.VideoHTMLAttributes
   options?: ScanOptions
   onCapture?: (barcodes: DetectedBarcode[]) => void
   trackConstraints?: MediaTrackConstraints;
+  paused?: boolean;
 }
 
 const BarcodeScanner: FunctionComponent<ScannerProps> = ({
   options,
   onCapture,
   trackConstraints,
+  paused = false,
   ...props
 }) => {
   const instance = useRef<HTMLVideoElement>(null)
@@ -19,18 +21,28 @@ const BarcodeScanner: FunctionComponent<ScannerProps> = ({
   const [detected, open, close] = useScanning(instance, options)
 
   useEffect(() => {
-    if (isCameraSupport) {
+    if (isCameraSupport && !paused) {
       open()
     } else {
       close()
     }
-  }, [close, isCameraSupport, open])
+  }, [close, isCameraSupport, open, paused])
 
   useEffect(() => {
     if (detected !== undefined) {
       onCapture?.(detected)
     }
   }, [detected, onCapture])
+
+  useEffect(() => {
+    const video = instance.current
+    if (!video) return
+    if (paused) {
+      video.pause()
+    } else {
+      video.play().catch(console.error)
+    }
+  }, [paused])
 
   return (
     <video

@@ -73,7 +73,7 @@ export function useScanning (ref: RefObject<HTMLVideoElement>, provideOptions?: 
         timer = window.setTimeout(frame, options.delay)
       }
     }
-    timer = window.setTimeout(frame, options.delay)
+    frame()
     return () => {
       clearTimeout(timer)
       cancelled = true
