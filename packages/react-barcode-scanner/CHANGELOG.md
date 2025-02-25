@@ -1,5 +1,11 @@
 # react-barcode-scanner
 
+## 3.2.0
+
+### Minor Changes
+
+- 59cc0f4: Add paused prop support
+
 ## 3.1.0
 
 ### Minor Changes
