@@ -37,12 +37,12 @@ const BarcodeScanner: FunctionComponent<ScannerProps> = ({
   useEffect(() => {
     const video = instance.current
     if (!video) return
-    if (paused) {
-      video.pause()
-    } else {
+    if (isCameraSupport && !paused) {
       video.play().catch(console.error)
+    } else {
+      video.pause()
     }
-  }, [paused])
+  }, [paused, isCameraSupport])
 
   return (
     <video
