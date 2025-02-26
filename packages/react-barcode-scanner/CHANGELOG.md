@@ -1,5 +1,11 @@
 # react-barcode-scanner
 
+## 3.2.1
+
+### Patch Changes
+
+- 100f173: fix video.play exception that triggered while the camera was still being prepared
+
 ## 3.2.0
 
 ### Minor Changes
