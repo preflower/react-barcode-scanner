@@ -27,7 +27,7 @@
     "@preflower/utils": "^1.1.1"
   },
   "devDependencies": {
-    "@changesets/cli": "^2.27.12",
+    "@changesets/cli": "^2.28.1",
     "@commitlint/cli": "^19.7.1",
     "@commitlint/config-conventional": "^19.7.1",
     "eslint": "^9.19.0",
