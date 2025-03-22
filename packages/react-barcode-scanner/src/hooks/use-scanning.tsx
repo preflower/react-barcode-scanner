@@ -15,32 +15,36 @@ const DEFAULT_OPTIONS = {
  * Use barcode scanning based on Barcode Detection API.
  * @param ref a RefObject of HTMLVideoElement
  * @param provideOptions a ScanOptions object, provide delay and formats
- * @returns a tuple of detected barcodes, open function and close function
+ * @returns a tuple of detected barcodes, startScan function and stopScan function
  * @example
  * import { type RefObject } from 'react'
  * import { useScanning } from 'react-barcode-scanner'
  *
  * function App () {
  *   const ref = useRef<HTMLVideoElement>(null)
- *   const [detected, open, close] = useScanning(ref)
+ *   const { detectedBarcodes, startScan, stopScan } = useScanning(ref)
  *
  *   useEffect(() => {
- *     if (detected) {
- *       console.log(detected)
+ *     if (detectedBarcodes) {
+ *       console.log(detectedBarcodes)
  *     }
- *   }, [detected])
+ *   }, [detectedBarcodes])
  *
  *   return (
  *     <div>
- *       <button onClick={open}>Open</button>
- *       <button onClick={close}>Close</button>
+ *       <button onClick={startScan}>Open</button>
+ *       <button onClick={stopScan}>Close</button>
  *       <video ref={ref} />
  *     </div>
  *   )
  * }
  */
-export function useScanning (ref: RefObject<HTMLVideoElement>, provideOptions?: ScanOptions): [DetectedBarcode[] | undefined, () => void, () => void] {
-  const [detectedBarcodes, setDetectBarcodes] = useState<DetectedBarcode[]>()
+export function useScanning (ref: RefObject<HTMLVideoElement>, provideOptions?: ScanOptions): {
+  detectedBarcodes: DetectedBarcode[] | undefined,
+  startScan: () => void,
+  stopScan: () => void
+  } {
+  const [detectedBarcodes, setDetectedBarcodes] = useState<DetectedBarcode[]>()
   const [start, setStart] = useState(false)
   const options = useMemo(() => {
     return Object.assign({}, DEFAULT_OPTIONS, provideOptions)
@@ -53,7 +57,7 @@ export function useScanning (ref: RefObject<HTMLVideoElement>, provideOptions?: 
     })
     const detected = await detector.detect(target!)
     if (detected !== undefined && detected.length > 0) {
-      setDetectBarcodes(detected)
+      setDetectedBarcodes(detected)
     }
   }, [ref, options.formats])
 
@@ -62,7 +66,7 @@ export function useScanning (ref: RefObject<HTMLVideoElement>, provideOptions?: 
     if (target == null || !start) return
 
     /**
-     * proivde `cancelled` tag to prevent `frame` has been
+     * provide `cancelled` tag to prevent `frame` has been
      * triggered but `scan` not fulfilled when call cancelAnimationFrame
      */
     let cancelled = false
@@ -86,13 +90,17 @@ export function useScanning (ref: RefObject<HTMLVideoElement>, provideOptions?: 
     }
   }, [options.formats])
 
-  const open = useCallback(() => {
+  const startScan = useCallback(() => {
     setStart(true)
   }, [])
 
-  const close = useCallback(() => {
+  const stopScan = useCallback(() => {
     setStart(false)
   }, [])
 
-  return [detectedBarcodes, open, close]
+  return {
+    detectedBarcodes,
+    startScan,
+    stopScan
+  }
 }

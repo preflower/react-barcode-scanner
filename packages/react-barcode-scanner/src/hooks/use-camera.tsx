@@ -25,7 +25,7 @@ const DEFAULT_CONSTRAINTS: MediaTrackConstraints = {
  *
  * function App () {
  *   const ref = useRef<HTMLVideoElement>(null)
- *   const [isCameraSupported] = useCamera(ref)
+ *   const { isCameraSupported } = useCamera(ref)
  *
  *   useEffect(() => {
  *     if (!isCameraSupported) {
@@ -40,7 +40,7 @@ const DEFAULT_CONSTRAINTS: MediaTrackConstraints = {
  *   )
  * }
  */
-export function useCamera (ref: RefObject<HTMLVideoElement>, trackConstraints?: MediaTrackConstraints): [boolean] {
+export function useCamera (ref: RefObject<HTMLVideoElement>, trackConstraints?: MediaTrackConstraints): { isCameraSupported: boolean } {
   const [isCameraSupported, setCameraSupported] = useState(false)
 
   const [, setStream] = useStreamState()
@@ -106,5 +106,5 @@ export function useCamera (ref: RefObject<HTMLVideoElement>, trackConstraints?: 
     }
   }, [ref, constraints, setStream])
 
-  return [isCameraSupported]
+  return { isCameraSupported }
 }
