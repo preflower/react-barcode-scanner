@@ -9,6 +9,7 @@ const torchAtom = createAtom()
  * @param {boolean} defaultTorchOn Whether torch is on by default
  * @returns {object} { isTorchSupported, isTorchOn, setIsTorchOn }
  *   - isTorchSupported: Whether device supports torch
+ *   - error: Error object
  *   - isTorchOn: Whether torch is on
  *   - setIsTorchOn: Set boolean state of torch
  *
@@ -17,7 +18,12 @@ const torchAtom = createAtom()
  * import { useTorch } from 'react-barcode-scanner'
  *
  * export default () => {
- *   const { isTorchSupported, isTorchOn, setIsTorchOn } = useTorch()
+ *   const { isTorchSupported, error, isTorchOn, setIsTorchOn } = useTorch()
+ *
+ *   if (error) {
+ *     return <p>{error.message}</p>
+ *   }
+ *
  *   return (
  *     <div style={{ width: '100%', height: '360px' }}>
  *       <button onClick={() => setIsTorchOn(!isTorchOn)}>Switch Torch</button>
@@ -27,11 +33,13 @@ const torchAtom = createAtom()
  */
 export function useTorch (defaultTorchOn = false): {
   isTorchSupported: boolean,
+  error: Error | undefined,
   isTorchOn: boolean,
   setIsTorchOn: (torch: boolean) => void
   } {
   const [isTorchOn, setIsTorchOn] = useAtom(torchAtom, defaultTorchOn)
   const [isTorchSupported, setIsTorchSupported] = useState(false)
+  const [error, setError] = useState<Error>()
   const [stream] = useStreamState()
   const track = useMemo(() => {
     return stream?.getVideoTracks()[0]
@@ -46,6 +54,8 @@ export function useTorch (defaultTorchOn = false): {
   }, [track])
 
   const setTorch = useCallback(async (torch: boolean) => {
+    setError(undefined)
+
     try {
       if (!isTorchSupported) return
       await track?.applyConstraints({
@@ -53,8 +63,9 @@ export function useTorch (defaultTorchOn = false): {
           torch
         }]
       })
-    } catch (e) {
-      console.warn(e)
+    } catch (err) {
+      console.warn(err)
+      setError(err as Error)
     }
   }, [track, isTorchSupported])
 
@@ -62,5 +73,5 @@ export function useTorch (defaultTorchOn = false): {
     setTorch(isTorchOn)
   }, [isTorchOn, setTorch])
 
-  return { isTorchSupported, isTorchOn, setIsTorchOn }
+  return { isTorchSupported, error, isTorchOn, setIsTorchOn }
 }

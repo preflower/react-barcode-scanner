@@ -18,39 +18,45 @@ const DEFAULT_CONSTRAINTS: MediaTrackConstraints = {
  * Manage camera stream state.
  * @param ref a RefObject of HTMLVideoElement
  * @param trackConstraints a MediaTrackConstraints object, provide advanced options
- * @returns a boolean that indicates whether the camera is supported
+ * @returns {object} { isCameraReady, error }
+ *   - isCameraReady: Whether the camera is ready
+ *   - error: Error object
  * @example
  * import { type RefObject } from 'react'
  * import { useCamera } from 'react-barcode-scanner'
  *
  * function App () {
  *   const ref = useRef<HTMLVideoElement>(null)
- *   const { isCameraSupported } = useCamera(ref)
+ *   const { isCameraReady, error } = useCamera(ref)
  *
  *   useEffect(() => {
- *     if (!isCameraSupported) {
- *       console.log('[react-barcode-scanner]: Camera is not supported')
+ *     if (isCameraReady) {
+ *       console.log('Camera is ready')
  *     }
- *   }, [isCameraSupported])
+ *   }, [isCameraReady])
  *
  *   return (
  *     <div>
  *       <video ref={ref} />
+ *       {error && <p>{error.message}</p>}
  *     </div>
  *   )
  * }
  */
-export function useCamera (ref: RefObject<HTMLVideoElement>, trackConstraints?: MediaTrackConstraints): { isCameraSupported: boolean } {
-  const [isCameraSupported, setCameraSupported] = useState(false)
+export function useCamera (ref: RefObject<HTMLVideoElement>, trackConstraints?: MediaTrackConstraints): { isCameraReady: boolean, error: Error | undefined } {
+  const [isCameraReady, setIsCameraReady] = useState(false)
+  const [error, setError] = useState<Error>()
 
   const [, setStream] = useStreamState()
 
   useEffect(() => {
     if (!window.isSecureContext) {
-      throw new Error(`[react-barcode-scanner]: 
-        Browser ask for secure origin (such as https) when use getUserMedia,
-        reference: https://sites.google.com/a/chromium.org/dev/Home/chromium-security/deprecating-powerful-features-on-insecure-origins
-      `)
+      setError(
+        new Error(`[react-barcode-scanner]: 
+          Browser ask for secure origin (such as https) when use getUserMedia,
+          reference: https://sites.google.com/a/chromium.org/dev/Home/chromium-security/deprecating-powerful-features-on-insecure-origins
+        `)
+      )
     }
   }, [])
 
@@ -66,6 +72,8 @@ export function useCamera (ref: RefObject<HTMLVideoElement>, trackConstraints?: 
     let cancelled = false
     let stream: MediaStream
     const _ = async (): Promise<void> => {
+      setError(undefined)
+
       const target = ref.current
       if (target == null) return
 
@@ -85,7 +93,7 @@ export function useCamera (ref: RefObject<HTMLVideoElement>, trackConstraints?: 
       await eventListener(target, 'loadeddata')
       await timeout(500)
 
-      setCameraSupported(true)
+      setIsCameraReady(true)
 
       setStream(stream)
     }
@@ -98,6 +106,8 @@ export function useCamera (ref: RefObject<HTMLVideoElement>, trackConstraints?: 
       if (cancelled) {
         close()
       }
+    }).catch(err => {
+      setError(err)
     })
 
     return () => {
@@ -106,5 +116,5 @@ export function useCamera (ref: RefObject<HTMLVideoElement>, trackConstraints?: 
     }
   }, [ref, constraints, setStream])
 
-  return { isCameraSupported }
+  return { isCameraReady, error }
 }
