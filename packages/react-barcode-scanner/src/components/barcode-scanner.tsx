@@ -17,32 +17,36 @@ const BarcodeScanner: FunctionComponent<ScannerProps> = ({
   ...props
 }) => {
   const instance = useRef<HTMLVideoElement>(null)
-  const [isCameraSupport] = useCamera(instance, trackConstraints)
-  const [detected, open, close] = useScanning(instance, options)
+  const { isCameraReady } = useCamera(instance, trackConstraints)
+  const {
+    detectedBarcodes,
+    startScan,
+    stopScan
+  } = useScanning(instance, options)
 
   useEffect(() => {
-    if (isCameraSupport && !paused) {
-      open()
+    if (isCameraReady && !paused) {
+      startScan()
     } else {
-      close()
+      stopScan()
     }
-  }, [close, isCameraSupport, open, paused])
+  }, [stopScan, isCameraReady, startScan, paused])
 
   useEffect(() => {
-    if (detected !== undefined) {
-      onCapture?.(detected)
+    if (detectedBarcodes !== undefined) {
+      onCapture?.(detectedBarcodes)
     }
-  }, [detected, onCapture])
+  }, [detectedBarcodes, onCapture])
 
   useEffect(() => {
     const video = instance.current
     if (!video) return
-    if (isCameraSupport && !paused) {
+    if (isCameraReady && !paused) {
       video.play().catch(console.error)
     } else {
       video.pause()
     }
-  }, [paused, isCameraSupport])
+  }, [paused, isCameraReady])
 
   return (
     <video
