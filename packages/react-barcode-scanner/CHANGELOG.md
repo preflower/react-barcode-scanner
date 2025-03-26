@@ -1,5 +1,11 @@
 # react-barcode-scanner
 
+## 4.0.0
+
+### Major Changes
+
+- 4e87938: Refactor useCamera, useScanning, useTorch now return objects instead of arrays and add some error handling
+
 ## 3.2.1
 
 ### Patch Changes

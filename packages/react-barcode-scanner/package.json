@@ -1,6 +1,6 @@
 {
   "name": "react-barcode-scanner",
-  "version": "3.2.1",
+  "version": "4.0.0",
   "description": "A barcode scanner base on Barcode Detector",
   "keywords": [
     "react",
