@@ -62,8 +62,8 @@ importers:
         version: 18.3.1(react@18.3.1)
     devDependencies:
       '@types/react':
-        specifier: ^18.3.20
-        version: 18.3.20
+        specifier: ^18.3.21
+        version: 18.3.21
 
   packages/react-barcode-scanner:
     dependencies:
@@ -78,11 +78,11 @@ importers:
         version: 9.0.3
     devDependencies:
       '@types/react':
-        specifier: ^18.3.20
-        version: 18.3.20
+        specifier: ^18.3.21
+        version: 18.3.21
       '@types/react-dom':
         specifier: ^18.3.7
-        version: 18.3.7(@types/react@18.3.20)
+        version: 18.3.7(@types/react@18.3.21)
       react:
         specifier: ^18.3.1
         version: 18.3.1
@@ -559,8 +559,8 @@ packages:
     peerDependencies:
       '@types/react': ^18.0.0
 
-  '@types/react@18.3.20':
-    resolution: {integrity: sha512-IPaCZN7PShZK/3t6Q87pfTkRm6oLTd4vztyoj+cbHUF1g3FfVb2tFIL79uCRKEfv16AhqDMBywP2VW3KIZUvcg==}
+  '@types/react@18.3.21':
+    resolution: {integrity: sha512-gXLBtmlcRJeT09/sI4PxVwyrku6SaNUj/6cMubjE6T6XdY1fDmBL7r0nX0jbSZPU/Xr0KuwLLZh6aOYY5d91Xw==}
 
   '@types/unist@2.0.6':
     resolution: {integrity: sha512-PBjIUxZHOuj0R15/xuwJYjFi+KZdNFrehocChv4g5hu6aFroHue8m0lBP0POdK2nKzbw0cgV1mws8+V/JAcEkQ==}
@@ -3634,7 +3634,7 @@ snapshots:
   '@mdx-js/react@2.3.0(react@18.3.1)':
     dependencies:
       '@types/mdx': 2.0.13
-      '@types/react': 18.3.20
+      '@types/react': 18.3.21
       react: 18.3.1
 
   '@napi-rs/simple-git-android-arm-eabi@0.1.16':
@@ -3823,11 +3823,11 @@ snapshots:
 
   '@types/prop-types@15.7.4': {}
 
-  '@types/react-dom@18.3.7(@types/react@18.3.20)':
+  '@types/react-dom@18.3.7(@types/react@18.3.21)':
     dependencies:
-      '@types/react': 18.3.20
+      '@types/react': 18.3.21
 
-  '@types/react@18.3.20':
+  '@types/react@18.3.21':
     dependencies:
       '@types/prop-types': 15.7.4
       csstype: 3.1.3
