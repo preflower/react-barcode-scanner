@@ -30,7 +30,7 @@
     "@changesets/cli": "^2.29.5",
     "@commitlint/cli": "^19.8.1",
     "@commitlint/config-conventional": "^19.8.1",
-    "eslint": "^9.29.0",
+    "eslint": "^9.30.0",
     "eslint-config-ted": "^4.0.9",
     "husky": "^9.1.7",
     "lint-staged": "^15.5.2",
