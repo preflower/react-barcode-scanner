@@ -61,7 +61,7 @@
   },
   "dependencies": {
     "@preflower/barcode-detector-polyfill": "^0.9.21",
-    "tslib": "^2.6.3",
+    "tslib": "^2.8.1",
     "webrtc-adapter": "^9.0.3"
   },
   "devDependencies": {
