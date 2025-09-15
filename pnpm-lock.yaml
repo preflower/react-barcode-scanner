@@ -40,8 +40,8 @@ importers:
   packages/docs:
     dependencies:
       lucide-react:
-        specifier: ^0.539.0
-        version: 0.539.0(react@18.3.1)
+        specifier: ^0.544.0
+        version: 0.544.0(react@18.3.1)
       next:
         specifier: ^14.2.32
         version: 14.2.32(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -2095,8 +2095,8 @@ packages:
   lru-cache@4.1.5:
     resolution: {integrity: sha512-sWZlbEP2OsHNkXrMl5GYk/jKk70MBng6UU4YI/qGDYbgf6YbP4EvmqISbXCoJiRKs+1bSpFHVgQxvJ17F2li5g==}
 
-  lucide-react@0.539.0:
-    resolution: {integrity: sha512-VVISr+VF2krO91FeuCrm1rSOLACQUYVy7NQkzrOty52Y8TlTPcXcMdQFj9bYzBgXbWCiywlwSZ3Z8u6a+6bMlg==}
+  lucide-react@0.544.0:
+    resolution: {integrity: sha512-t5tS44bqd825zAW45UQxpG2CvcC4urOwn2TrwSH8u+MjeE+1NnWl6QqeQ/6NdjMqdOygyiT9p3Ev0p1NJykxjw==}
     peerDependencies:
       react: ^16.5.1 || ^17.0.0 || ^18.0.0 || ^19.0.0
 
@@ -5632,7 +5632,7 @@ snapshots:
       pseudomap: 1.0.2
       yallist: 2.1.2
 
-  lucide-react@0.539.0(react@18.3.1):
+  lucide-react@0.544.0(react@18.3.1):
     dependencies:
       react: 18.3.1
 
