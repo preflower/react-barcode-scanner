@@ -30,11 +30,11 @@
     "@changesets/cli": "^2.29.7",
     "@commitlint/cli": "^19.8.1",
     "@commitlint/config-conventional": "^19.8.1",
-    "eslint": "^9.36.0",
+    "eslint": "^9.37.0",
     "eslint-config-ted": "^4.0.9",
     "husky": "^9.1.7",
     "lint-staged": "^15.5.2",
-    "typescript": "^5.9.2"
+    "typescript": "^5.9.3"
   },
   "lint-staged": {
     "*.{js,ts,tsx}": [
