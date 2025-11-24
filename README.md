@@ -6,7 +6,7 @@
     <img src="https://badge.fury.io/js/react-barcode-scanner.svg" alt="npm version">
   </a>
   <a href="https://www.npmjs.com/package/react-barcode-scanner">
-    <img src="https://img.shields.io/npm/dt/react-barcode-scanner.svg" alt="npm version">
+    <img src="https://img.shields.io/npm/dm/react-barcode-scanner.svg" alt="npm version">
   </a>
   <a href="http://opensource.org/licenses/MIT">
     <img src="https://badgen.net/npm/license/react-barcode-scanner" alt="licence: MIT">
