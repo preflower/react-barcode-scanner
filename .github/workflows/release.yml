@@ -5,6 +5,12 @@ on:
       - master
     paths:
       - '.changeset/**'
+    # Allows you to run this workflow manually from the Actions tab
+    workflow_dispatch:
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: write
+  pull-requests: write
 env:
   CI: true
   PNPM_CACHE_FOLDER: .pnpm-store
@@ -14,13 +20,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           fetch-depth: 0
       - name: Setup node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           node-version: 20.19.6
+          registry-url: 'https://registry.npmjs.org'
       - name: Install pnpm
         run: npm i pnpm@latest -g
       - name: Setup pnpm config
@@ -36,4 +43,3 @@ jobs:
           publish: pnpm ci:publish
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

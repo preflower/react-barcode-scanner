@@ -1,5 +1,7 @@
 import { type RefObject, useEffect, useMemo, useState } from 'react'
+
 import { eventListener, timeout } from '../helper/utils'
+
 import { useStreamState } from './use-stream-state'
 
 const DEFAULT_CONSTRAINTS: MediaTrackConstraints = {
@@ -43,7 +45,7 @@ const DEFAULT_CONSTRAINTS: MediaTrackConstraints = {
  *   )
  * }
  */
-export function useCamera (ref: RefObject<HTMLVideoElement>, trackConstraints?: MediaTrackConstraints): { isCameraReady: boolean, error: Error | undefined } {
+export function useCamera (ref: RefObject<HTMLVideoElement | null>, trackConstraints?: MediaTrackConstraints): { isCameraReady: boolean, error: Error | undefined } {
   const [isCameraReady, setIsCameraReady] = useState(false)
   const [error, setError] = useState<Error>()
 

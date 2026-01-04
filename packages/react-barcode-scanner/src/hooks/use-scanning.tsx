@@ -1,4 +1,5 @@
 import { type RefObject, useCallback, useEffect, useMemo, useState } from 'react'
+
 import { BarcodeFormat, type DetectedBarcode } from '../types'
 
 export interface ScanOptions {
@@ -39,7 +40,7 @@ const DEFAULT_OPTIONS = {
  *   )
  * }
  */
-export function useScanning (ref: RefObject<HTMLVideoElement>, provideOptions?: ScanOptions): {
+export function useScanning (ref: RefObject<HTMLVideoElement | null>, provideOptions?: ScanOptions): {
   detectedBarcodes: DetectedBarcode[] | undefined,
   startScan: () => void,
   stopScan: () => void

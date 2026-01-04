@@ -1,4 +1,5 @@
 import { type FunctionComponent, useEffect, useRef } from 'react'
+
 import { useCamera, useScanning, type ScanOptions } from '../hooks'
 import { type DetectedBarcode } from '../types'
 
