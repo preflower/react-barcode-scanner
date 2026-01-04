@@ -1,5 +1,11 @@
 # react-barcode-scanner
 
+## 4.0.1
+
+### Patch Changes
+
+- 6ce9e10: update type to match React v19 typescript lint
+
 ## 4.0.0
 
 ### Major Changes
