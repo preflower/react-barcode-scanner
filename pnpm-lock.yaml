@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@preflower/utils':
-        specifier: ^1.1.1
-        version: 1.1.1
+        specifier: ^1.2.0
+        version: 1.2.0
     devDependencies:
       '@changesets/cli':
         specifier: ^2.29.8
@@ -471,8 +471,8 @@ packages:
   '@preflower/barcode-detector-polyfill@0.9.21':
     resolution: {integrity: sha512-vjYTyQLGohm9McxWMLbRSb53LXs6IzcBh+ag5BdIaxs57P9hsy40ltuuCyWi2Sm/MUAC37sCloAzEvjrqt7YnA==}
 
-  '@preflower/utils@1.1.1':
-    resolution: {integrity: sha512-1RiiNnQwB8EANgM8auOrKq64ZoeTFYn2g84o43U+rPgpjfpqaM1/4brOJKxUi8A+cghNAQAFKBpd2IqmIg0AEg==}
+  '@preflower/utils@1.2.0':
+    resolution: {integrity: sha512-WGCSmyjwEaYYbhN/W5gMU396Vp5/ilN/uMqKso+Rb1v3KBbn/R3iRkqYyw3SzTnp4DJPUJ3PtUp2IczJQh0HAg==}
 
   '@rtsao/scc@1.1.0':
     resolution: {integrity: sha512-zt6OdqaDoOnJ1ZYsCYGt9YmWzDXl4vQdKTyJev62gFhRGKdx7mcT54V9KIjg+d2wi9EXsPvAPKe7i7WjfVWB8g==}
@@ -3815,7 +3815,7 @@ snapshots:
     dependencies:
       '@undecaf/zbar-wasm': 0.11.0
 
-  '@preflower/utils@1.1.1': {}
+  '@preflower/utils@1.2.0': {}
 
   '@rtsao/scc@1.1.0': {}
 
