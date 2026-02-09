@@ -17,9 +17,9 @@
     "next": "^14.2.33",
     "nextra": "^2.13.4",
     "nextra-theme-docs": "^2.13.4",
-    "react": "^18.3.1",
+    "react": "^19.2.4",
     "react-barcode-scanner": "workspace:*",
-    "react-dom": "^18.3.1"
+    "react-dom": "^19.2.4"
   },
   "devDependencies": {
     "@types/react": "^18.3.28"
