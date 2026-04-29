@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "lucide-react": "^0.577.0",
-    "next": "^14.2.33",
+    "next": "^16.2.4",
     "nextra": "^2.13.4",
     "nextra-theme-docs": "^2.13.4",
     "react": "^18.3.1",
