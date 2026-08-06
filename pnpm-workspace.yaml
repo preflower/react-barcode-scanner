@@ -5,3 +5,7 @@ packages:
   - 'components/**'
   # exclude packages that are inside test directories
   - '!**/test/**'
+allowBuilds:
+  sharp: true
+minimumReleaseAgeExclude:
+  - lucide-react@1.29.0
