@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://reactbarcodescanner.vercel.app/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://reactbarcodescanner.vercel.app/" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://reactbarcodescanner.vercel.app/zh-CN" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://reactbarcodescanner.vercel.app/" />
+  </url>
+  <url>
+    <loc>https://reactbarcodescanner.vercel.app/zh-CN</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://reactbarcodescanner.vercel.app/" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://reactbarcodescanner.vercel.app/zh-CN" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://reactbarcodescanner.vercel.app/" />
+  </url>
+  <url>
+    <loc>https://reactbarcodescanner.vercel.app/docs/install</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://reactbarcodescanner.vercel.app/docs/install" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://reactbarcodescanner.vercel.app/zh-CN/docs/install" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://reactbarcodescanner.vercel.app/docs/install" />
+  </url>
+  <url>
+    <loc>https://reactbarcodescanner.vercel.app/zh-CN/docs/install</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://reactbarcodescanner.vercel.app/docs/install" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://reactbarcodescanner.vercel.app/zh-CN/docs/install" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://reactbarcodescanner.vercel.app/docs/install" />
+  </url>
+  <url>
+    <loc>https://reactbarcodescanner.vercel.app/docs/guide</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://reactbarcodescanner.vercel.app/docs/guide" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://reactbarcodescanner.vercel.app/zh-CN/docs/guide" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://reactbarcodescanner.vercel.app/docs/guide" />
+  </url>
+  <url>
+    <loc>https://reactbarcodescanner.vercel.app/zh-CN/docs/guide</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://reactbarcodescanner.vercel.app/docs/guide" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://reactbarcodescanner.vercel.app/zh-CN/docs/guide" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://reactbarcodescanner.vercel.app/docs/guide" />
+  </url>
+  <url>
+    <loc>https://reactbarcodescanner.vercel.app/docs/state-scope</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://reactbarcodescanner.vercel.app/docs/state-scope" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://reactbarcodescanner.vercel.app/zh-CN/docs/state-scope" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://reactbarcodescanner.vercel.app/docs/state-scope" />
+  </url>
+  <url>
+    <loc>https://reactbarcodescanner.vercel.app/zh-CN/docs/state-scope</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://reactbarcodescanner.vercel.app/docs/state-scope" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://reactbarcodescanner.vercel.app/zh-CN/docs/state-scope" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://reactbarcodescanner.vercel.app/docs/state-scope" />
+  </url>
+  <url>
+    <loc>https://reactbarcodescanner.vercel.app/docs/api</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://reactbarcodescanner.vercel.app/docs/api" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://reactbarcodescanner.vercel.app/zh-CN/docs/api" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://reactbarcodescanner.vercel.app/docs/api" />
+  </url>
+  <url>
+    <loc>https://reactbarcodescanner.vercel.app/zh-CN/docs/api</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://reactbarcodescanner.vercel.app/docs/api" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://reactbarcodescanner.vercel.app/zh-CN/docs/api" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://reactbarcodescanner.vercel.app/docs/api" />
+  </url>
+  <url>
+    <loc>https://reactbarcodescanner.vercel.app/docs/demo</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://reactbarcodescanner.vercel.app/docs/demo" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://reactbarcodescanner.vercel.app/zh-CN/docs/demo" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://reactbarcodescanner.vercel.app/docs/demo" />
+  </url>
+  <url>
+    <loc>https://reactbarcodescanner.vercel.app/zh-CN/docs/demo</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://reactbarcodescanner.vercel.app/docs/demo" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://reactbarcodescanner.vercel.app/zh-CN/docs/demo" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://reactbarcodescanner.vercel.app/docs/demo" />
+  </url>
+  <url>
+    <loc>https://reactbarcodescanner.vercel.app/docs/faq</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://reactbarcodescanner.vercel.app/docs/faq" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://reactbarcodescanner.vercel.app/zh-CN/docs/faq" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://reactbarcodescanner.vercel.app/docs/faq" />
+  </url>
+  <url>
+    <loc>https://reactbarcodescanner.vercel.app/zh-CN/docs/faq</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://reactbarcodescanner.vercel.app/docs/faq" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://reactbarcodescanner.vercel.app/zh-CN/docs/faq" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://reactbarcodescanner.vercel.app/docs/faq" />
+  </url>
+  <url>
+    <loc>https://reactbarcodescanner.vercel.app/docs/multiple-scanners</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://reactbarcodescanner.vercel.app/docs/multiple-scanners" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://reactbarcodescanner.vercel.app/zh-CN/docs/multiple-scanners" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://reactbarcodescanner.vercel.app/docs/multiple-scanners" />
+  </url>
+  <url>
+    <loc>https://reactbarcodescanner.vercel.app/zh-CN/docs/multiple-scanners</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://reactbarcodescanner.vercel.app/docs/multiple-scanners" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://reactbarcodescanner.vercel.app/zh-CN/docs/multiple-scanners" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://reactbarcodescanner.vercel.app/docs/multiple-scanners" />
+  </url>
+</urlset>

@@ -1,0 +1,23 @@
+---
+title: React Barcode Scanner Multiple Scanners Demo
+description: Test two isolated React barcode scanner instances, including independent streams, results, pause state, torch state, errors, unmounting and Provider reset.
+---
+
+import MultipleScannersDemo from '../../components/multiple-scanners-demo'
+
+# Multiple Scanners Demo
+
+This page renders two scanners under separate `BarcodeScannerProvider` instances. Use it to verify that scanner A and scanner B do not overwrite or clean up each other's stream, torch state, errors or detected values.
+
+## Manual test checklist
+
+1. Allow camera permission and compare the two stream IDs.
+2. Scan a code in front of each active camera and confirm that results remain in the correct card.
+3. Pause or unmount scanner A and confirm that scanner B remains unchanged.
+4. Change the format or torch state in one card and inspect the other card's diagnostics.
+5. Reset one Provider scope and confirm that only that card returns to fresh state.
+6. If the second camera fails to open, confirm that its error stays inside that card while the first scanner continues working.
+
+Opening two streams from one physical camera is device- and browser-dependent. A second-stream failure is not by itself a Provider isolation failure.
+
+<MultipleScannersDemo locale="en-US" />

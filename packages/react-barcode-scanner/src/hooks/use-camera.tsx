@@ -1,8 +1,7 @@
-import { type RefObject, useEffect, useMemo, useState } from 'react'
+import { type RefObject, useEffect, useMemo, useRef, useState } from 'react'
 
-import { eventListener, timeout } from '../helper/utils'
-
-import { useStreamState } from './use-stream-state'
+import { useScannerStore } from '../context/barcode-scanner-context.js'
+import { eventListener, timeout } from '../helper/utils.js'
 
 const DEFAULT_CONSTRAINTS: MediaTrackConstraints = {
   width: { min: 640, ideal: 1280 },
@@ -49,74 +48,90 @@ export function useCamera (ref: RefObject<HTMLVideoElement | null>, trackConstra
   const [isCameraReady, setIsCameraReady] = useState(false)
   const [error, setError] = useState<Error>()
 
-  const [, setStream] = useStreamState()
+  const store = useScannerStore()
 
-  useEffect(() => {
-    if (!window.isSecureContext) {
-      setError(
-        new Error(`[react-barcode-scanner]: 
-          Browser ask for secure origin (such as https) when use getUserMedia,
-          reference: https://sites.google.com/a/chromium.org/dev/Home/chromium-security/deprecating-powerful-features-on-insecure-origins
-        `)
-      )
-    }
-  }, [])
+  const trackConstraintsKey = JSON.stringify(trackConstraints)
+  const trackConstraintsRef = useRef({ key: trackConstraintsKey, value: trackConstraints })
+  if (trackConstraintsRef.current.key !== trackConstraintsKey) {
+    trackConstraintsRef.current = { key: trackConstraintsKey, value: trackConstraints }
+  }
+  const stableTrackConstraints = trackConstraintsRef.current.value
 
-  const constraints = useMemo(() => {
-    const videoConstraints = Object.assign({}, DEFAULT_CONSTRAINTS, trackConstraints)
+  const constraints = useMemo<MediaStreamConstraints>(() => {
+    const videoConstraints = Object.assign({}, DEFAULT_CONSTRAINTS, stableTrackConstraints)
     return {
       audio: false,
       video: videoConstraints
     }
-  }, [trackConstraints])
+  }, [stableTrackConstraints])
 
   useEffect(() => {
     let cancelled = false
-    let stream: MediaStream
-    const _ = async (): Promise<void> => {
-      setError(undefined)
+    let stream: MediaStream | undefined
+    const abortController = new AbortController()
+    const target = ref.current
 
-      const target = ref.current
-      if (target == null) return
+    setIsCameraReady(false)
+    setError(undefined)
 
-      stream = await navigator.mediaDevices.getUserMedia(constraints)
+    if (target == null) return
 
-      // Firefox need use `moz` prefix before v58
-      // reference: https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/srcObject#browser_compatibility
-      if (target.mozSrcObject !== undefined) {
-        target.mozSrcObject = stream
-      } else {
-        target.srcObject = stream
+    const open = async (): Promise<void> => {
+      if (!window.isSecureContext) {
+        throw new Error('[react-barcode-scanner]: getUserMedia requires a secure origin such as HTTPS')
       }
+
+      if (navigator.mediaDevices?.getUserMedia == null) {
+        throw new Error('[react-barcode-scanner]: navigator.mediaDevices.getUserMedia is not supported')
+      }
+
+      const nextStream = await navigator.mediaDevices.getUserMedia(constraints)
+      if (cancelled) {
+        nextStream.getTracks().forEach(track => { track.stop() })
+        return
+      }
+      stream = nextStream
+
+      target.srcObject = nextStream
 
       // According to: https://oberhofer.co/mediastreamtrack-and-its-capabilities/#queryingcapabilities
       // On some devices, getCapabilities only returns a non-empty object after
       // some delay. There is no appropriate event so we have to add a constant timeout
-      await eventListener(target, 'loadeddata')
-      await timeout(500)
+      if (target.readyState < HTMLMediaElement.HAVE_CURRENT_DATA) {
+        await eventListener(target, 'loadeddata', 'error', abortController.signal)
+      }
+      await timeout(500, abortController.signal)
+
+      if (cancelled) return
 
       setIsCameraReady(true)
-
-      setStream(stream)
+      store.setStream(nextStream)
     }
 
-    const close = () => {
+    const close = (): void => {
       stream?.getTracks().forEach(track => { track.stop() })
+      if (stream != null) {
+        store.clearStream(stream)
+      }
+
+      if (target.srcObject === stream) {
+        target.srcObject = null
+      }
     }
 
-    void _().then(() => {
-      if (cancelled) {
-        close()
+    void open().catch((err: unknown) => {
+      if (!cancelled) {
+        setIsCameraReady(false)
+        setError(err instanceof Error ? err : new Error(String(err)))
       }
-    }).catch(err => {
-      setError(err)
     })
 
     return () => {
       cancelled = true
+      abortController.abort()
       close()
     }
-  }, [ref, constraints, setStream])
+  }, [ref, constraints, store])
 
   return { isCameraReady, error }
 }

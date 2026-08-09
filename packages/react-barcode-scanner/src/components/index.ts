@@ -1,1 +1,1 @@
-export { default as BarcodeScanner } from './barcode-scanner'
+export { default as BarcodeScanner } from './barcode-scanner.js'

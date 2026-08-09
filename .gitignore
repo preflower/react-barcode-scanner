@@ -11,8 +11,10 @@ lerna-debug.log*
 node_modules
 
 # prod packages
+dist
 lib
 esm
+cjs
 
 *.local
 

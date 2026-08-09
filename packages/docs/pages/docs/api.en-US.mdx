@@ -1,29 +1,62 @@
 ---
-title: API
+title: React Barcode Scanner API Reference
+description: API reference for BarcodeScanner, BarcodeScannerProvider, useCamera, useScanning, useTorch, useStreamState, options, defaults and TypeScript types.
 ---
 
+## BarcodeScannerProvider
+
+`BarcodeScannerProvider` creates an isolated stream and torch scope. It is optional; hooks outside a Provider continue to use the global compatibility scope.
+
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| `initialTorchOn` | `boolean` | `false` | Initial torch state, read once when the Provider store is created. |
+| `children` | `ReactNode` | required | Scanner and state consumers that belong to this scope. |
+
+```tsx
+<BarcodeScannerProvider initialTorchOn={false}>
+  <BarcodeScanner />
+  <ScannerControls />
+</BarcodeScannerProvider>
+```
+
+`useStreamState()` and `useTorch()` resolve the nearest Provider. Different Providers are isolated; without a Provider they resolve the module-level compatibility store.
+
+See [State Scope and Multiple Scanners](./state-scope) for ownership, lifecycle, async torch and SSR behavior.
+
 ## BarcodeScanner
-| Name      	| Type                              	| Default Value                         	| Description                                               	|
-|-----------	|-----------------------------------	|---------------------------------------	|-----------------------------------------------------------	|
-| options   	| [ScanOptions](#scanoptions)         | [DEFAULT_OPTIONS](#default_options) 	  | / 	                                                        |
-| onCapture 	| (barcodes: DetectedBarcode[]) => any 	| /                                     	| Triggered when the specified QR code is scanned           	|
-| trackConstraints   	| MediaTrackConstraints       	| [DEFAULT_CONSTRAINTS](#default_constraints) 	| Based on the [MediaTrackConstraints](https://developer.mozilla.org/en-US/docs/Web/API/MediaTrackConstraints) standard 	|
-| paused   	| Boolean       	| false                                     	| Set the camera to pause scanning 	                                                        |
+
+`BarcodeScanner` accepts the standard React video attributes in addition to these props:
+
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| `options` | [`ScanOptions`](#scanoptions) | [`DEFAULT_OPTIONS`](#default_options) | Scan interval and barcode formats. |
+| `onCapture` | `(barcodes: DetectedBarcode[]) => void` | — | Called after one or more barcodes are detected. |
+| `onCameraError` | `(error: Error) => void` | — | Called when camera initialization fails. |
+| `onScanError` | `(error: Error) => void` | — | Called when the detector fails. |
+| `trackConstraints` | `MediaTrackConstraints` | [`DEFAULT_CONSTRAINTS`](#default_constraints) | Additional video track constraints. |
+| `paused` | `boolean` | `false` | Pauses video playback and scanning without unmounting the component. |
 
 ## useCamera
-| Name               	| Type                        	| Default Value       	                        | Description                                                                                                             |
-|--------------------	|-----------------------------	|---------------------------------------------	|------------------------------------------------------------------------------------------------------------------------	|
-| ref               	| `RefObject<HTMLVideoElement>` | Required*            	                        | HTMLVideoElement instance                                                                                             	|
-| trackConstraints   	| MediaTrackConstraints       	| [DEFAULT_CONSTRAINTS](#default_constraints) 	| Based on the [MediaTrackConstraints](https://developer.mozilla.org/en-US/docs/Web/API/MediaTrackConstraints) standard 	|
+
+```ts
+function useCamera(
+  ref: RefObject<HTMLVideoElement | null>,
+  trackConstraints?: MediaTrackConstraints
+): {
+  isCameraReady: boolean
+  error: Error | undefined
+}
+```
+
+Creates the camera stream, assigns it to the video element and exposes initialization errors.
 
 ### DEFAULT_CONSTRAINTS
+
 ```js
 {
   width: { min: 640, ideal: 1280 },
   height: { min: 480, ideal: 720 },
-  facingMode: {
-    ideal: 'environment'
-  },
+  facingMode: { ideal: 'environment' },
   advanced: [
     { width: 1920, height: 1280 },
     { aspectRatio: 1.333 }
@@ -33,12 +66,22 @@ title: API
 
 ## useScanning
 
-| Name               	| Type                        	| Default Value   	                    | Description                                         	|
-|--------------------	|-----------------------------	|-------------------------------------	|-----------------------------------------------------	|
-| ref               	| `RefObject<HTMLVideoElement>` | Required*        	                    | HTMLVideoElement instance                           	|
-| options            	| [ScanOptions](#scanoptions)   | [DEFAULT_OPTIONS](#default_options) 	| delay: scan interval  <br/> formats: barcode format, [support formats](./guide#barcode-format) 	|
+```ts
+function useScanning(
+  ref: RefObject<HTMLVideoElement | null>,
+  options?: ScanOptions
+): {
+  detectedBarcodes: DetectedBarcode[] | undefined
+  error: Error | undefined
+  startScan: () => void
+  stopScan: () => void
+}
+```
+
+The hook waits for `react-barcode-scanner/polyfill` to finish loading before creating a detector. A detector is reused until `formats` changes.
 
 ### DEFAULT_OPTIONS
+
 ```js
 {
   delay: 1000,
@@ -48,23 +91,48 @@ title: API
 
 ## useTorch
 
-| Name 	| Type    	| Default Value 	| Description        	|
-|------	|---------	|---------------	|--------------------	|
-| defaultTorchOn 	| Boolean 	| false         	| Enabled by default 	|
+```ts
+function useTorch(defaultTorchOn?: boolean): {
+  isTorchSupported: boolean
+  error: Error | undefined
+  isTorchOn: boolean
+  setIsTorchOn: (torch: boolean) => void
+}
+```
+
+Torch support depends on the active camera track and the browser/device capabilities.
 
 ## useStreamState
-Manage `stream` obtained from `useCamera`
 
 ```ts
-function useStreamState (): [MediaStream | undefined, (newState: MediaStream) => void]
+function useStreamState(): [
+  MediaStream | undefined,
+  (newState: MediaStream | undefined) => void
+]
 ```
+
+Exposes the stream created by `useCamera`, including to components outside `BarcodeScanner`.
+
+> Without a `BarcodeScannerProvider`, `useStreamState` and `useTorch` use module-level shared state. Wrap each scanner and its consumers in a separate Provider when rendering multiple active scanners.
 
 ## Types
 
 ### ScanOptions
+
 ```ts
 interface ScanOptions {
   delay?: number
-  formats?: string[]
+  formats?: Array<BarcodeFormat | string>
+}
+```
+
+### DetectedBarcode
+
+```ts
+interface DetectedBarcode {
+  boundingBox: DOMRectReadOnly
+  cornerPoints: Point[]
+  format: string
+  rawValue: string
 }
 ```

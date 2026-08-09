@@ -17,58 +17,60 @@
   },
   "repository": "https://github.com/preflower/react-barcode-scanner",
   "author": "Ted Lin <preflower.lin@gmail.com> (https://github.com/preflower)",
+  "type": "module",
   "files": [
-    "esm/",
-    "lib/"
+    "dist/"
   ],
-  "main": "lib/index.js",
-  "module": "esm/index.js",
-  "types": "lib/index.d.ts",
+  "main": "dist/index.cjs",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
   "exports": {
     ".": {
-      "require": {
-        "types": "./lib/index.d.ts",
-        "default": "./lib/index.js"
-      },
       "import": {
-        "types": "./esm/index.d.ts",
-        "default": "./esm/index.js"
-      }
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      },
+      "default": "./dist/index.js"
     },
     "./polyfill": {
-      "require": {
-        "types": "./lib/polyfill.d.ts",
-        "default": "./lib/polyfill.js"
-      },
       "import": {
-        "types": "./esm/polyfill.d.ts",
-        "default": "./esm/polyfill.js"
-      }
+        "types": "./dist/polyfill.d.ts",
+        "default": "./dist/polyfill.js"
+      },
+      "require": {
+        "types": "./dist/polyfill.d.cts",
+        "default": "./dist/polyfill.cjs"
+      },
+      "default": "./dist/polyfill.js"
     }
   },
-  "typings": "lib/index.d.ts",
+  "typings": "dist/index.d.ts",
   "publishConfig": {
     "access": "public"
   },
   "scripts": {
-    "build:cjs": "tsc",
-    "build:es": "tsc -m esNext --outDir esm",
-    "build": "pnpm build:cjs && pnpm build:es"
+    "build": "vp pack",
+    "test": "pnpm build && vp test run tests/use-atom.test.ts tests/scanner-store.test.ts tests/provider-ssr.test.tsx && node --test tests/core.test.cjs"
   },
   "peerDependencies": {
     "react": "*",
     "react-dom": "*"
   },
   "dependencies": {
-    "@preflower/barcode-detector-polyfill": "^0.9.21",
-    "tslib": "^2.8.1",
-    "webrtc-adapter": "^9.0.6"
+    "@undecaf/zbar-wasm": "^0.11.0",
+    "tslib": "^2.8.1"
   },
   "devDependencies": {
+    "@preflower/barcode-detector-polyfill": "^0.9.21",
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.4",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "vite-plus": "^0.2.8"
   }
 }

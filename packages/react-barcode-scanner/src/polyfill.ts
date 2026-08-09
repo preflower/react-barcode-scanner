@@ -1,11 +1,13 @@
-import { BarcodeDetectorPolyfill } from '@preflower/barcode-detector-polyfill'
+import {
+  hasBarcodeDetector,
+  installBarcodeDetector,
+  setBarcodeDetectorPolyfillReady
+} from './helper/barcode-detector.js'
 
-if (typeof window !== 'undefined') {
-  try {
-    // @ts-expect-error fix BarcodeDetector is not supported error
-    window.BarcodeDetector.getSupportedFormats()
-  } catch {
-    // @ts-expect-error fix BarcodeDetector is not contain in window error
-    window.BarcodeDetector = BarcodeDetectorPolyfill
-  }
-}
+export const barcodeDetectorPolyfillReady = typeof window === 'undefined' || hasBarcodeDetector()
+  ? Promise.resolve()
+  : import('@preflower/barcode-detector-polyfill').then(({ BarcodeDetectorPolyfill }) => {
+    installBarcodeDetector(BarcodeDetectorPolyfill)
+  })
+
+setBarcodeDetectorPolyfillReady(barcodeDetectorPolyfillReady)

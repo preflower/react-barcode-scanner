@@ -1,15 +1,20 @@
-import { type RefObject, useCallback, useEffect, useMemo, useState } from 'react'
+import { type RefObject, useCallback, useEffect, useRef, useState } from 'react'
 
-import { BarcodeFormat, type DetectedBarcode } from '../types'
+import { getBarcodeDetector, getBarcodeDetectorPolyfillReady } from '../helper/barcode-detector.js'
+import { BarcodeFormat, type DetectedBarcode } from '../types.js'
 
 export interface ScanOptions {
   delay?: number
   formats?: Array<BarcodeFormat | string>
 }
 
-const DEFAULT_OPTIONS = {
+const DEFAULT_OPTIONS: Required<ScanOptions> = {
   delay: 1000,
   formats: ['qr_code']
+}
+
+const toError = (error: unknown): Error => {
+  return error instanceof Error ? error : new Error(String(error))
 }
 
 /**
@@ -42,56 +47,95 @@ const DEFAULT_OPTIONS = {
  */
 export function useScanning (ref: RefObject<HTMLVideoElement | null>, provideOptions?: ScanOptions): {
   detectedBarcodes: DetectedBarcode[] | undefined,
+  error: Error | undefined,
   startScan: () => void,
   stopScan: () => void
   } {
   const [detectedBarcodes, setDetectedBarcodes] = useState<DetectedBarcode[]>()
+  const [error, setError] = useState<Error>()
   const [start, setStart] = useState(false)
-  const options = useMemo(() => {
-    return Object.assign({}, DEFAULT_OPTIONS, provideOptions)
-  }, [provideOptions])
+  const detectorRef = useRef<{
+    detector: InstanceType<NonNullable<ReturnType<typeof getBarcodeDetector>>>
+    formatsKey: string
+  } | undefined>(undefined)
+
+  const formats = provideOptions?.formats ?? DEFAULT_OPTIONS.formats
+  const formatsKey = JSON.stringify(formats)
+  const formatsRef = useRef(formats)
+  formatsRef.current = formats
+  const providedDelay = provideOptions?.delay
+  const delay = providedDelay !== undefined && Number.isFinite(providedDelay) && providedDelay >= 0
+    ? providedDelay
+    : DEFAULT_OPTIONS.delay
 
   const scan = useCallback(async () => {
     const target = ref.current
-    const detector = new BarcodeDetector({
-      formats: options.formats
-    })
-    const detected = await detector.detect(target!)
-    if (detected !== undefined && detected.length > 0) {
-      setDetectedBarcodes(detected)
+    if (target == null) return []
+
+    await getBarcodeDetectorPolyfillReady()
+
+    const Detector = getBarcodeDetector()
+    if (Detector == null) {
+      throw new Error('[react-barcode-scanner]: BarcodeDetector is not available; import react-barcode-scanner/polyfill')
     }
-  }, [ref, options.formats])
+
+    if (detectorRef.current?.formatsKey !== formatsKey) {
+      detectorRef.current = {
+        detector: new Detector({ formats: [...formatsRef.current] }),
+        formatsKey
+      }
+    }
+
+    return await detectorRef.current.detector.detect(target)
+  }, [formatsKey, ref])
 
   useEffect(() => {
     const target = ref.current
-    if (target == null || !start) return
+    if (target == null || !start || formats.length === 0) return
 
     /**
      * provide `cancelled` tag to prevent `frame` has been
      * triggered but `scan` not fulfilled when call cancelAnimationFrame
      */
     let cancelled = false
-    let timer: number
+    let timer: number | undefined
     const frame = async (): Promise<void> => {
-      await scan()
-      if (!cancelled) {
-        timer = window.setTimeout(frame, options.delay)
+      try {
+        const detected = await scan()
+        if (!cancelled) {
+          setError(undefined)
+          if (detected.length > 0) {
+            setDetectedBarcodes(detected)
+          }
+        }
+      } catch (err) {
+        if (!cancelled) {
+          const nextError = toError(err)
+          setError(currentError => currentError?.message === nextError.message ? currentError : nextError)
+        }
+      } finally {
+        if (!cancelled) {
+          timer = window.setTimeout(frame, delay)
+        }
       }
     }
-    frame()
+    void frame()
     return () => {
-      clearTimeout(timer)
       cancelled = true
+      if (timer !== undefined) {
+        clearTimeout(timer)
+      }
     }
-  }, [start, ref, options.delay, scan])
+  }, [delay, formats.length, ref, scan, start])
 
   useEffect(() => {
-    if (options.formats.length === 0) {
+    if (formats.length === 0) {
       setStart(false)
     }
-  }, [options.formats])
+  }, [formats.length])
 
   const startScan = useCallback(() => {
+    setError(undefined)
     setStart(true)
   }, [])
 
@@ -101,6 +145,7 @@ export function useScanning (ref: RefObject<HTMLVideoElement | null>, provideOpt
 
   return {
     detectedBarcodes,
+    error,
     startScan,
     stopScan
   }

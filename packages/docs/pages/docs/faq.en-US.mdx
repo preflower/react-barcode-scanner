@@ -1,0 +1,58 @@
+---
+title: React Barcode Scanner FAQ and Troubleshooting
+description: Direct answers about React Barcode Scanner browser support, Next.js SSR, multiple scanners, camera permissions, torch control and common errors.
+---
+
+# React Barcode Scanner FAQ
+
+Concise answers to common implementation and troubleshooting questions. For exact signatures and defaults, use the [API reference](./api).
+
+## What is React Barcode Scanner?
+
+React Barcode Scanner is a TypeScript React component and hooks library for scanning QR codes and one-dimensional barcodes in a browser. It uses the Barcode Detection API and provides a zbar WebAssembly polyfill.
+
+## Does React Barcode Scanner work with Next.js and SSR?
+
+The package can be imported during server-side rendering. Camera access starts only after the scanner mounts in the browser. In Next.js, keep the Provider, scanner and controls in the same Client Component.
+
+If you disable SSR with `next/dynamic`, load the complete scanner panel. See the [Next.js examples](./guide#nextjs).
+
+## How do I use multiple barcode scanners?
+
+Wrap each active scanner and its controls in a separate `BarcodeScannerProvider`. Each Provider isolates the media stream, torch state, capability detection and errors.
+
+See [State Scope and Multiple Scanners](./state-scope) for ownership and lifecycle rules.
+
+## Can another component read the current camera stream or torch state?
+
+Yes. Place that component under the same `BarcodeScannerProvider` and call `useStreamState` or `useTorch`. Without a Provider, hooks use the global compatibility scope.
+
+## Why does the browser report that the camera is unavailable?
+
+Camera access requires HTTPS or localhost, a user-granted camera permission and an available camera device. Check `onCameraError` or `useCamera().error` for the original browser error. Browser camera APIs are restricted to [secure contexts](https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getUserMedia#privacy_and_security).
+
+Common causes include a denied permission, another application owning the camera, no camera matching the requested constraints, or opening the page over plain HTTP on a non-localhost domain.
+
+## Which barcode formats are supported?
+
+The default format is `qr_code`. The zbar polyfill supports the Barcode Detection API format list except `aztec`, `data_matrix` and `pdf417`. Pass the required formats through `options.formats`; selecting fewer formats can reduce unnecessary work.
+
+```tsx
+<BarcodeScanner options={{ formats: ['qr_code', 'code_128'] }} />
+```
+
+## Why is the torch button unavailable?
+
+Torch support depends on the selected camera, browser and device. Wait for the camera stream and check `useTorch().isTorchSupported`. A desktop webcam commonly does not expose a torch capability.
+
+## Does the package support React 18 and React 19?
+
+Yes. React and React DOM are peer dependencies, and the package is tested with React 19 while the documentation application builds with React 18. Keep `react` and `react-dom` on matching versions in the consuming application.
+
+## Does the package support ESM and CommonJS?
+
+Yes. The published package provides separate ESM and CommonJS entries plus TypeScript declarations. Import the polyfill from `react-barcode-scanner/polyfill` in either module system.
+
+## Where should I report a reproducible problem?
+
+Open an issue in the [GitHub repository](https://github.com/preflower/react-barcode-scanner/issues) and include the package version, framework and browser versions, device, error callback output and a minimal reproduction.

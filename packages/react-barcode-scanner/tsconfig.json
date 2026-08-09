@@ -8,8 +8,8 @@
       "ESNext"
     ],
     "useDefineForClassFields": true,
-    "module": "CommonJS",
-    "moduleResolution": "Node",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
     "resolveJsonModule": true,
     "allowJs": false,
     "strict": true,

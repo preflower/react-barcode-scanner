@@ -1,18 +1,42 @@
 ---
-title: 介绍
+title: 适用于 React 和 Next.js 的浏览器扫码组件
+description: 基于 Barcode Detection API 和 zbar WebAssembly polyfill 的 TypeScript React 扫码组件，支持 Hooks、多实例状态隔离和 Next.js。
 ---
 
-## React Barcode Scanner
+# React Barcode Scanner
 
-一款基于 `Barcode Detection API` 和 `zbar.wasm` 的轻量化扫码器
+React Barcode Scanner 是一个使用 TypeScript 编写的 React 组件与 Hooks 库，用于通过浏览器相机识别二维码和常见一维条码。浏览器原生支持时使用 Barcode Detection API，否则可以通过 zbar WebAssembly polyfill 提供更广泛的兼容性。
 
-### 特性
+## 适合什么场景？
 
-- 基于浏览器`Barcode Detection API`规范
-- Polyfill 使用 `zbar wasm` 库，大小仅~230kb
-- 基于React Hooks, 提供高自定义能力
-- 使用 TypeScript 构建，提供完整的类型定义文件
+当 React 或 Next.js 应用需要内嵌相机扫码、读取识别结果、配置条码格式、控制闪光灯，或者同时管理多个独立扫码器时，可以使用 React Barcode Scanner。
 
-### 反馈与共建
+单个扫码器只需引入 polyfill 即可使用。多个扫码器，或需要从其他组件控制扫码器时，可以通过 `BarcodeScannerProvider` 隔离每个扫码器的媒体流和闪光灯状态。
 
-请访问 [GitHub](https://github.com/preflower/react-barcode-scanner/issues) 创建 issue 或 PR
+## 核心能力
+
+- React 组件以及可组合的相机、扫描、媒体流和闪光灯 Hooks
+- 支持二维码和常见一维条码
+- 约 230 kB 的 zbar WebAssembly polyfill
+- 多个活动扫码器之间的状态隔离
+- 包入口支持 SSR，并提供 Next.js 集成说明
+- 同时提供 ESM、CommonJS 和完整 TypeScript 类型声明
+- 明确的相机错误与扫描错误回调
+
+## 重要浏览器条件
+
+相机访问需要 HTTPS 或 localhost，并需要用户授权。闪光灯是否可用取决于相机、浏览器和设备。polyfill 不支持 `aztec`、`data_matrix` 和 `pdf417`。
+
+## 从这里开始
+
+- [安装组件包](./docs/install)
+- [创建第一个扫码器](./docs/guide)
+- [了解多实例和组件外状态](./docs/state-scope)
+- [查看 API 参考](./docs/api)
+- [打开交互 Demo](./docs/demo)
+- [测试两个隔离的扫码器实例](./docs/multiple-scanners)
+- [排查常见问题](./docs/faq)
+
+## 项目与支持
+
+项目使用 MIT 许可证。可以访问 [GitHub](https://github.com/preflower/react-barcode-scanner)查看源码和提交问题，或在 [npm 查看 `react-barcode-scanner`](https://www.npmjs.com/package/react-barcode-scanner)。
