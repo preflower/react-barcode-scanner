@@ -5,3 +5,15 @@ packages:
   - 'components/**'
   # exclude packages that are inside test directories
   - '!**/test/**'
+
+virtualStoreDirMaxLength: 120
+
+hoistPattern:
+  - '*'
+
+publicHoistPattern:
+  - '*eslint*'
+  - '*prettier*'
+
+overrides:
+  vite: npm:@voidzero-dev/vite-plus-core@0.2.8

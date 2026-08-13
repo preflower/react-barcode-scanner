@@ -8,12 +8,6 @@ declare global {
   interface MediaTrackCapabilities {
     torch?: boolean
   }
-
-  // Firefox need use `moz` prefix before v58
-  // reference: https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/srcObject#browser_compatibility
-  interface HTMLVideoElement {
-    mozSrcObject?: MediaStream
-  }
 }
 
 export {}

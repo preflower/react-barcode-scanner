@@ -1,0 +1,175 @@
+---
+title: React Barcode Scanner 状态作用域与多实例
+description: 使用 BarcodeScannerProvider 在组件外控制扫码状态并隔离多个扫码器，包含生命周期、闪光灯队列和 SSR 规则。
+---
+
+## 概述
+
+`react-barcode-scanner` 将相机、扫描、媒体流和闪光灯能力拆分为独立 hooks。状态作用域用于确定 `useStreamState()` 和 `useTorch()` 当前属于哪个扫码器。
+
+目前有两种模式：
+
+| 模式 | 适用场景 | 行为 |
+| --- | --- | --- |
+| 全局兼容作用域 | 只有一个活动扫码器 | 无需增加组件，保持现有用法。 |
+| `BarcodeScannerProvider` | 多扫码器或需要明确状态归属 | 创建相互隔离的媒体流、闪光灯和闪光灯错误 store。 |
+
+## 全局兼容模式
+
+现有的单扫码器应用不需要添加 Provider：
+
+```tsx
+function App () {
+  const [stream] = useStreamState()
+  const { isTorchOn, setIsTorchOn } = useTorch()
+
+  return (
+    <>
+      <BarcodeScanner />
+      <p>{stream?.id ?? '暂无媒体流'}</p>
+      <button onClick={() => setIsTorchOn(!isTorchOn)}>
+        闪光灯：{isTorchOn ? '开启' : '关闭'}
+      </button>
+    </>
+  )
+}
+```
+
+Provider 外的 hooks 会解析到同一个模块级全局兼容 store。该模式不保证多个同时活动的扫码器能够正确隔离。
+
+## Provider 模式
+
+扫码器和所有需要访问其状态的组件必须放在同一个 Provider 中：
+
+```tsx
+import {
+  BarcodeScanner,
+  BarcodeScannerProvider,
+  useStreamState,
+  useTorch
+} from 'react-barcode-scanner'
+
+function ScannerControls () {
+  const [stream] = useStreamState()
+  const {
+    isTorchSupported,
+    error,
+    isTorchOn,
+    setIsTorchOn
+  } = useTorch()
+
+  return (
+    <section>
+      <p>媒体流：{stream?.id ?? '无'}</p>
+      <button
+        disabled={!isTorchSupported}
+        onClick={() => setIsTorchOn(!isTorchOn)}
+      >
+        闪光灯：{isTorchOn ? '开启' : '关闭'}
+      </button>
+      {error && <p role="alert">{error.message}</p>}
+    </section>
+  )
+}
+
+export default function ScannerPanel () {
+  return (
+    <BarcodeScannerProvider initialTorchOn={false}>
+      <BarcodeScanner />
+      <ScannerControls />
+    </BarcodeScannerProvider>
+  )
+}
+```
+
+hooks 会解析距离最近的 Provider。React Portal 会保留 Context，因此仍然属于原 Provider；不同 React root 之间不会共享 Context。
+
+## 多个扫码器
+
+每个活动扫码器使用一个独立 Provider：
+
+可以通过[多实例测试 Demo](./multiple-scanners)直接验证下面的隔离行为。
+
+```tsx
+<BarcodeScannerProvider>
+  <BarcodeScanner />
+  <ScannerControls name="扫码器 A" />
+</BarcodeScannerProvider>
+
+<BarcodeScannerProvider>
+  <BarcodeScanner />
+  <ScannerControls name="扫码器 B" />
+</BarcodeScannerProvider>
+```
+
+两个作用域分别维护媒体流、闪光灯状态、能力检测和闪光灯错误。卸载一个扫码器不会清除另一个扫码器的状态。
+
+## 闪光灯初始值
+
+Provider 模式下，`initialTorchOn` 只在 Provider store 创建时读取一次：
+
+```tsx
+<BarcodeScannerProvider initialTorchOn>
+  <ScannerPanel />
+</BarcodeScannerProvider>
+```
+
+挂载后修改 `initialTorchOn` 不会覆盖用户选择的值。Provider 内调用 `useTorch(defaultTorchOn)` 也不会覆盖 Provider 的初始值。
+
+没有 Provider 时，第一个挂载的 `useTorch(defaultTorchOn)` 会初始化全局兼容状态。多个全局消费者提供冲突默认值时不保证结果；需要确定初始值时应使用 Provider。
+
+## 闪光灯异步操作
+
+闪光灯操作按 scanner store 统一协调，而不是由每个 `useTorch()` 消费者分别执行：
+
+- 多个消费者读取相同的公开状态；
+- 重复设置同一个值不会再次操作硬件；
+- 快速切换会串行处理，并可能合并尚未开始的中间值；
+- 最终操作与最后一次请求的值一致；
+- 旧 video track 的延迟结果不会覆盖新 track 的状态或错误。
+
+`setIsTorchOn()` 会立即更新请求状态。如果浏览器拒绝 `applyConstraints()`，可以通过 `useTorch().error` 读取错误。
+
+## 生命周期
+
+`useCamera()` 会把媒体流注册到当前作用域，并在清理时停止自己拥有的 tracks。清理过程会比较 stream 身份，因此旧扫码器不会清除同一 store 中后来注册的新 stream。
+
+注册新的 video track 后，会清除旧 track 的闪光灯能力和错误，并重新执行能力检测。
+
+## SSR 与 Next.js
+
+模块导入本身支持 SSR：浏览器媒体 API 只会在挂载后访问。Provider store 按 Provider 实例创建，服务端渲染期间 hook 默认值也不会写入全局兼容 store。
+
+为了获得最清晰的请求隔离，建议把 Provider、扫码器和状态组件放在同一个仅客户端加载的面板中。
+
+### Pages Router
+
+```tsx
+import dynamic from 'next/dynamic'
+
+const ScannerPanel = dynamic(
+  () => import('../components/ScannerPanel'),
+  { ssr: false }
+)
+```
+
+### App Router
+
+`ScannerPanel.tsx` 内包含 `BarcodeScannerProvider`、`BarcodeScanner` 和控制组件。声明关闭 SSR 的包装组件本身也必须是客户端组件：
+
+```tsx
+'use client'
+
+import dynamic from 'next/dynamic'
+
+const ScannerPanel = dynamic(
+  () => import('./ScannerPanel'),
+  { ssr: false }
+)
+
+export default function ScannerPageClient () {
+  return <ScannerPanel />
+}
+```
+
+不要只动态加载 `BarcodeScanner`，同时把 Provider 和控制组件留在另一个作用域中。

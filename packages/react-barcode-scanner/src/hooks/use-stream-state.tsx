@@ -1,9 +1,10 @@
-import { createAtom, useAtom } from './use-atom'
+import { useScannerStore } from '../context/barcode-scanner-context.js'
 
-const streamAtom = createAtom()
+import { useAtom } from './use-atom.js'
 
-export function useStreamState (): [MediaStream | undefined, (newState: MediaStream) => void] {
-  const [stream, setStream] = useAtom<MediaStream>(streamAtom)
+export function useStreamState (): [MediaStream | undefined, (newState: MediaStream | undefined) => void] {
+  const store = useScannerStore()
+  const [stream] = useAtom(store.stream)
 
-  return [stream, setStream]
+  return [stream, store.setStream]
 }

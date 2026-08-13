@@ -1,0 +1,58 @@
+---
+title: React Barcode Scanner 常见问题与故障排查
+description: 解答 React Barcode Scanner 的浏览器兼容、Next.js SSR、多扫码器、相机权限、闪光灯控制和常见错误。
+---
+
+# React Barcode Scanner 常见问题
+
+这里提供常见实现和故障排查问题的直接答案。精确的函数签名和默认值请查看 [API 参考](./api)。
+
+## React Barcode Scanner 是什么？
+
+React Barcode Scanner 是一个使用 TypeScript 编写的 React 浏览器扫码组件与 Hooks 库。它基于 Barcode Detection API，并提供 zbar WebAssembly polyfill，可识别二维码和一维条码。
+
+## React Barcode Scanner 支持 Next.js 和 SSR 吗？
+
+包本身可以在服务端渲染期间导入，相机只会在组件挂载到浏览器后启动。在 Next.js 中，应将 Provider、扫码组件和控制组件放在同一个客户端组件内。
+
+如果通过 `next/dynamic` 禁用 SSR，应动态加载完整的扫码面板。具体参考 [Next.js 示例](./guide#nextjs)。
+
+## 如何同时使用多个扫码器？
+
+为每个活动扫码器及其控制组件分别创建 `BarcodeScannerProvider`。不同 Provider 的媒体流、闪光灯状态、能力检测和错误相互隔离。
+
+所有权和生命周期规则请查看[状态作用域与多实例](./state-scope)。
+
+## 其他组件可以读取当前相机流或闪光灯状态吗？
+
+可以。将组件放到同一个 `BarcodeScannerProvider` 下，再调用 `useStreamState` 或 `useTorch`。没有 Provider 时，Hooks 会使用全局兼容作用域。
+
+## 为什么浏览器提示相机不可用？
+
+相机访问需要 HTTPS 或 localhost、用户授予相机权限，并且设备上存在可用相机。通过 `onCameraError` 或 `useCamera().error` 可以读取浏览器返回的原始错误。浏览器相机 API 仅允许在[安全上下文](https://developer.mozilla.org/zh-CN/docs/Web/API/MediaDevices/getUserMedia#%E5%AE%89%E5%85%A8)中使用。
+
+常见原因包括：用户拒绝权限、相机正被其他应用占用、没有满足约束条件的相机，或者通过非 localhost 域名的普通 HTTP 页面访问。
+
+## 支持哪些条码格式？
+
+默认格式是 `qr_code`。zbar polyfill 支持 Barcode Detection API 格式列表中除 `aztec`、`data_matrix` 和 `pdf417` 之外的格式。通过 `options.formats` 传入实际需要的格式；减少格式数量也可以避免不必要的检测工作。
+
+```tsx
+<BarcodeScanner options={{ formats: ['qr_code', 'code_128'] }} />
+```
+
+## 为什么闪光灯按钮不可用？
+
+闪光灯支持取决于当前相机、浏览器和设备。等待相机媒体流就绪后检查 `useTorch().isTorchSupported`。桌面摄像头通常不提供闪光灯能力。
+
+## 支持 React 18 和 React 19 吗？
+
+支持。React 和 React DOM 是 peer dependencies；组件包使用 React 19 测试，文档应用使用 React 18 构建。业务项目中的 `react` 和 `react-dom` 应保持相同版本。
+
+## 同时支持 ESM 和 CommonJS 吗？
+
+支持。发布包分别提供 ESM、CommonJS 入口和 TypeScript 类型声明。在两种模块系统中都可以从 `react-barcode-scanner/polyfill` 引入 polyfill。
+
+## 如何反馈可复现的问题？
+
+请在 [GitHub 仓库](https://github.com/preflower/react-barcode-scanner/issues)创建 issue，并提供包版本、框架和浏览器版本、设备信息、错误回调输出以及最小复现。

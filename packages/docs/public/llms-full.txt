@@ -1,0 +1,91 @@
+# React Barcode Scanner: condensed technical reference
+
+React Barcode Scanner is a browser barcode-scanning library for React. It is written in TypeScript and publishes ESM, CommonJS and declaration files. The library uses the browser Barcode Detection API and a zbar WebAssembly polyfill. It is intended for camera-based QR-code and one-dimensional barcode scanning in React and Next.js applications.
+
+## Install
+
+```shell
+pnpm add react-barcode-scanner
+```
+
+Equivalent npm and Yarn commands are supported.
+
+## Minimal usage
+
+```tsx
+import { BarcodeScanner } from 'react-barcode-scanner'
+import 'react-barcode-scanner/polyfill'
+
+export default function Scanner () {
+  return <BarcodeScanner />
+}
+```
+
+The default format is `qr_code` and the default scan delay is 1000 milliseconds.
+
+```tsx
+<BarcodeScanner
+  options={{ delay: 500, formats: ['qr_code', 'code_128'] }}
+  onCapture={barcodes => console.log(barcodes)}
+  onCameraError={error => console.error(error)}
+  onScanError={error => console.error(error)}
+/>
+```
+
+## Core API
+
+- `BarcodeScanner`: Video scanner component. It accepts standard React video attributes plus `options`, `onCapture`, `onCameraError`, `onScanError`, `trackConstraints` and `paused`.
+- `BarcodeScannerProvider`: Optional state boundary for a scanner and external consumers. Use one Provider per active scanner when multiple scanners are rendered.
+- `useCamera(ref, trackConstraints)`: Creates and attaches a camera stream and returns camera readiness and initialization errors.
+- `useScanning(ref, options)`: Detects barcodes and returns detected values, scan errors, `startScan` and `stopScan`.
+- `useStreamState()`: Reads or updates the media stream in the current scanner scope.
+- `useTorch(defaultTorchOn?)`: Reads torch capability, requested torch state and errors, and provides `setIsTorchOn(boolean)`.
+
+## State ownership
+
+Without `BarcodeScannerProvider`, scanner hooks use a module-level global compatibility store. This is convenient for one active scanner and preserves earlier usage. For multiple active scanners or deterministic ownership, put each scanner and every component that reads its stream or torch state under a separate Provider.
+
+Provider state includes the current stream, torch requested state, torch support and torch errors. Separate Providers are isolated. React portals retain their originating Context; separate React roots do not share Provider Context.
+
+`initialTorchOn` is read once when the Provider store is created. Changing the prop later does not overwrite user state. Torch hardware operations are serialized per scanner store so rapid updates converge on the latest requested value.
+
+## Next.js and SSR
+
+Package import is SSR-safe because browser media APIs are accessed after mounting. Keep the Provider, scanner and components that consume scanner state in one Client Component. If disabling SSR with `next/dynamic`, dynamically load the complete scanner panel rather than only the `BarcodeScanner` child.
+
+```tsx
+'use client'
+
+import {
+  BarcodeScanner,
+  BarcodeScannerProvider
+} from 'react-barcode-scanner'
+import 'react-barcode-scanner/polyfill'
+
+export default function ScannerPanel () {
+  return (
+    <BarcodeScannerProvider>
+      <BarcodeScanner />
+    </BarcodeScannerProvider>
+  )
+}
+```
+
+## Browser requirements and limitations
+
+- Camera access requires a secure context such as HTTPS or localhost and explicit user permission.
+- Torch support depends on the active camera, browser and device. Check `isTorchSupported` before presenting a torch control.
+- The zbar polyfill supports the documented Barcode Detection API format list except `aztec`, `data_matrix` and `pdf417`.
+- The default camera constraints prefer an environment-facing camera at 1280 by 720 pixels.
+- A camera permission error is reported through `onCameraError` and `useCamera().error`; a detector error is reported through `onScanError` and `useScanning().error`.
+
+## Authoritative links
+
+- Documentation: https://reactbarcodescanner.vercel.app/
+- API: https://reactbarcodescanner.vercel.app/docs/api
+- State scope: https://reactbarcodescanner.vercel.app/docs/state-scope
+- Multiple scanners demo: https://reactbarcodescanner.vercel.app/docs/multiple-scanners
+- FAQ: https://reactbarcodescanner.vercel.app/docs/faq
+- Source: https://github.com/preflower/react-barcode-scanner
+- Package: https://www.npmjs.com/package/react-barcode-scanner
+- License: MIT

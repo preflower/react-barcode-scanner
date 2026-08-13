@@ -1,0 +1,32 @@
+# React Barcode Scanner
+
+> React Barcode Scanner is a TypeScript React component and hooks library for scanning QR codes and one-dimensional barcodes in web browsers. It uses the Barcode Detection API with a zbar WebAssembly polyfill, supports isolated multi-scanner state, and provides both ESM and CommonJS package entries.
+
+Use the English documentation as the canonical technical reference. Chinese translations are provided for the same topics. Camera access requires a secure browser context and user permission.
+
+## Documentation
+
+- [Introduction](https://reactbarcodescanner.vercel.app/): Capabilities, use cases, limitations and project links.
+- [Installation](https://reactbarcodescanner.vercel.app/docs/install): pnpm, yarn, npm and Vite setup.
+- [Getting Started](https://reactbarcodescanner.vercel.app/docs/guide): Basic scanner, formats, delay, torch, multiple scanners and Next.js.
+- [State Scope and Multiple Scanners](https://reactbarcodescanner.vercel.app/docs/state-scope): Provider ownership, global compatibility state, lifecycle, async torch behavior and SSR.
+- [API Reference](https://reactbarcodescanner.vercel.app/docs/api): Components, hooks, options, callbacks, defaults and types.
+- [Interactive Demo](https://reactbarcodescanner.vercel.app/docs/demo): Browser camera demo and controls.
+- [Multiple Scanners Demo](https://reactbarcodescanner.vercel.app/docs/multiple-scanners): Test two isolated Provider scopes, streams, controls, errors and lifecycle behavior.
+- [FAQ and Troubleshooting](https://reactbarcodescanner.vercel.app/docs/faq): Direct answers for compatibility, SSR, permissions and common errors.
+- [Full LLM Context](https://reactbarcodescanner.vercel.app/llms-full.txt): Condensed package reference and examples.
+
+## Chinese Documentation
+
+- [中文简介](https://reactbarcodescanner.vercel.app/zh-CN)
+- [快速入门](https://reactbarcodescanner.vercel.app/zh-CN/docs/guide)
+- [状态作用域与多实例](https://reactbarcodescanner.vercel.app/zh-CN/docs/state-scope)
+- [多实例测试 Demo](https://reactbarcodescanner.vercel.app/zh-CN/docs/multiple-scanners)
+- [API 参考](https://reactbarcodescanner.vercel.app/zh-CN/docs/api)
+- [常见问题](https://reactbarcodescanner.vercel.app/zh-CN/docs/faq)
+
+## Project
+
+- [GitHub repository](https://github.com/preflower/react-barcode-scanner): Source code, issues and releases.
+- [npm package](https://www.npmjs.com/package/react-barcode-scanner): Published package and version history.
+- License: MIT.

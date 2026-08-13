@@ -1,33 +1,66 @@
 ---
-title: API
+title: React Barcode Scanner API 参考
+description: BarcodeScanner、BarcodeScannerProvider、useCamera、useScanning、useTorch、useStreamState、选项、默认值和 TypeScript 类型参考。
 order: 2
 toc: menu
 nav:
   order: 2
 ---
 
+## BarcodeScannerProvider
+
+`BarcodeScannerProvider` 用于创建相互隔离的媒体流和闪光灯作用域。Provider 是可选的；Provider 外部的 hooks 会继续使用全局兼容作用域。
+
+| 名称 | 类型 | 默认值 | 说明 |
+| --- | --- | --- | --- |
+| `initialTorchOn` | `boolean` | `false` | Provider store 创建时读取一次的闪光灯初始状态。 |
+| `children` | `ReactNode` | 必填 | 属于该作用域的扫码器和状态消费者。 |
+
+```tsx
+<BarcodeScannerProvider initialTorchOn={false}>
+  <BarcodeScanner />
+  <ScannerControls />
+</BarcodeScannerProvider>
+```
+
+`useStreamState()` 和 `useTorch()` 会解析距离最近的 Provider。不同 Provider 互相隔离；没有 Provider 时则解析模块级全局兼容 store。
+
+状态归属、生命周期、闪光灯异步行为和 SSR 的完整说明见[状态作用域与多实例](./state-scope)。
+
 ## BarcodeScanner
-| Name      	| Type                              	| Default Value                         	| Description                	 |
-|-----------	|-----------------------------------	|---------------------------------------	|----------------------------- |
-| options   	| [ScanOptions](#scanoptions)         | [DEFAULT_OPTIONS](#default_options) 	  | / 	                         |
-| onCapture 	| (barcodes: DetectedBarcode[]) => any 	| /                                     	| 当检测到指定类型的码时触发       |
-| trackConstraints   	| MediaTrackConstraints       	| [DEFAULT_CONSTRAINTS](#default_constraints) 	| 基于[MediaTrackConstraints](https://developer.mozilla.org/en-US/docs/Web/API/MediaTrackConstraints)标准   |
-| paused   	| Boolean       	| false                                     	| 设置相机暂停扫描 	                                                        |
+
+除了下列属性，`BarcodeScanner` 也支持 React 标准的 video 元素属性：
+
+| 名称 | 类型 | 默认值 | 说明 |
+| --- | --- | --- | --- |
+| `options` | [`ScanOptions`](#scanoptions) | [`DEFAULT_OPTIONS`](#default_options) | 扫描间隔和条码格式。 |
+| `onCapture` | `(barcodes: DetectedBarcode[]) => void` | — | 检测到一个或多个条码后调用。 |
+| `onCameraError` | `(error: Error) => void` | — | 相机初始化失败时调用。 |
+| `onScanError` | `(error: Error) => void` | — | 条码检测失败时调用。 |
+| `trackConstraints` | `MediaTrackConstraints` | [`DEFAULT_CONSTRAINTS`](#default_constraints) | 额外的视频轨道约束。 |
+| `paused` | `boolean` | `false` | 在不卸载组件的情况下暂停视频和扫描。 |
 
 ## useCamera
-| Name               	| Type                        	| Default Value       	                        | Description                                                                                             |
-|--------------------	|-----------------------------	|---------------------------------------------	|--------------------------------------------------------------------------------------------------------	|
-| ref               	| `RefObject<HTMLVideoElement>` | Required*           	                        | HTMLVideoElement实例                                                                                   	 |
-| trackConstraints   	| MediaTrackConstraints       	| [DEFAULT_CONSTRAINTS](#default_constraints) 	| 基于[MediaTrackConstraints](https://developer.mozilla.org/en-US/docs/Web/API/MediaTrackConstraints)标准   |
+
+```ts
+function useCamera(
+  ref: RefObject<HTMLVideoElement | null>,
+  trackConstraints?: MediaTrackConstraints
+): {
+  isCameraReady: boolean
+  error: Error | undefined
+}
+```
+
+创建相机媒体流、绑定到 video 元素，并暴露初始化错误。
 
 ### DEFAULT_CONSTRAINTS
+
 ```js
 {
   width: { min: 640, ideal: 1280 },
   height: { min: 480, ideal: 720 },
-  facingMode: {
-    ideal: 'environment'
-  },
+  facingMode: { ideal: 'environment' },
   advanced: [
     { width: 1920, height: 1280 },
     { aspectRatio: 1.333 }
@@ -37,12 +70,22 @@ nav:
 
 ## useScanning
 
-| Name         	     | Type                        	| Default Value   	                    | Description                                         	|
-|--------------------	|-----------------------------	|-------------------------------------	|----------------------------------------------------  |
-| ref               	| `RefObject<HTMLVideoElement>` | Required*       	                    | HTMLVideoElement实例                                 	|
-| options            	| [ScanOptions](#scanoptions)   | [DEFAULT_OPTIONS](#default_options) 	| delay: 扫描间隔  <br/> formats: 扫描的条码格式, [支持格式](./guide#barcode-format) 	|
+```ts
+function useScanning(
+  ref: RefObject<HTMLVideoElement | null>,
+  options?: ScanOptions
+): {
+  detectedBarcodes: DetectedBarcode[] | undefined
+  error: Error | undefined
+  startScan: () => void
+  stopScan: () => void
+}
+```
+
+创建检测器前会等待 `react-barcode-scanner/polyfill` 加载完成；只要 `formats` 不变，就会复用同一个检测器。
 
 ### DEFAULT_OPTIONS
+
 ```js
 {
   delay: 1000,
@@ -52,23 +95,48 @@ nav:
 
 ## useTorch
 
-| Name 	| Type    	| Default Value 	| Description        	|
-|------	|---------	|---------------	|--------------------	|
-| defaultTorchOn 	| Boolean 	| false         	| 是否默认启用闪光灯   	|
+```ts
+function useTorch(defaultTorchOn?: boolean): {
+  isTorchSupported: boolean
+  error: Error | undefined
+  isTorchOn: boolean
+  setIsTorchOn: (torch: boolean) => void
+}
+```
+
+闪光灯是否可用取决于当前相机轨道以及浏览器、设备能力。
 
 ## useStreamState
-管理通过`useCamera`获取到的`stream`
 
 ```ts
-function useStreamState (): [MediaStream | undefined, (newState: MediaStream) => void]
+function useStreamState(): [
+  MediaStream | undefined,
+  (newState: MediaStream | undefined) => void
+]
 ```
+
+用于在 `BarcodeScanner` 外部的组件中读取或更新 `useCamera` 创建的媒体流。
+
+> 没有 `BarcodeScannerProvider` 时，`useStreamState` 和 `useTorch` 使用模块级共享状态。如果页面同时运行多个扫码器，应分别用 Provider 包裹每个扫码器及其消费者。
 
 ## Types
 
 ### ScanOptions
+
 ```ts
 interface ScanOptions {
   delay?: number
-  formats?: string[]
+  formats?: Array<BarcodeFormat | string>
+}
+```
+
+### DetectedBarcode
+
+```ts
+interface DetectedBarcode {
+  boundingBox: DOMRectReadOnly
+  cornerPoints: Point[]
+  format: string
+  rawValue: string
 }
 ```

@@ -1,11 +1,13 @@
 import { type FunctionComponent, useEffect, useRef } from 'react'
 
-import { useCamera, useScanning, type ScanOptions } from '../hooks'
-import { type DetectedBarcode } from '../types'
+import { useCamera, useScanning, type ScanOptions } from '../hooks/index.js'
+import { type DetectedBarcode } from '../types.js'
 
-interface ScannerProps extends React.DetailedHTMLProps<React.VideoHTMLAttributes<HTMLVideoElement>, HTMLVideoElement> {
+export interface ScannerProps extends React.DetailedHTMLProps<React.VideoHTMLAttributes<HTMLVideoElement>, HTMLVideoElement> {
   options?: ScanOptions
   onCapture?: (barcodes: DetectedBarcode[]) => void
+  onCameraError?: (error: Error) => void
+  onScanError?: (error: Error) => void
   trackConstraints?: MediaTrackConstraints;
   paused?: boolean;
 }
@@ -13,14 +15,17 @@ interface ScannerProps extends React.DetailedHTMLProps<React.VideoHTMLAttributes
 const BarcodeScanner: FunctionComponent<ScannerProps> = ({
   options,
   onCapture,
+  onCameraError,
+  onScanError,
   trackConstraints,
   paused = false,
   ...props
 }) => {
   const instance = useRef<HTMLVideoElement>(null)
-  const { isCameraReady } = useCamera(instance, trackConstraints)
+  const { isCameraReady, error: cameraError } = useCamera(instance, trackConstraints)
   const {
     detectedBarcodes,
+    error: scanError,
     startScan,
     stopScan
   } = useScanning(instance, options)
@@ -38,6 +43,18 @@ const BarcodeScanner: FunctionComponent<ScannerProps> = ({
       onCapture?.(detectedBarcodes)
     }
   }, [detectedBarcodes, onCapture])
+
+  useEffect(() => {
+    if (cameraError !== undefined) {
+      onCameraError?.(cameraError)
+    }
+  }, [cameraError, onCameraError])
+
+  useEffect(() => {
+    if (scanError !== undefined) {
+      onScanError?.(scanError)
+    }
+  }, [onScanError, scanError])
 
   useEffect(() => {
     const video = instance.current

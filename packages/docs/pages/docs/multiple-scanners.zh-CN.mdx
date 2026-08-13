@@ -1,0 +1,23 @@
+---
+title: React Barcode Scanner 多实例测试 Demo
+description: 测试两个相互隔离的 React 扫码器实例，包括独立媒体流、识别结果、暂停状态、闪光灯、错误、卸载和 Provider 重置。
+---
+
+import MultipleScannersDemo from '../../components/multiple-scanners-demo'
+
+# 多实例测试 Demo
+
+本页面将两个扫码器分别放在独立的 `BarcodeScannerProvider` 中，用于验证扫码器 A 和扫码器 B 不会覆盖或清理对方的媒体流、闪光灯状态、错误和识别结果。
+
+## 手动测试清单
+
+1. 允许相机权限，比较两个实例的媒体流 ID。
+2. 在每个活动相机前展示条码，确认识别结果只出现在对应卡片中。
+3. 暂停或卸载扫码器 A，确认扫码器 B 的状态保持不变。
+4. 修改其中一张卡片的条码格式或闪光灯状态，观察另一张卡片的诊断信息。
+5. 重置其中一个 Provider 作用域，确认只有该卡片恢复为全新状态。
+6. 如果第二个相机无法打开，确认错误只显示在对应卡片中，同时第一个扫码器继续工作。
+
+同一个物理相机能否同时创建两条媒体流取决于浏览器和设备。第二条媒体流启动失败，本身不代表 Provider 状态隔离失败。
+
+<MultipleScannersDemo locale="zh-CN" />

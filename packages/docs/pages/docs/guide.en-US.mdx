@@ -1,5 +1,6 @@
 ---
-title: Getting Start
+title: React Barcode Scanner Getting Started
+description: Build a browser barcode scanner in React, configure formats and delay, control the torch, isolate multiple scanners and integrate with Next.js.
 ---
 import { Callout } from 'nextra/components'
 
@@ -18,25 +19,25 @@ export default () => {
 ```
 
 ### Barcode format
-`BarcodeScanner` support `qr_code` format by default, if needed to support other formats, use config `formats` option:
+`BarcodeScanner` supports `qr_code` by default. Use the `formats` option to scan other barcode formats:
 
 ```tsx
 <BarcodeScanner options={{ formats: ['code_128'] }} /> 
 ```
 
 <Callout type="warning" emoji="⚠️">
-  Project based on `Barcode Detection API`, Support [Barcode Formats](https://developer.mozilla.org/en-US/docs/Web/API/Barcode_Detection_API#supported_barcode_formats) except `aztec`, `data_matrix` and `pdf417` (zbar polyfill not supported)
+  The scanner is based on the `Barcode Detection API`. The zbar polyfill supports the listed [barcode formats](https://developer.mozilla.org/en-US/docs/Web/API/Barcode_Detection_API#supported_barcode_formats) except `aztec`, `data_matrix` and `pdf417`.
 </Callout>
 
 ### Scanning delay
-For performance consider `BarcodeScanner` set default `1000ms` to scan barcode, if need more sensitive, use config `delay` option:
+For performance, `BarcodeScanner` scans every `1000ms` by default. Use the `delay` option for a shorter or longer interval:
 
 ```tsx
 <BarcodeScanner options={{ delay: 500 }} />
 ```
 
 ### Torch
-To consider more scenarios, `BarcodeScanner` abstract `useTorch` hook for ease of use
+Use the `useTorch` hook to inspect support and control the camera torch:
 
 ```jsx
 import React from 'react'
@@ -60,19 +61,106 @@ export default () => {
 }
 ```
 
-> Currently, torch only work in some browser, see detail: [MediaTrackConstraints](https://developer.mozilla.org/en-US/docs/Web/API/MediaTrackConstraints#torch)
+> Torch support depends on the browser and device. See [MediaTrackConstraints](https://developer.mozilla.org/en-US/docs/Web/API/MediaTrackConstraints#torch).
+
+### State scope and multiple scanners
+
+For complete ownership, lifecycle, torch-operation and SSR rules, see [State Scope and Multiple Scanners](./state-scope).
+
+Without a Provider, `BarcodeScanner`, `useStreamState()` and `useTorch()` use a global compatibility scope. This keeps the simple single-scanner usage working.
+
+For multiple active scanners, wrap each scanner and its controls in a separate `BarcodeScannerProvider`:
+
+```tsx
+import {
+  BarcodeScanner,
+  BarcodeScannerProvider,
+  useStreamState,
+  useTorch
+} from 'react-barcode-scanner'
+
+function ScannerControls () {
+  const [stream] = useStreamState()
+  const { isTorchOn, setIsTorchOn } = useTorch()
+
+  return (
+    <section>
+      <p>Stream: {stream?.id ?? 'none'}</p>
+      <button onClick={() => setIsTorchOn(!isTorchOn)}>
+        Torch: {isTorchOn ? 'on' : 'off'}
+      </button>
+    </section>
+  )
+}
+
+export default function Scanners () {
+  return (
+    <>
+      <BarcodeScannerProvider>
+        <BarcodeScanner />
+        <ScannerControls />
+      </BarcodeScannerProvider>
+
+      <BarcodeScannerProvider initialTorchOn>
+        <BarcodeScanner />
+        <ScannerControls />
+      </BarcodeScannerProvider>
+    </>
+  )
+}
+```
+
+`initialTorchOn` is read only when that Provider store is created. Changing the prop later does not overwrite user state.
 
 ## With framework
 
 ### Next.js
 
-`React Barcode Scanner` is based on browser `Barcode Detection API` library, it's only suitable for browser environment; so if want to use it in `Next.js`, user need use `next/dynamic` to import library
+The package can be imported during SSR, but the scanner itself uses browser APIs after mounting. Keep the Provider, scanner and external state consumers in the same Client Component:
 
-```jsx
+```tsx filename="ScannerPanel.tsx"
+'use client'
+
+import {
+  BarcodeScanner,
+  BarcodeScannerProvider
+} from 'react-barcode-scanner'
+import 'react-barcode-scanner/polyfill'
+
+export default function ScannerPanel () {
+  return (
+    <BarcodeScannerProvider>
+      <BarcodeScanner />
+      <ScannerControls />
+    </BarcodeScannerProvider>
+  )
+}
+```
+
+With the Pages Router, dynamically load the complete panel when you want to disable SSR for the scanner area:
+
+```tsx
 import dynamic from 'next/dynamic'
 
-const BarcodeScanner = dynamic(() => {
-  import('react-barcode-scanner/polyfill')
-  return import('react-barcode-scanner').then(mod => mod.BarcodeScanner)
-}, { ssr: false })
+const ScannerPanel = dynamic(
+  () => import('../components/ScannerPanel'),
+  { ssr: false }
+)
+```
+
+With the App Router, the component that declares `dynamic(..., { ssr: false })` must itself be a Client Component:
+
+```tsx
+'use client'
+
+import dynamic from 'next/dynamic'
+
+const ScannerPanel = dynamic(
+  () => import('./ScannerPanel'),
+  { ssr: false }
+)
+
+export default function ScannerPageClient () {
+  return <ScannerPanel />
+}
 ```

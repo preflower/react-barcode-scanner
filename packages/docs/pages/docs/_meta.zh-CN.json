@@ -1,6 +1,9 @@
 {
   "install": "安装",
   "guide": "快速入门",
+  "state-scope": "状态作用域",
   "api": "API",
-  "demo": "Demo"
+  "demo": "Demo",
+  "multiple-scanners": "多实例 Demo",
+  "faq": "常见问题"
 }

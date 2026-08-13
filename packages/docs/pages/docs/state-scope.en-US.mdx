@@ -1,0 +1,175 @@
+---
+title: React Barcode Scanner State Scope and Multiple Scanners
+description: Control scanner state outside the component and isolate multiple React barcode scanners with BarcodeScannerProvider, including lifecycle and SSR rules.
+---
+
+## Overview
+
+`react-barcode-scanner` keeps camera, scanning, stream and torch capabilities as independent hooks. A state scope determines which scanner `useStreamState()` and `useTorch()` belong to.
+
+There are two modes:
+
+| Mode | Best for | Behavior |
+| --- | --- | --- |
+| Global compatibility scope | One active scanner | Works without additional components and preserves existing usage. |
+| `BarcodeScannerProvider` | Multiple scanners or explicit ownership | Creates an isolated stream, torch and torch-error store. |
+
+## Global compatibility mode
+
+Existing single-scanner applications do not need a Provider:
+
+```tsx
+function App () {
+  const [stream] = useStreamState()
+  const { isTorchOn, setIsTorchOn } = useTorch()
+
+  return (
+    <>
+      <BarcodeScanner />
+      <p>{stream?.id ?? 'No stream'}</p>
+      <button onClick={() => setIsTorchOn(!isTorchOn)}>
+        Torch: {isTorchOn ? 'on' : 'off'}
+      </button>
+    </>
+  )
+}
+```
+
+All hooks outside a Provider resolve the same module-level compatibility store. This mode intentionally does not provide isolation for multiple simultaneous scanners.
+
+## Provider mode
+
+Wrap the scanner and every component that needs its state in the same Provider:
+
+```tsx
+import {
+  BarcodeScanner,
+  BarcodeScannerProvider,
+  useStreamState,
+  useTorch
+} from 'react-barcode-scanner'
+
+function ScannerControls () {
+  const [stream] = useStreamState()
+  const {
+    isTorchSupported,
+    error,
+    isTorchOn,
+    setIsTorchOn
+  } = useTorch()
+
+  return (
+    <section>
+      <p>Stream: {stream?.id ?? 'none'}</p>
+      <button
+        disabled={!isTorchSupported}
+        onClick={() => setIsTorchOn(!isTorchOn)}
+      >
+        Torch: {isTorchOn ? 'on' : 'off'}
+      </button>
+      {error && <p role="alert">{error.message}</p>}
+    </section>
+  )
+}
+
+export default function ScannerPanel () {
+  return (
+    <BarcodeScannerProvider initialTorchOn={false}>
+      <BarcodeScanner />
+      <ScannerControls />
+    </BarcodeScannerProvider>
+  )
+}
+```
+
+The hooks resolve the nearest Provider. React portals retain Context and therefore retain the originating scanner scope. Different React roots do not share Context.
+
+## Multiple scanners
+
+Use one Provider per active scanner:
+
+You can verify this behavior interactively in the [Multiple Scanners Demo](./multiple-scanners).
+
+```tsx
+<BarcodeScannerProvider>
+  <BarcodeScanner />
+  <ScannerControls name="Scanner A" />
+</BarcodeScannerProvider>
+
+<BarcodeScannerProvider>
+  <BarcodeScanner />
+  <ScannerControls name="Scanner B" />
+</BarcodeScannerProvider>
+```
+
+The two scopes have independent streams, torch state, capability detection and torch errors. Unmounting one scanner does not clear the other scanner's state.
+
+## Initial torch state
+
+In Provider mode, `initialTorchOn` is read once when the Provider store is created:
+
+```tsx
+<BarcodeScannerProvider initialTorchOn>
+  <ScannerPanel />
+</BarcodeScannerProvider>
+```
+
+Changing `initialTorchOn` after mounting does not overwrite a value selected by the user. Inside a Provider, `useTorch(defaultTorchOn)` does not override the Provider initial value.
+
+Without a Provider, the first mounted `useTorch(defaultTorchOn)` initializes the global compatibility state. Conflicting defaults between global consumers are not defined; use a Provider when the initial value must be deterministic.
+
+## Torch operations
+
+Torch updates are coordinated once per scanner store, not once per `useTorch()` consumer:
+
+- multiple consumers observe the same public state;
+- setting the same value again does not repeat the hardware operation;
+- rapid changes are serialized and intermediate queued values may be coalesced;
+- the final operation matches the latest requested value;
+- a delayed result from an old video track cannot overwrite the new track's state or error.
+
+`setIsTorchOn()` updates the requested state immediately. If the browser rejects `applyConstraints()`, `useTorch().error` contains the failure.
+
+## Lifecycle
+
+`useCamera()` registers its stream in the current scope and stops its owned tracks during cleanup. Cleanup is identity-safe: an older scanner cannot clear a newer stream registered in the same store.
+
+When a new video track is registered, torch support and errors from the old track are cleared and capability detection runs for the new track.
+
+## SSR and Next.js
+
+Module import is SSR-safe: browser media APIs are accessed only after mounting. Provider stores are created per Provider instance, and hook defaults are not written to the global compatibility store during server rendering.
+
+For the clearest request isolation, keep the Provider, scanner and state consumers in one client-only panel.
+
+### Pages Router
+
+```tsx
+import dynamic from 'next/dynamic'
+
+const ScannerPanel = dynamic(
+  () => import('../components/ScannerPanel'),
+  { ssr: false }
+)
+```
+
+### App Router
+
+`ScannerPanel.tsx` contains `BarcodeScannerProvider`, `BarcodeScanner` and its controls. The wrapper that disables SSR must also be a Client Component:
+
+```tsx
+'use client'
+
+import dynamic from 'next/dynamic'
+
+const ScannerPanel = dynamic(
+  () => import('./ScannerPanel'),
+  { ssr: false }
+)
+
+export default function ScannerPageClient () {
+  return <ScannerPanel />
+}
+```
+
+Do not dynamically load only `BarcodeScanner` while leaving its Provider and controls in another scope.

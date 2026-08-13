@@ -1,4 +1,9 @@
+import path from 'node:path'
+import { fileURLToPath } from 'node:url'
+
 import nextra from 'nextra'
+
+const docsDirectory = path.dirname(fileURLToPath(import.meta.url))
 
 const withNextra = nextra({
   theme: 'nextra-theme-docs',
@@ -6,7 +11,6 @@ const withNextra = nextra({
   flexsearch: {
     codeblocks: true
   },
-  // 下面这些是 Nextra 4 的新特性
   defaultShowCopyCode: true,
   readingTime: true
 })
@@ -16,6 +20,17 @@ export default withNextra({
   i18n: {
     locales: ['en-US', 'zh-CN'],
     defaultLocale: 'en-US'
+  },
+  webpack (config) {
+    // Workspace packages may have a different React dev version. Force the
+    // documentation app and the linked library to share one React instance.
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      react: path.join(docsDirectory, 'node_modules/react'),
+      'react-dom': path.join(docsDirectory, 'node_modules/react-dom')
+    }
+
+    return config
   }
 })
 

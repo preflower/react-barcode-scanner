@@ -1,18 +1,42 @@
 ---
-title: Introduction
+title: React Barcode Scanner for React and Next.js
+description: A TypeScript React barcode scanner using the Barcode Detection API and a zbar WebAssembly polyfill, with hooks, multiple-scanner state isolation and Next.js support.
 ---
 
-## React Barcode Scanner
+# React Barcode Scanner
 
-A lightweight barcode scanner base on Barcode Detection API, and polyfill use zbar.wasm
+React Barcode Scanner is a TypeScript component and hooks library for scanning QR codes and common one-dimensional barcodes from a browser camera. It uses the native Barcode Detection API when available and provides a zbar WebAssembly polyfill for broader browser support.
 
-### Features
+## When should I use it?
 
-- Base on `Barcode Detector API`
-- Polyfill use `zbar.wasm` library, size only ~230kb
-- Base on React Hooks, high customization
-- Written in TypeScript with predictable static types
+Use React Barcode Scanner when a React or Next.js application needs an embedded camera scanner, access to detected values, configurable barcode formats, torch control, or multiple independently controlled scanners.
 
-### Feedback
+For a single scanner, the component works without setup beyond importing the polyfill. For multiple scanners or controls rendered in other components, `BarcodeScannerProvider` gives each scanner an isolated stream and torch state.
 
-Please visit [GitHub](https://github.com/preflower/react-barcode-scanner) to commit issue or PR
+## Key capabilities
+
+- React component plus composable camera, scanning, stream and torch hooks
+- QR code and common one-dimensional barcode detection
+- zbar WebAssembly polyfill of approximately 230 kB
+- Isolated state for multiple simultaneous scanners
+- SSR-safe package imports and documented Next.js integration
+- ESM, CommonJS and complete TypeScript declarations
+- Explicit camera and scanning error callbacks
+
+## Important browser requirements
+
+Camera access requires HTTPS or localhost and user permission. Torch availability depends on the selected camera, browser and device. The polyfill does not support `aztec`, `data_matrix` or `pdf417`.
+
+## Start here
+
+- [Install the package](./docs/install)
+- [Build your first scanner](./docs/guide)
+- [Understand multiple scanners and external state](./docs/state-scope)
+- [Read the API reference](./docs/api)
+- [Open the interactive demo](./docs/demo)
+- [Test two isolated scanner instances](./docs/multiple-scanners)
+- [Troubleshoot common questions](./docs/faq)
+
+## Project and support
+
+The project is MIT licensed. Visit [GitHub](https://github.com/preflower/react-barcode-scanner) for source code and issues, or view the published [`react-barcode-scanner` package on npm](https://www.npmjs.com/package/react-barcode-scanner).

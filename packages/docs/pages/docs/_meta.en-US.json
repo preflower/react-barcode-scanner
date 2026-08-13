@@ -1,6 +1,9 @@
 {
   "install": "Install",
-  "guide": "Getting Start",
+  "guide": "Getting Started",
+  "state-scope": "State Scope",
   "api": "API",
-  "demo": "Demo"
+  "demo": "Demo",
+  "multiple-scanners": "Multiple Scanners Demo",
+  "faq": "FAQ"
 }

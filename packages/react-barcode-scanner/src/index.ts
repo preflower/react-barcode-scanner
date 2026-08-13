@@ -1,3 +1,8 @@
-export * from './hooks'
-export * from './components'
-export * from './types'
+export * from './hooks/index.js'
+export * from './components/index.js'
+export * from './types.js'
+
+export {
+  BarcodeScannerProvider,
+  type BarcodeScannerProviderProps
+} from './context/barcode-scanner-context.js'

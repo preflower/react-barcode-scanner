@@ -1,7 +1,7 @@
-export * from './use-camera'
+export * from './use-camera.js'
 
-export * from './use-scanning'
+export * from './use-scanning.js'
 
-export * from './use-torch'
+export * from './use-torch.js'
 
-export * from './use-stream-state'
+export { useStreamState } from './use-stream-state.js'

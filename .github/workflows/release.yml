@@ -29,10 +29,10 @@ jobs:
       - name: Setup node.js
         uses: actions/setup-node@v6
         with:
-          node-version: 24.19.0
+          node-version-file: '.node-version'
           registry-url: 'https://registry.npmjs.org'
       - name: Install pnpm
-        run: npm i pnpm@latest -g
+        run: npm i pnpm@11.20.0 -g
       - name: Setup pnpm config
         run: pnpm config set store-dir $PNPM_CACHE_FOLDER
       - name: Install dependencies

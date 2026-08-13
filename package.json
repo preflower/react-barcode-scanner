@@ -2,6 +2,7 @@
   "name": "@react-barcode-scanner/monorepo",
   "version": "1.0.0",
   "private": true,
+  "packageManager": "pnpm@11.20.0",
   "description": "Monorepo for React Barcode Scanner",
   "type": "module",
   "keywords": [],
@@ -34,11 +35,20 @@
     "eslint-config-ted": "^4.1.1",
     "husky": "^9.1.7",
     "lint-staged": "^16.4.0",
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "vite": "npm:@voidzero-dev/vite-plus-core@0.2.8",
+    "vite-plus": "^0.2.8"
   },
   "lint-staged": {
     "*.{js,ts,tsx}": [
       "eslint --fix"
     ]
+  },
+  "devEngines": {
+    "packageManager": {
+      "name": "pnpm",
+      "version": "11.20.0",
+      "onFail": "download"
+    }
   }
 }

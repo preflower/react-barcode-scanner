@@ -1,5 +1,6 @@
 ---
-title: 快速入门
+title: React Barcode Scanner 快速入门
+description: 在 React 中创建浏览器扫码器，配置格式和间隔，控制闪光灯，隔离多个扫码器并集成 Next.js。
 ---
 import { Callout } from 'nextra/components'
 
@@ -19,25 +20,25 @@ export default () => {
 ```
 
 ### 条形码格式
-`BarcodeScanner` 默认配置支持 `qr_code`, 若需要支持其他的条码格式, 需要配置`formats`字段:
+`BarcodeScanner` 默认支持 `qr_code`。如果需要扫描其他条码格式，请配置 `formats`：
 
 ```tsx
 <BarcodeScanner options={{ formats: ['code_128'] }} /> 
 ```
 
 <Callout type="warning" emoji="⚠️">
-  项目基于`Barcode Detection API`, 支持除`aztec`, `data_matrix`和`pdf417`(zbar polyfill目前未支持)外的[Barcode Formats](https://developer.mozilla.org/en-US/docs/Web/API/Barcode_Detection_API#supported_barcode_formats)
+  扫码器基于 `Barcode Detection API`。zbar polyfill 支持[条码格式列表](https://developer.mozilla.org/en-US/docs/Web/API/Barcode_Detection_API#supported_barcode_formats)中除 `aztec`、`data_matrix` 和 `pdf417` 之外的格式。
 </Callout>
 
 ### 扫码感应延迟
-`BarcodeScanner`为了性能考虑, 默认设置成了`1000ms`识别一次, 若需要更灵敏的扫码感应, 需要配置`delay`字段:
+出于性能考虑，`BarcodeScanner` 默认每 `1000ms` 扫描一次。可以通过 `delay` 调整扫描间隔：
 
 ```tsx
 <BarcodeScanner options={{ delay: 500 }} />
 ```
 
 ### 闪光灯
-为考虑更多场景, `BarcodeScanner` 抽象出了 `useTorch` Hook方便用户使用
+可以使用 `useTorch` Hook 检查设备支持情况并控制闪光灯：
 
 ```jsx
 import React from 'react'
@@ -54,26 +55,113 @@ export default () => {
     <div style={{ width: '100%', height: '360px' }}>
       <BarcodeScanner />
       {isTorchSupported
-        ? <button onClick={onTorchSwitch}>切换闪关灯</button>
+        ? <button onClick={onTorchSwitch}>切换闪光灯</button>
         : null}
     </div>
   )
 }
 ```
 
-> 闪光灯目前只在部分浏览器可用, 具体参考: [MediaTrackConstraints](https://developer.mozilla.org/en-US/docs/Web/API/MediaTrackConstraints#torch)
+> 闪光灯支持情况取决于浏览器和设备，具体参考 [MediaTrackConstraints](https://developer.mozilla.org/en-US/docs/Web/API/MediaTrackConstraints#torch)。
+
+### 状态作用域与多实例
+
+完整的状态归属、生命周期、闪光灯异步行为和 SSR 规则见[状态作用域与多实例](./state-scope)。
+
+没有 Provider 时，`BarcodeScanner`、`useStreamState()` 和 `useTorch()` 会使用全局兼容作用域，原有的单扫码器用法无需修改。
+
+页面同时运行多个扫码器时，应分别使用 `BarcodeScannerProvider` 包裹每个扫码器及其控制组件：
+
+```tsx
+import {
+  BarcodeScanner,
+  BarcodeScannerProvider,
+  useStreamState,
+  useTorch
+} from 'react-barcode-scanner'
+
+function ScannerControls () {
+  const [stream] = useStreamState()
+  const { isTorchOn, setIsTorchOn } = useTorch()
+
+  return (
+    <section>
+      <p>媒体流：{stream?.id ?? '无'}</p>
+      <button onClick={() => setIsTorchOn(!isTorchOn)}>
+        闪光灯：{isTorchOn ? '开启' : '关闭'}
+      </button>
+    </section>
+  )
+}
+
+export default function Scanners () {
+  return (
+    <>
+      <BarcodeScannerProvider>
+        <BarcodeScanner />
+        <ScannerControls />
+      </BarcodeScannerProvider>
+
+      <BarcodeScannerProvider initialTorchOn>
+        <BarcodeScanner />
+        <ScannerControls />
+      </BarcodeScannerProvider>
+    </>
+  )
+}
+```
+
+`initialTorchOn` 只在对应 Provider store 创建时读取一次，之后修改该属性不会覆盖用户已经操作过的状态。
 
 ## 与框架使用
 
 ### Next.js
 
-`React Barcode Scanner` 是一款基于浏览器功能的扫码库, 只适用于浏览器环境, 若需要在`Next.js`项目中应用此库, 需要以`next/dynamic`的方式导入
+包本身可以在 SSR 阶段导入，但扫码器会在挂载后使用浏览器 API。Provider、扫码器和外部状态组件应位于同一个客户端组件中：
 
-```jsx
+```tsx filename="ScannerPanel.tsx"
+'use client'
+
+import {
+  BarcodeScanner,
+  BarcodeScannerProvider
+} from 'react-barcode-scanner'
+import 'react-barcode-scanner/polyfill'
+
+export default function ScannerPanel () {
+  return (
+    <BarcodeScannerProvider>
+      <BarcodeScanner />
+      <ScannerControls />
+    </BarcodeScannerProvider>
+  )
+}
+```
+
+Pages Router 中，如果希望整个扫码区域不参与 SSR，应动态加载完整面板：
+
+```tsx
 import dynamic from 'next/dynamic'
 
-const BarcodeScanner = dynamic(() => {
-  import('react-barcode-scanner/polyfill')
-  return import('react-barcode-scanner').then(mod => mod.BarcodeScanner)
-}, { ssr: false })
+const ScannerPanel = dynamic(
+  () => import('../components/ScannerPanel'),
+  { ssr: false }
+)
+```
+
+App Router 中，声明 `dynamic(..., { ssr: false })` 的包装组件本身必须是客户端组件：
+
+```tsx
+'use client'
+
+import dynamic from 'next/dynamic'
+
+const ScannerPanel = dynamic(
+  () => import('./ScannerPanel'),
+  { ssr: false }
+)
+
+export default function ScannerPageClient () {
+  return <ScannerPanel />
+}
 ```

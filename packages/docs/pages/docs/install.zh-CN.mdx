@@ -1,17 +1,18 @@
 ---
-title: 安装
+title: 安装 React Barcode Scanner
+description: 使用 pnpm、Yarn 或 npm 安装 React Barcode Scanner，并为旧版 Vite 项目配置条码检测 polyfill。
 ---
 
 ## 安装
 
 ### pnpm
 ```shell
-pnpm install react-barcode-scanner
+pnpm add react-barcode-scanner
 ```
 
 ### yarn
 ```shell
-yarn install react-barcode-scanner
+yarn add react-barcode-scanner
 ```
 
 ### npm
@@ -22,7 +23,7 @@ npm install react-barcode-scanner
 ## 脚手架
 
 ### Vite
-我们建议使用最新的Vite版本; 如果开发人员使用低于5以下的Vite版本, 请遵循以下配置
+建议使用最新版本的 Vite。如果 Vite 4 或更低版本无法预构建 ESM-only polyfill，可以将上游依赖排除在依赖优化之外：
 
 ```js
 export default defineConfig({

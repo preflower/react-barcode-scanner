@@ -1,17 +1,18 @@
 ---
-title: Install
+title: Install React Barcode Scanner
+description: Install React Barcode Scanner with pnpm, Yarn or npm and configure older Vite projects for the barcode detector polyfill.
 ---
 
 ## Install
 
 ### pnpm
 ```shell
-pnpm install react-barcode-scanner
+pnpm add react-barcode-scanner
 ```
 
 ### yarn
 ```shell
-yarn install react-barcode-scanner
+yarn add react-barcode-scanner
 ```
 
 ### npm
@@ -22,7 +23,7 @@ npm install react-barcode-scanner
 ## Scaffold
 
 ### Vite
-We recommend using the latest Vite version; if developer's Vite version is lower than 5, please follow this configuration
+We recommend using the latest Vite version. If a project on Vite 4 or earlier fails to pre-bundle the ESM-only polyfill, exclude the upstream package from dependency optimization:
 
 ```js
 export default defineConfig({
