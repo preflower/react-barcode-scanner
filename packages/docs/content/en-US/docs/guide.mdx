@@ -63,13 +63,15 @@ export default () => {
 
 > Torch support depends on the browser and device. See [MediaTrackConstraints](https://developer.mozilla.org/en-US/docs/Web/API/MediaTrackConstraints#torch).
 
-### State scope and multiple scanners
+### State scope for Hooks
 
-For complete ownership, lifecycle, torch-operation and SSR rules, see [State Scope and Multiple Scanners](./state-scope).
+`BarcodeScannerProvider` defines which scanner state is read by scanner Hooks such as `useStreamState()` and `useTorch()`. It is useful for components that call these Hooks; `BarcodeScanner` also joins the same scope through its internal Hooks.
 
-Without a Provider, `BarcodeScanner`, `useStreamState()` and `useTorch()` use a global compatibility scope. This keeps the simple single-scanner usage working.
+- For one scanner, a Provider is optional. The scanner and Hooks share the default global scope.
+- If another component uses scanner Hooks, put it under the same Provider as the scanner.
+- For multiple active scanners, use one Provider per scanner so their streams and torch state stay separate.
 
-For multiple active scanners, wrap each scanner and its controls in a separate `BarcodeScannerProvider`:
+The component that calls the Hooks must be inside the Provider:
 
 ```tsx
 import {
@@ -79,38 +81,31 @@ import {
   useTorch
 } from 'react-barcode-scanner'
 
-function ScannerControls () {
+function ScannerPanel () {
   const [stream] = useStreamState()
   const { isTorchOn, setIsTorchOn } = useTorch()
 
   return (
-    <section>
+    <>
+      <BarcodeScanner />
       <p>Stream: {stream?.id ?? 'none'}</p>
       <button onClick={() => setIsTorchOn(!isTorchOn)}>
         Torch: {isTorchOn ? 'on' : 'off'}
       </button>
-    </section>
+    </>
   )
 }
 
-export default function Scanners () {
+export default function App () {
   return (
-    <>
-      <BarcodeScannerProvider>
-        <BarcodeScanner />
-        <ScannerControls />
-      </BarcodeScannerProvider>
-
-      <BarcodeScannerProvider initialTorchOn>
-        <BarcodeScanner />
-        <ScannerControls />
-      </BarcodeScannerProvider>
-    </>
+    <BarcodeScannerProvider>
+      <ScannerPanel />
+    </BarcodeScannerProvider>
   )
 }
 ```
 
-`initialTorchOn` is read only when that Provider store is created. Changing the prop later does not overwrite user state.
+When rendering multiple scanners, repeat this structure with a separate Provider for each `ScannerPanel`.
 
 ## With framework
 

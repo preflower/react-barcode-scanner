@@ -1,18 +1,13 @@
-import path from 'node:path'
-import { fileURLToPath } from 'node:url'
-
 import nextra from 'nextra'
 
-const docsDirectory = path.dirname(fileURLToPath(import.meta.url))
-
 const withNextra = nextra({
-  theme: 'nextra-theme-docs',
-  themeConfig: './theme.config.jsx',
-  flexsearch: {
+  search: {
     codeblocks: true
   },
   defaultShowCopyCode: true,
-  readingTime: true
+  readingTime: true,
+  contentDirBasePath: '/',
+  unstable_shouldAddLocaleToLinks: true
 })
 
 export default withNextra({
@@ -20,17 +15,6 @@ export default withNextra({
   i18n: {
     locales: ['en-US', 'zh-CN'],
     defaultLocale: 'en-US'
-  },
-  webpack (config) {
-    // Workspace packages may have a different React dev version. Force the
-    // documentation app and the linked library to share one React instance.
-    config.resolve.alias = {
-      ...config.resolve.alias,
-      react: path.join(docsDirectory, 'node_modules/react'),
-      'react-dom': path.join(docsDirectory, 'node_modules/react-dom')
-    }
-
-    return config
   }
 })
 
