@@ -64,13 +64,15 @@ export default () => {
 
 > 闪光灯支持情况取决于浏览器和设备，具体参考 [MediaTrackConstraints](https://developer.mozilla.org/en-US/docs/Web/API/MediaTrackConstraints#torch)。
 
-### 状态作用域与多实例
+### Hooks 的状态作用域
 
-完整的状态归属、生命周期、闪光灯异步行为和 SSR 规则见[状态作用域与多实例](./state-scope)。
+`BarcodeScannerProvider` 用来确定 `useStreamState()`、`useTorch()` 等扫码 Hooks 读取哪一个扫码器的状态。它主要提供给调用这些 Hooks 的组件使用；`BarcodeScanner` 内部也通过 Hooks 加入同一个作用域。
 
-没有 Provider 时，`BarcodeScanner`、`useStreamState()` 和 `useTorch()` 会使用全局兼容作用域，原有的单扫码器用法无需修改。
+- 只有一个扫码器时，可以不使用 Provider，扫码器和 Hooks 会共享默认的全局作用域。
+- 其他组件需要调用扫码 Hooks 时，应把它和扫码器放在同一个 Provider 中。
+- 同时运行多个扫码器时，每个扫码器使用一个 Provider，媒体流和闪光灯状态就不会串在一起。
 
-页面同时运行多个扫码器时，应分别使用 `BarcodeScannerProvider` 包裹每个扫码器及其控制组件：
+调用 Hooks 的组件必须位于 Provider 内部：
 
 ```tsx
 import {
@@ -80,38 +82,31 @@ import {
   useTorch
 } from 'react-barcode-scanner'
 
-function ScannerControls () {
+function ScannerPanel () {
   const [stream] = useStreamState()
   const { isTorchOn, setIsTorchOn } = useTorch()
 
   return (
-    <section>
+    <>
+      <BarcodeScanner />
       <p>媒体流：{stream?.id ?? '无'}</p>
       <button onClick={() => setIsTorchOn(!isTorchOn)}>
         闪光灯：{isTorchOn ? '开启' : '关闭'}
       </button>
-    </section>
+    </>
   )
 }
 
-export default function Scanners () {
+export default function App () {
   return (
-    <>
-      <BarcodeScannerProvider>
-        <BarcodeScanner />
-        <ScannerControls />
-      </BarcodeScannerProvider>
-
-      <BarcodeScannerProvider initialTorchOn>
-        <BarcodeScanner />
-        <ScannerControls />
-      </BarcodeScannerProvider>
-    </>
+    <BarcodeScannerProvider>
+      <ScannerPanel />
+    </BarcodeScannerProvider>
   )
 }
 ```
 
-`initialTorchOn` 只在对应 Provider store 创建时读取一次，之后修改该属性不会覆盖用户已经操作过的状态。
+需要多个扫码器时，为每个 `ScannerPanel` 分别重复一组 Provider 即可。
 
 ## 与框架使用
 
