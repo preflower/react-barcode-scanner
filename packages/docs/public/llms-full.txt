@@ -1,6 +1,6 @@
 # React Barcode Scanner: condensed technical reference
 
-React Barcode Scanner is a browser barcode-scanning library for React. It is written in TypeScript and publishes ESM, CommonJS and declaration files. The library uses the browser Barcode Detection API and a zbar WebAssembly polyfill. It is intended for camera-based QR-code and one-dimensional barcode scanning in React and Next.js applications.
+React Barcode Scanner is a browser barcode-scanning library for React. It is written in TypeScript and publishes ESM, CommonJS and declaration files. The library consumes the browser Barcode Detection API, includes an optional ZBar WebAssembly polyfill, and works with compatible third-party implementations such as the ZXing WASM-based `barcode-detector`. It is intended for camera-based barcode scanning in React and Next.js applications.
 
 ## Install
 
@@ -9,6 +9,25 @@ pnpm add react-barcode-scanner
 ```
 
 Equivalent npm and Yarn commands are supported.
+
+The package does not register a polyfill from its main entry. Choose one implementation:
+
+```tsx
+// Included ZBar WASM polyfill
+import 'react-barcode-scanner/polyfill'
+```
+
+For ZXing WASM, install `barcode-detector` and use its compatible polyfill instead:
+
+```shell
+pnpm add barcode-detector
+```
+
+```tsx
+import 'barcode-detector/polyfill'
+```
+
+Do not import both polyfills. Both preserve an existing native `BarcodeDetector`, so the browser implementation takes precedence when present.
 
 ## Minimal usage
 
@@ -75,13 +94,14 @@ export default function ScannerPanel () {
 
 - Camera access requires a secure context such as HTTPS or localhost and explicit user permission.
 - Torch support depends on the active camera, browser and device. Check `isTorchSupported` before presenting a torch control.
-- The zbar polyfill supports the documented Barcode Detection API format list except `aztec`, `data_matrix` and `pdf417`.
+- Supported formats depend on the active BarcodeDetector implementation. The included ZBar polyfill does not support `aztec`, `data_matrix` or `pdf417`; the optional ZXing polyfill does.
 - The default camera constraints prefer an environment-facing camera at 1280 by 720 pixels.
 - A camera permission error is reported through `onCameraError` and `useCamera().error`; a detector error is reported through `onScanError` and `useScanning().error`.
 
 ## Authoritative links
 
 - Documentation: https://reactbarcodescanner.vercel.app/
+- Installation and BarcodeDetector selection: https://reactbarcodescanner.vercel.app/docs/install
 - API: https://reactbarcodescanner.vercel.app/docs/api
 - State scope: https://reactbarcodescanner.vercel.app/docs/state-scope
 - Multiple scanners demo: https://reactbarcodescanner.vercel.app/docs/multiple-scanners

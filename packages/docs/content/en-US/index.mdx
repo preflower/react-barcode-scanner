@@ -1,31 +1,22 @@
 ---
-title: React Barcode Scanner for React and Next.js
-description: A TypeScript React barcode scanner using the Barcode Detection API and a zbar WebAssembly polyfill, with hooks, multiple-scanner state isolation and Next.js support.
+title: React Barcode Scanner with ZBar and ZXing Polyfills
+description: A React scanner based on the Barcode Detection API, with support for native BarcodeDetector, ZBar and ZXing polyfills.
 ---
 
 # React Barcode Scanner
 
-React Barcode Scanner is a TypeScript component and hooks library for scanning QR codes and common one-dimensional barcodes from a browser camera. It uses the native Barcode Detection API when available and provides a zbar WebAssembly polyfill for broader browser support.
+React components and hooks for scanning barcodes with a browser camera, built on the Barcode Detection API. Use the native `BarcodeDetector`, or add a ZBar or ZXing polyfill.
 
 ## When should I use it?
 
-Use React Barcode Scanner when a React or Next.js application needs an embedded camera scanner, access to detected values, configurable barcode formats, torch control, or multiple independently controlled scanners.
-
-For a single scanner, the component works without setup beyond importing the polyfill. For multiple scanners or controls rendered in other components, `BarcodeScannerProvider` gives each scanner an isolated stream and torch state.
+Use it for camera scanning, barcode format configuration, torch control and multiple-scanner workflows in React or Next.js. When the browser lacks the Barcode Detection API, import either the ZBar or ZXing polyfill.
 
 ## Key capabilities
 
-- React component plus composable camera, scanning, stream and torch hooks
-- QR code and common one-dimensional barcode detection
-- zbar WebAssembly polyfill of approximately 230 kB
-- Isolated state for multiple simultaneous scanners
-- SSR-safe package imports and documented Next.js integration
-- ESM, CommonJS and complete TypeScript declarations
-- Explicit camera and scanning error callbacks
-
-## Important browser requirements
-
-Camera access requires HTTPS or localhost and user permission. Torch availability depends on the selected camera, browser and device. The polyfill does not support `aztec`, `data_matrix` or `pdf417`.
+- Composable scanner hooks with direct state access and control
+- Native `BarcodeDetector` support
+- Included ZBar polyfill with optional ZXing polyfill support
+- Isolated scanner state through `BarcodeScannerProvider`
 
 ## Start here
 

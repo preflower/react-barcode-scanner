@@ -1,13 +1,13 @@
 # React Barcode Scanner
 
-> React Barcode Scanner is a TypeScript React component and hooks library for scanning QR codes and one-dimensional barcodes in web browsers. It uses the Barcode Detection API with a zbar WebAssembly polyfill, supports isolated multi-scanner state, and provides both ESM and CommonJS package entries.
+> React Barcode Scanner is a TypeScript React component and hooks library based on the Barcode Detection API. It includes an optional ZBar WebAssembly polyfill, supports compatible ZXing WASM polyfills, isolates multi-scanner state, and provides both ESM and CommonJS package entries.
 
 Use the English documentation as the canonical technical reference. Chinese translations are provided for the same topics. Camera access requires a secure browser context and user permission.
 
 ## Documentation
 
 - [Introduction](https://reactbarcodescanner.vercel.app/): Capabilities, use cases, limitations and project links.
-- [Installation](https://reactbarcodescanner.vercel.app/docs/install): pnpm, yarn, npm and Vite setup.
+- [Installation](https://reactbarcodescanner.vercel.app/docs/install): ZBar or ZXing selection, pnpm, yarn, npm and Vite setup.
 - [Getting Started](https://reactbarcodescanner.vercel.app/docs/guide): Basic scanner, formats, delay, torch, multiple scanners and Next.js.
 - [State Scope and Multiple Scanners](https://reactbarcodescanner.vercel.app/docs/state-scope): Provider ownership, global compatibility state, lifecycle, async torch behavior and SSR.
 - [API Reference](https://reactbarcodescanner.vercel.app/docs/api): Components, hooks, options, callbacks, defaults and types.

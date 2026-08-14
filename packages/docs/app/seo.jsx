@@ -3,13 +3,15 @@ export const SITE_NAME = 'React Barcode Scanner'
 
 const faqEntries = {
   'en-US': [
-    ['What is React Barcode Scanner?', 'React Barcode Scanner is a TypeScript React component and hooks library for scanning QR codes and one-dimensional barcodes in a browser. It uses the Barcode Detection API and provides a zbar WebAssembly polyfill.'],
+    ['What is React Barcode Scanner?', 'React Barcode Scanner is a TypeScript React component and hooks library based on the Barcode Detection API. It includes an optional ZBar WebAssembly polyfill and works with compatible ZXing WASM implementations.'],
+    ['Can I use ZXing WASM?', 'Yes. Install barcode-detector and import its polyfill instead of the included ZBar polyfill. Both preserve an existing native BarcodeDetector.'],
     ['Does React Barcode Scanner work with Next.js and SSR?', 'The package can be imported during server-side rendering. Camera access starts only after the scanner mounts in the browser. In Next.js, keep the Provider, scanner and controls in the same Client Component.'],
     ['How do I use multiple barcode scanners?', 'Wrap each active scanner and its controls in a separate BarcodeScannerProvider. Each Provider isolates the media stream, torch state, capability detection and errors.'],
     ['Can another component read the current camera stream or torch state?', 'Yes. Place that component under the same BarcodeScannerProvider and call useStreamState or useTorch. Without a Provider, hooks use the global compatibility scope.']
   ],
   'zh-CN': [
-    ['React Barcode Scanner 是什么？', 'React Barcode Scanner 是一个使用 TypeScript 编写的 React 浏览器扫码组件与 Hooks 库。它基于 Barcode Detection API，并提供 zbar WebAssembly polyfill，可识别二维码和一维条码。'],
+    ['React Barcode Scanner 是什么？', 'React Barcode Scanner 是一个基于 Barcode Detection API 的 TypeScript React 扫码组件与 Hooks 库。它随包提供可选的 ZBar WebAssembly polyfill，也兼容 ZXing WASM 实现。'],
+    ['可以使用 ZXing WASM 吗？', '可以。安装 barcode-detector，并使用它的 polyfill 替代随包提供的 ZBar polyfill。两者都不会覆盖已有的原生 BarcodeDetector。'],
     ['React Barcode Scanner 支持 Next.js 和 SSR 吗？', '包本身可以在服务端渲染期间导入，相机只会在组件挂载到浏览器后启动。在 Next.js 中，应将 Provider、扫码组件和控制组件放在同一个客户端组件内。'],
     ['如何同时使用多个扫码器？', '为每个活动扫码器及其控制组件分别创建 BarcodeScannerProvider。不同 Provider 的媒体流、闪光灯状态、能力检测和错误相互隔离。'],
     ['其他组件可以读取当前相机流或闪光灯状态吗？', '可以。将组件放到同一个 BarcodeScannerProvider 下，再调用 useStreamState 或 useTorch。没有 Provider 时，Hooks 会使用全局兼容作用域。']
@@ -93,7 +95,7 @@ export function StructuredData () {
           '@context': 'https://schema.org',
           '@type': 'SoftwareSourceCode',
           name: SITE_NAME,
-          description: 'A React component and hooks library for browser barcode scanning with a zbar WebAssembly polyfill.',
+          description: 'A React barcode scanner based on the Barcode Detection API, with ZBar and optional ZXing WebAssembly polyfills.',
           url: SITE_URL,
           codeRepository: 'https://github.com/preflower/react-barcode-scanner',
           license: 'https://opensource.org/licenses/MIT',

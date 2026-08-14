@@ -1,24 +1,69 @@
 ---
 title: 安装 React Barcode Scanner
-description: 使用 pnpm、Yarn 或 npm 安装 React Barcode Scanner，并为旧版 Vite 项目配置条码检测 polyfill。
+description: 安装 React Barcode Scanner，并选择内置的 ZBar 或可选的 ZXing BarcodeDetector polyfill。
 ---
+import { Callout, Tabs } from 'nextra/components'
 
 ## 安装
 
-### pnpm
-```shell
-pnpm add react-barcode-scanner
-```
+<Tabs items={['pnpm', 'npm', 'yarn']} storageKey="package-manager">
+  <Tabs.Tab>
+    ```shell
+    pnpm add react-barcode-scanner
+    ```
+  </Tabs.Tab>
+  <Tabs.Tab>
+    ```shell
+    npm install react-barcode-scanner
+    ```
+  </Tabs.Tab>
+  <Tabs.Tab>
+    ```shell
+    yarn add react-barcode-scanner
+    ```
+  </Tabs.Tab>
+</Tabs>
 
-### yarn
-```shell
-yarn add react-barcode-scanner
-```
+## Polyfill
 
-### npm
-```shell
-npm install react-barcode-scanner
-```
+<Tabs items={['ZBar', 'ZXing']} storageKey="barcode-detector-implementation">
+  <Tabs.Tab>
+    ZBar 为内置依赖，无需额外安装，WASM 约为 230 kB。暂不支持 `aztec`、`data_matrix` 和 `pdf417`；如需扫描这些格式，请使用 ZXing。
+
+    ```ts
+    import 'react-barcode-scanner/polyfill'
+    ```
+  </Tabs.Tab>
+  <Tabs.Tab>
+    ZXing 需要额外安装 `barcode-detector`，其 WASM 约为 1 MiB。
+
+    <Tabs items={['pnpm', 'npm', 'yarn']} storageKey="package-manager">
+      <Tabs.Tab>
+        ```shell
+        pnpm add barcode-detector
+        ```
+      </Tabs.Tab>
+      <Tabs.Tab>
+        ```shell
+        npm install barcode-detector
+        ```
+      </Tabs.Tab>
+      <Tabs.Tab>
+        ```shell
+        yarn add barcode-detector
+        ```
+      </Tabs.Tab>
+    </Tabs>
+
+    ```ts
+    import 'barcode-detector/polyfill'
+    ```
+  </Tabs.Tab>
+</Tabs>
+
+<Callout type="warning" emoji="⚠️">
+  ZBar 和 ZXing polyfill 请二选一。浏览器已有原生 `BarcodeDetector` 时，polyfill 不会覆盖它。
+</Callout>
 
 ## 脚手架
 

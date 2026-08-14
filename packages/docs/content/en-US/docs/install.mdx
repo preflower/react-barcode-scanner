@@ -1,24 +1,69 @@
 ---
 title: Install React Barcode Scanner
-description: Install React Barcode Scanner with pnpm, Yarn or npm and configure older Vite projects for the barcode detector polyfill.
+description: Install React Barcode Scanner with the included ZBar or optional ZXing BarcodeDetector polyfill.
 ---
+import { Callout, Tabs } from 'nextra/components'
 
 ## Install
 
-### pnpm
-```shell
-pnpm add react-barcode-scanner
-```
+<Tabs items={['pnpm', 'npm', 'yarn']} storageKey="package-manager">
+  <Tabs.Tab>
+    ```shell
+    pnpm add react-barcode-scanner
+    ```
+  </Tabs.Tab>
+  <Tabs.Tab>
+    ```shell
+    npm install react-barcode-scanner
+    ```
+  </Tabs.Tab>
+  <Tabs.Tab>
+    ```shell
+    yarn add react-barcode-scanner
+    ```
+  </Tabs.Tab>
+</Tabs>
 
-### yarn
-```shell
-yarn add react-barcode-scanner
-```
+## Polyfill
 
-### npm
-```shell
-npm install react-barcode-scanner
-```
+<Tabs items={['ZBar', 'ZXing']} storageKey="barcode-detector-implementation">
+  <Tabs.Tab>
+    ZBar is included as a dependency and requires no additional installation; its WASM is approximately 230 kB. It does not support `aztec`, `data_matrix` or `pdf417`; use ZXing if you need these formats.
+
+    ```ts
+    import 'react-barcode-scanner/polyfill'
+    ```
+  </Tabs.Tab>
+  <Tabs.Tab>
+    ZXing requires installing `barcode-detector` separately; its WASM is approximately 1 MiB.
+
+    <Tabs items={['pnpm', 'npm', 'yarn']} storageKey="package-manager">
+      <Tabs.Tab>
+        ```shell
+        pnpm add barcode-detector
+        ```
+      </Tabs.Tab>
+      <Tabs.Tab>
+        ```shell
+        npm install barcode-detector
+        ```
+      </Tabs.Tab>
+      <Tabs.Tab>
+        ```shell
+        yarn add barcode-detector
+        ```
+      </Tabs.Tab>
+    </Tabs>
+
+    ```ts
+    import 'barcode-detector/polyfill'
+    ```
+  </Tabs.Tab>
+</Tabs>
+
+<Callout type="warning" emoji="⚠️">
+  Choose either the ZBar or ZXing polyfill, not both. A polyfill does not replace an existing native `BarcodeDetector`.
+</Callout>
 
 ## Scaffold
 

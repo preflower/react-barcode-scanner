@@ -18,15 +18,17 @@ export default () => {
 }
 ```
 
+The example uses the included ZBar WASM polyfill. The [installation guide](./install) lets you switch to the compatible ZXing WASM option.
+
 ### Barcode format
-`BarcodeScanner` supports `qr_code` by default. Use the `formats` option to scan other barcode formats:
+`BarcodeScanner` scans `qr_code` by default. The `formats` option uses the [standard format names](https://developer.mozilla.org/en-US/docs/Web/API/Barcode_Detection_API#supported_barcode_formats) defined by the Barcode Detection API:
 
 ```tsx
 <BarcodeScanner options={{ formats: ['code_128'] }} /> 
 ```
 
 <Callout type="warning" emoji="⚠️">
-  The scanner is based on the `Barcode Detection API`. The zbar polyfill supports the listed [barcode formats](https://developer.mozilla.org/en-US/docs/Web/API/Barcode_Detection_API#supported_barcode_formats) except `aztec`, `data_matrix` and `pdf417`.
+  Available formats depend on the browser or polyfill BarcodeDetector implementation. Query `BarcodeDetector.getSupportedFormats()` at runtime, and see the [installation options](./install) for the ZBar and ZXing differences.
 </Callout>
 
 ### Scanning delay

@@ -9,7 +9,13 @@ Concise answers to common implementation and troubleshooting questions. For exac
 
 ## What is React Barcode Scanner?
 
-React Barcode Scanner is a TypeScript React component and hooks library for scanning QR codes and one-dimensional barcodes in a browser. It uses the Barcode Detection API and provides a zbar WebAssembly polyfill.
+React Barcode Scanner is a TypeScript React component and hooks library for scanning barcodes in a browser. It uses the Barcode Detection API, includes an optional ZBar WebAssembly polyfill, and works with compatible implementations such as ZXing WASM.
+
+## Can I use ZXing WASM?
+
+Yes. Select the ZXing tab in the [installation guide](./install) for the package command and import.
+
+Neither the ZXing polyfill nor the included ZBar polyfill replaces an existing native `BarcodeDetector`. When the browser provides a native implementation, that implementation remains active.
 
 ## Does React Barcode Scanner work with Next.js and SSR?
 
@@ -35,7 +41,7 @@ Common causes include a denied permission, another application owning the camera
 
 ## Which barcode formats are supported?
 
-The default format is `qr_code`. The zbar polyfill supports the Barcode Detection API format list except `aztec`, `data_matrix` and `pdf417`. Pass the required formats through `options.formats`; selecting fewer formats can reduce unnecessary work.
+The default format is `qr_code`; the supported set depends on the active BarcodeDetector implementation. The included ZBar polyfill does not support `aztec`, `data_matrix` or `pdf417`, while the optional ZXing polyfill does. Query `BarcodeDetector.getSupportedFormats()` when using a native browser implementation. Pass only the required formats through `options.formats` to avoid unnecessary detection work.
 
 ```tsx
 <BarcodeScanner options={{ formats: ['qr_code', 'code_128'] }} />
@@ -51,7 +57,7 @@ Yes. React and React DOM are peer dependencies, and the package is tested with R
 
 ## Does the package support ESM and CommonJS?
 
-Yes. The published package provides separate ESM and CommonJS entries plus TypeScript declarations. Import the polyfill from `react-barcode-scanner/polyfill` in either module system.
+Yes. The published package provides separate ESM and CommonJS entries plus TypeScript declarations. The included ZBar polyfill works with both module systems; consult a third-party polyfill's documentation for its module-format support.
 
 ## Where should I report a reproducible problem?
 
