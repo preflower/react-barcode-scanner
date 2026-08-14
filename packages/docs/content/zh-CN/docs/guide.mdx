@@ -19,15 +19,17 @@ export default () => {
 }
 ```
 
+上面的示例使用随包提供的 ZBar WASM polyfill。需要切换到兼容的 ZXing WASM 实现时，请查看[安装说明](./install)。
+
 ### 条形码格式
-`BarcodeScanner` 默认支持 `qr_code`。如果需要扫描其他条码格式，请配置 `formats`：
+`BarcodeScanner` 默认扫描 `qr_code`。`formats` 使用 Barcode Detection API 定义的[官方支持格式](https://developer.mozilla.org/en-US/docs/Web/API/Barcode_Detection_API#supported_barcode_formats)：
 
 ```tsx
 <BarcodeScanner options={{ formats: ['code_128'] }} /> 
 ```
 
 <Callout type="warning" emoji="⚠️">
-  扫码器基于 `Barcode Detection API`。zbar polyfill 支持[条码格式列表](https://developer.mozilla.org/en-US/docs/Web/API/Barcode_Detection_API#supported_barcode_formats)中除 `aztec`、`data_matrix` 和 `pdf417` 之外的格式。
+  实际可用格式取决于当前浏览器或 polyfill 的 BarcodeDetector 实现。可通过 `BarcodeDetector.getSupportedFormats()` 查询；ZBar 与 ZXing 的差异请查看[安装选项](./install)。
 </Callout>
 
 ### 扫码感应延迟

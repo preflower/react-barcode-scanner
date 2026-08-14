@@ -9,7 +9,13 @@ description: 解答 React Barcode Scanner 的浏览器兼容、Next.js SSR、多
 
 ## React Barcode Scanner 是什么？
 
-React Barcode Scanner 是一个使用 TypeScript 编写的 React 浏览器扫码组件与 Hooks 库。它基于 Barcode Detection API，并提供 zbar WebAssembly polyfill，可识别二维码和一维条码。
+React Barcode Scanner 是一个使用 TypeScript 编写的 React 浏览器扫码组件与 Hooks 库。它基于 Barcode Detection API，随包提供可选的 ZBar WebAssembly polyfill，也兼容 ZXing WASM 等符合该 API 的实现。
+
+## 可以使用 ZXing WASM 吗？
+
+可以。在[安装说明](./install)中切换到 ZXing Tab，即可查看对应的安装命令和导入方式。
+
+ZXing polyfill 和随包提供的 ZBar polyfill 都不会覆盖浏览器已有的原生 `BarcodeDetector`。如果浏览器存在原生实现，实际使用的仍是原生实现。
 
 ## React Barcode Scanner 支持 Next.js 和 SSR 吗？
 
@@ -35,7 +41,7 @@ React Barcode Scanner 是一个使用 TypeScript 编写的 React 浏览器扫码
 
 ## 支持哪些条码格式？
 
-默认格式是 `qr_code`。zbar polyfill 支持 Barcode Detection API 格式列表中除 `aztec`、`data_matrix` 和 `pdf417` 之外的格式。通过 `options.formats` 传入实际需要的格式；减少格式数量也可以避免不必要的检测工作。
+默认格式是 `qr_code`，实际支持范围取决于当前 BarcodeDetector 实现。随包提供的 ZBar polyfill 不支持 `aztec`、`data_matrix` 和 `pdf417`，可选的 ZXing polyfill 支持这些格式；浏览器原生实现可通过 `BarcodeDetector.getSupportedFormats()` 查询。通过 `options.formats` 传入实际需要的格式，减少格式数量也可以避免不必要的检测工作。
 
 ```tsx
 <BarcodeScanner options={{ formats: ['qr_code', 'code_128'] }} />
@@ -51,7 +57,7 @@ React Barcode Scanner 是一个使用 TypeScript 编写的 React 浏览器扫码
 
 ## 同时支持 ESM 和 CommonJS 吗？
 
-支持。发布包分别提供 ESM、CommonJS 入口和 TypeScript 类型声明。在两种模块系统中都可以从 `react-barcode-scanner/polyfill` 引入 polyfill。
+支持。发布包分别提供 ESM、CommonJS 入口和 TypeScript 类型声明。在两种模块系统中都可以使用随包提供的 ZBar polyfill；第三方 polyfill 的模块格式支持请以其自身文档为准。
 
 ## 如何反馈可复现的问题？
 

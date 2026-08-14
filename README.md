@@ -14,7 +14,7 @@
 </div>
 
 ## Introduction
-A lightweight barcode scanner based on the `Barcode Detection API`, with a `zbar.wasm` polyfill.
+A lightweight barcode scanner based on the `Barcode Detection API`. It ships with an optional `zbar.wasm` polyfill and also works with compatible third-party implementations such as the ZXing WASM-based [`barcode-detector`](https://github.com/Sec-ant/barcode-detector).
 
 ## Usage
 ```tsx
@@ -25,6 +25,8 @@ export default () => {
   return <BarcodeScanner />
 }
 ```
+
+The example uses the included ZBar WASM polyfill. You can select the compatible ZXing WASM-based `barcode-detector` from the [installation guide](https://reactbarcodescanner.vercel.app/docs/install) when additional formats are required.
 
 ## State scope and multiple scanners
 

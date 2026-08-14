@@ -82,7 +82,7 @@ function useScanning(
 }
 ```
 
-创建检测器前会等待 `react-barcode-scanner/polyfill` 加载完成；只要 `formats` 不变，就会复用同一个检测器。
+如果导入了随包提供的 `react-barcode-scanner/polyfill`，创建检测器前会等待其加载完成。其他兼容 Barcode Detection API 的实现通过 `globalThis.BarcodeDetector` 使用。只要 `formats` 不变，就会复用同一个检测器。
 
 ### DEFAULT_OPTIONS
 

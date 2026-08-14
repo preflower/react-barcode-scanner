@@ -78,7 +78,7 @@ function useScanning(
 }
 ```
 
-The hook waits for `react-barcode-scanner/polyfill` to finish loading before creating a detector. A detector is reused until `formats` changes.
+When the included `react-barcode-scanner/polyfill` is imported, the hook waits for it to finish loading before creating a detector. Other Barcode Detection API-compatible implementations are read from `globalThis.BarcodeDetector`. A detector is reused until `formats` changes.
 
 ### DEFAULT_OPTIONS
 

@@ -12,7 +12,7 @@ export const metadata = {
     default: SITE_NAME,
     template: `%s – ${SITE_NAME}`
   },
-  description: 'A React component and hooks library for browser barcode scanning with a zbar WebAssembly polyfill.',
+  description: 'A React barcode scanner based on the Barcode Detection API, with ZBar and optional ZXing WebAssembly polyfills.',
   applicationName: SITE_NAME,
   authors: [{ name: 'Ted Lin' }],
   icons: {
