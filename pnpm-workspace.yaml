@@ -16,7 +16,7 @@ publicHoistPattern:
   - '*prettier*'
 
 overrides:
-  vite: npm:@voidzero-dev/vite-plus-core@0.2.8
+  vite: npm:@voidzero-dev/vite-plus-core@0.2.9
   zod: 4.1.12
 
 allowBuilds:
