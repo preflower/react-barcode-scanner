@@ -3,7 +3,7 @@ import { NextResponse } from 'next/server'
 const DEFAULT_LOCALE = 'en-US'
 const CHINESE_LOCALE = 'zh-CN'
 
-export function middleware (request) {
+export function proxy (request) {
   const { pathname } = request.nextUrl
 
   if (pathname === `/${DEFAULT_LOCALE}` || pathname.startsWith(`/${DEFAULT_LOCALE}/`)) {
